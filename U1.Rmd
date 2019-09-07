@@ -328,3 +328,6 @@ stem(m)
 ```{r}
 mean(m)
 ```
+
+
+Ahora, la mediana
