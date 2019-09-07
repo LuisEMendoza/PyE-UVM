@@ -1,0 +1,330 @@
+---
+title: "Estadística Descriptiva"
+---
+
+Los métodos estadísticos son muy importantes, ya que ellos nos permiten conocer los fenómenos que nos rodean, en aspectos que quizá no nos imaginamos. Por doquier estamos expuestos a los __datos__, y eso se extiende a científicos e ingenieros en sus actividades profesionales.  
+Es muy importante definir los objetos que se constituyen en una __población__ de interés. Dicha población puede ser el conjunto de todos los productos elaborados en una fábrica un día determinado, o todos los estudiantes egresados de cierta carrera en la generación 2017, por ejemplo. Cuando tenemos acceso a todos los datos deseados de todos los miembros de una población, tenemos un __censo__.  
+Sin embargo, es muy complicado poder realizar censos, ya sea por escasez de tiempo o de dinero. Por ello, se prefiere seleccionar un grupo pequeño de elementos de la población de manera aleatoria, para tener lo que se conoce como una __muestra__.  
+Cabe mencionar que en ocasiones, no nos interesan todas las características de los objetos de una población. Por ejemplo, puede que hayamos reunido a 50 personas para analizar su estado de salud. Probablemente debamos preguntarles su edad, su peso, su estatura y tomarles medidas de su temperatura o presión arterial; sin embargo, no tiene sentido preguntarles qué equipo de futbol es su favorito o a qué hora pasan su noticiero predilecto. Lo que necesitamos son sus características.  
+A las características podemos dividirlas en dos: __categóricas__ y __numéricas__. Las primeras son etiquetas, como los nombres o la marca de un coche. Las segundas pueden expresarse con números. Definamos una __variable__ como cualquier característica cuyo valor puede cambiar de un sujeto a otro.
+
+## Ramas de la Estadística
+Dividiremos la Estadística en dos ramas por el momento. En primera instancia, es necesario recopilar, organizar, resumir y presentar los datos; de esto se encarga la __Estadística Descriptiva__. Por otro lado, se desea extender las propiedades de la muestra hacia la población, mediante inferencias que permitan comprender mejor su comportamiento e incluso pronosticarlo; esa es la función de la __Estadística Inferencial__.
+
+## Estadística Descriptiva en acción
+La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131). Los datos se presentan en una sola columna para dejar en claro que se refieren a datos univariables. Cabe mencionar que los datos se encuentran en la carpeta _datasets_ del repositorio de la asignatura en [GitHub](https://github.com/LuisEMendoza/RMarkdown-test/tree/master/datasets).
+
+```{r echo=FALSE}
+temp <- scan("datasets/001-challenger.txt")
+temp
+```
+
+
+A simple vista, los datos así mostrados no dicen gran cosa. Para ello es deseable organizarlos de manera que muestren algún comportamiento en particular. Una de las maneras más burdas es el __diagrama de tallo y hojas__, el cual se muestra a continuación:
+
+```{r echo=FALSE}
+stem(temp)
+```
+
+La explicación del diagrama es sencilla: las cifras que representan las decenas se colocan como tallos, mientras que las cifras que son unidades se vuelven hojas. Este diagrama nos permite saber de manera rápida cuáles son las temperaturas más comunes o frecuentes en nuestro conjunto de datos. También puede decirse que es un __histograma__ muy rudimentario.
+
+A continuación se muestra un histograma:
+
+```{r echo=FALSE}
+hist(temp)
+```
+
+Y para terminar, una gráfica que posteriormente se verá cómo interpretarse y construirse es la __gráfica de caja__, la cual se muestra a continuación:
+
+```{r echo=FALSE}
+boxplot(temp)
+```
+
+Lo anterior, así como la tabla donde se muestran los datos, fue realizado con un _software_ estadístico: __R__.
+
+## Representaciones gráficas y tabulares
+Es importante mencionar que existe una notación que debemos considerar: el número de observaciones presentes en un conjunto de datos dado, se denotará por la letra _n_. También, cada observación se denotará por la letra _x_ acompañada de un subíndice que no tiene ninguna función más que identificar los datos. Es decir, representar una observación como $x_1$ no implica que esta sea la más pequeña. Con esto en mente, pasamos a revisar las representaciones gráficas de los datos.
+
+### Diagrama de tallo y hojas
+Anteriormente se habló un poco de este diagrama. Es bastante sencillo y puede aplicarse a números decimales. Veamos los pasos para producirlos:
+
+1. Se selecciona uno o más de los primeros dígitos para el tallo. Los dígitos restantes serán las hojas.
+2. Los valores del tallo se escriben de manera vertical.
+3. Se anota una hoja por cada observación a la derecha del tallo.
+4. Se indican las unidades para tallos y hojas en algún lugar de la gráfica.
+
+Una gráfica de tallos y hojas da información sobre los siguientes aspectos de los datos:
+- Identificación de un valor típico o representativo.
+- Grado de dispersión en torno al valor típico.
+- Presencia de brechas en los datos.
+- Grado de simetría en la distribución de los valores.
+- Número y localización de crestas.
+- Presencia de valores afuera de la gráfica.
+
+A modo de práctica, tomemos los siguientes valores que representan el flujo de agua en regaderas de Australia en litros por minuto, para _n = 130_. Se muestra también el código en _R_ para mostrar y calcular el diagrama:
+
+```{r}
+flujo <- scan("datasets/002-flujo.txt")
+flujo
+```
+
+Construyamos nuestro diagrama:
+
+```{r}
+stem(flujo)
+```
+
+
+- ¿Cuál es una velocidad de flujo o gasto típico o representativo?
+- ¿Parece estar la gráfica altamente concentrada o dispersa?
+- ¿Es la distribución de valores razonablemente simétrica? Si no, ¿cómo describiría el alejamiento de la simetría?
+- ¿Describiría cualquier observación como alejada del resto de los datos (un valor extremo)?
+
+### Diagrama de puntos
+Es un resumen atractivo de datos numéricos cuando el conjunto es razonablemente pequeño o existen pocos valores de datos distintos. Cada observación está representada por un punto sobre la ubicación correspondiente en una escala de medición horizontal. Cuando un valor ocurre más de una vez, existe un punto por cada ocurrencia y estos puntos se apilan verticalmente. Como con la gráfica de tallos y hojas, una gráfica de puntos da información sobre la localización, dispersión, extremos y brechas. Usemos como ejemplo el conjunto de las temperaturas del _Challenger_.
+
+```{r}
+stripchart(temp, method = 'stack')
+```
+
+### Tablas de frecuencia
+Vamos a trabajar ahora con datos categóricos. Cuando hablamos de categorías, hablamos de variables nominales, es decir, nombres o etiquetas. Por lo tanto, el tratamiento que debemos darles difiere de los números. Por principio de cuentas, debemos tabularlos. Esto se consigue con una tabla de frecuencias. Primero leemos el archivo con los datos:
+
+```{r}
+marca <- c(read.table("datasets/003-marca.txt"))
+marca
+```
+Construir una tabla de frecuencias implica contar el número de veces que una etiqueta se repite. A esa cantidad se le conoce como la frecuencia absoluta. Enseguida creamos la tabla:
+
+```{r}
+mar <- table(marca)
+mar
+```
+
+De aquí en delante podemos complementar la tabla de frecuencias agregando la frecuencia acumulada y la relativa. Llenémosla:
+
+Marca | Frecuencia | Frec. acumulada | Frec. relativa | Frec. rel. acumulada
+:---|:---:|:---:|:---:|:---:
+Apple | 8 | 8 | 0.25 | 0.25
+HTC | 1 | 9 | 0.03125 | 0.28125
+Huawei | 4 | 13 | 0.125 | 0.40625
+LG | 1 | 14 | 0.03125 | 0.4375
+Motorola | 5 | 19 | 0.15625 | 0.59375
+Nokia | 2 | 21 | 0.0625 | 0.65625
+Samsung | 10 | 31 | 0.3125 | 0.96875
+Xiaomi | 1 | 32 | 0.03125 | 1
+
+La frecuencia acumulada, también conocida como frecuencia absoluta acumulada, se corresponde con la suma de las frecuencias que han aparecido hasta el momento. Por ejemplo, la frecuencia acumulada para Huawei es de 13, que se corresponde con los 8 de Apple, la única de HTC y las 4 unidades de la propia Huawei. La frecuencia relativa es el cociente de la frecuencia absoluta entre el total de observaciones, por ejemplo, para Apple se corresponde con el resultado de dividir sus 8 unidades entre el total, que fueron 32. Esos cocientes se acumulan para obtener la frecuencia relativa acumulada.
+
+Ahora bien, la única ocasión en la que se recomienda utilizar un diagrama de sectores -también conocido como de pastel-, es cuando se trabaja con variables nominales (etiquetas o categorías). Para su construcción, basta con tomar la frecuencia relativa de cada categoría y multiplicarla por 360, que son la totalidad de los grados contenidos en un círculo completo.
+
+Marca | Grados
+:--- | :---:
+Apple | 90
+HTC | 11.25
+Huawei | 45
+LG | 11.25
+Motorola | 56.25
+Nokia | 22.5
+Samsung | 112.5
+Xiaomi | 11.25
+
+El círculo se divide en las 8 secciones con magnitudes en grados ya calculadas. El diagrama quedaría de la siguiente manera (elaborada con R):
+
+```{r}
+pie(mar)
+```
+
+### Distribuciones de frecuencia
+En ocasiones es necesario trabajar con valores que no se repiten tanto, como en el caso que se presenta enseguida.
+
+Las compañías eléctricas requieren información sobre el consumo de los clientes para obtener pronósticos precisos de demandas. Investigadores de Wisconsin Power and Light determinaron el consumo de energía (BTU) durante un periodo particular con una muestra de 90 hogares calentados con gas. Las siguientes observaciones son el consumo promedio:
+
+```{r}
+Consumo <- scan("datasets/004-horno.txt")
+Consumo
+```
+
+Es notorio que los valores son bastantes y que rara vez se repiten. Cuando nuestros datos son así, se recomienda agruparlos en una distribución de frecuencias. Dicha distribución divide los datos en intervalos y cuenta las ocasiones en que los mismos datos se encuentran entre estos intervalos. A estos últimos se les conoce también como __clases__. 
+
+El primer paso es determinar el número de datos. En esta ocasión ya lo sabemos, son 90. Si en un momento dado no fuera así, podemos contarlos con el siguiente comando:
+```{r}
+n <- length(Consumo)
+n
+```
+
+Entonces toca definir el número de clases. No existe una regla inamovible para hacer esto, pero usualmente se utiliza uno de los tres criterios siguientes:
+
+__La raíz cuadrada del número de datos__. Al momento de contar el total de observaciones, se calcula la raíz de dicho valor.
+$$
+total\ de\ clases \ \approx \sqrt {total\ de\ observaciones}
+$$
+```{r}
+sqrt(n)
+```
+Redondeamos hacia arriba y definimos el número de clases como diez.
+
+__La Regla de Sturges__. Fue propuesta en 1926 y es la que utilizan en su mayoría los programas estadísticos para el cálculo y elaboración de histogramas y distribuciones de frecuencia. Su fórmula es:
+
+$$
+k=1+log_2(n)
+$$
+Donde $k$ es el número de clases y $n$ es el tamaño de muestra. Para este caso, el número de clases sería:
+
+```{r}
+ksturges <- 1+log2(n)
+ksturges
+```
+
+__La regla de Scott__. Propuesta en 1992, utiliza la distribución normal como base y recomienda utilizar la expresión:
+
+$$
+k=(2n)^{1/3}
+$$
+
+```{r}
+kscott <- (2*n)^(1/3)
+kscott
+```
+
+Con el número de  clases ya definido, lo siguiente en realizar será determinar la anchura o límites de la clase. Igual que en el número de clases, no existe una regla infalible para hacerlo, y muchas veces puede dejarse a criterio de la persona que realiza el análisis. Se pueden mencionar dos pautas:
+
+__Al tanteo__. En este caso obtenemos el número más bajo y el más alto y buscamos unos límites que nos permitan englobar dichos números sin que quepa la posibilidad de dejar algún valor fuera. Por ejemplo, el número más bajo (o mínimo) es $2.97$, por lo cual podríamos definir $2.5$ o incluso $2$ como límite inferior de la primera clase; en el otro extremo, el valor máximo es $18.26$, por lo que podremos dejar $18.5$, $19$ o incluso $20$ como límite superior. Cabe mencionar que el $20$ sería para asegurarnos de tener clases «simétricas».
+
+__Por fórmula__. En este caso, prescindimos de estar buscando un número adecuado y lo calculamos directamente con la siguiente expresión:
+
+$$
+Anchura=\frac {R}{NC}
+$$
+Donde $R$ es el rango (esto es, la diferencia entre el valor máximo y el mínimo) y $NC$ es el número de clases. Supongamos que queremos 9 clases, entonces encontremos el máximo y el mínimo:
+
+```{r}
+max(Consumo)
+min(Consumo)
+```
+
+Y ahora calculamos la anchura:
+```{r}
+anchura <- (max(Consumo)-min(Consumo))/9
+anchura
+```
+
+Al ser un valor decimal, se recomienda redondearse hacia arriba, quedando en dos. Así que nuestras clases comenzarían en 2 como límite inferior, y aumentarán de dos en dos hasta alcanzar el límite superior: 20.
+
+Podríamos graficar el histograma directamente, pero queremos obtener la distribución de frecuencias también. Para ello, ejecutamos la función `hist` pero con la opción de no mostrarlo y con el número de clases que hayamos definido.
+
+```{r}
+df <- hist(Consumo, nclass = 9, plot = FALSE, right = FALSE)
+df
+```
+
+```{r}
+intervalos <- df$breaks
+clases <- cut(Consumo, breaks = intervalos, dig.lab = 2, right = FALSE)
+tabla.frec <- table(clases)
+tabla <- as.data.frame(tabla.frec)
+tabla
+```
+
+El histograma quedaría así:
+
+```{r}
+hist(Consumo, right = FALSE)
+```
+
+### Histograma con anchos de clase desiguales
+Es posible que las clases de ancho-igual no sean una opción sensible si un conjunto
+de datos “se alarga” hacia un lado o el otro. Como ejemplo, veamos el siguiente caso:
+
+En un estudio de ruptura de la urdimbre durante el tejido de telas (Technometrics, 1982: 63), se sometieron a prueba 100 muestras de hilo. Se determinó el número de ciclos de esfuerzo hasta ruptura para cada muestra de hilo y se obtuvieron los datos siguientes:
+
+```{r}
+hilos <- scan("datasets/005-hilos.txt")
+hilos
+```
+
+Trazamos nuestro histograma:
+```{r}
+hist(hilos, breaks = 'Sturges', right = FALSE)
+```
+
+Aquí podemos ver que el histograma se alarga demasiado hacia la derecha, mostrando clases con muy pocas observaciones. En este tipo de ocasiones, puede utilizar un histograma basado en densidades, más que en frecuencias. Ello implica obtener anchuras diferentes.
+
+```{r}
+hist(hilos, breaks = c(0,50, 100,150, 200,400,600,900), right = FALSE)
+```
+
+Después de determinar las frecuencias y las frecuencias relativas, se calcula la altura
+de cada rectángulo con la fórmula
+$$
+altura=\frac{frecuencia\ relativa\ de\ clase}{ancho\ de\ clase}
+$$
+
+Las alturas del rectángulo resultante en general se conocen como densidades y la escala vertical es la escala de densidades. Esta prescripción también funcionará cuando los anchos de clase son iguales.
+
+```{r}
+hist(hilos, breaks = c(0,50, 100,150, 200,400,900), right = FALSE)
+```
+
+
+## Medidas de tendencia
+Los resúmenes visuales son bastante atractivos y deseables para obtener percepciones o nociones preliminares. Sin embargo, para un mejor análisis es mejor obtener un resumen basado en la interpretación de medidas numéricas. Suponga que un conjunto de observaciones de la forma $x_1$, $x_2$, $x_3$, donde cada $x_i$, (la $i$ es solo un indicador o índice, es decir, no tiene valor numérico). ¿Qué es lo que nos importa saber de ellos?
+
+### La media
+La medida más conocida y útil del centro es la _media_ o promedio aritmético del conjunto. Si los números se denotan como $x_i$, entonces la media se indica como $\bar{x}$. Se calcula con la siguiente expresión:
+
+$$
+\bar{x}=\frac{x_1+x_2+ ... +x_n}{n}=\frac{\sum_{i=1}^n x_i}{n}
+$$
+Podemos escribir el numerador de la expresión informalmente como $\sum x_i$, entendiendo que la suma incluye todas las observaciones muestrales.
+
+### Ejemplo
+Veamos el caso de un proceso de elaboración de calderas de acero. El metal se encuentra sometido a esfuerzo cáustico, el cual causa agrietamientos, cuya longitud se recogió en la siguiente lista:
+
+```{r}
+grietas <- scan("datasets/007-caustic.txt")
+grietas
+```
+
+Sumemos todos los valores de la lista, y enseguida dividamos entre el número de observaciones.
+
+Lo primero lo logramos con:
+
+```{r}
+suma <- sum(grietas)
+suma
+```
+
+El tamaño muestral se obtiene con:
+
+```{r}
+observaciones <- length(grietas)
+observaciones
+```
+
+Ahora sí, calculemos la media:
+
+```{r}
+media <- suma/observaciones
+media
+```
+
+R tiene la función ya predeterminada:
+
+```{r}
+mean(grietas)
+```
+
+### Ejercicio
+
+Trabajemos ahora con otro conjunto de valores:
+
+```{r}
+m <- scan("datasets/004-horno.txt")
+m
+stem(m)
+```
+
+```{r}
+mean(m)
+```
