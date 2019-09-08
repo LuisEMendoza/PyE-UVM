@@ -675,9 +675,8 @@ altura=\frac{frecuencia\ relativa\ de\ clase}{ancho\ de\ clase}
 <p><span class="math display">\[
 \bar{x}=\frac{x_1+x_2+ ... +x_n}{n}=\frac{\sum_{i=1}^n x_i}{n}
 \]</span> Podemos escribir el numerador de la expresión informalmente como <span class="math inline">\(\sum x_i\)</span>, entendiendo que la suma incluye todas las observaciones muestrales.</p>
-</div>
-<div id="ejemplo" class="section level3">
-<h3>Ejemplo</h3>
+<div id="ejemplo" class="section level4">
+<h4>Ejemplo</h4>
 <p>Veamos el caso de un proceso de elaboración de calderas de acero. El metal se encuentra sometido a esfuerzo cáustico, el cual causa agrietamientos, cuya longitud se recogió en la siguiente lista:</p>
 <pre class="r"><code>grietas &lt;- scan(&quot;datasets/007-caustic.txt&quot;)
 grietas</code></pre>
@@ -700,8 +699,8 @@ media</code></pre>
 <pre class="r"><code>mean(grietas)</code></pre>
 <pre><code>## [1] 21.18095</code></pre>
 </div>
-<div id="ejercicio" class="section level3">
-<h3>Ejercicio</h3>
+<div id="ejercicio" class="section level4">
+<h4>Ejercicio</h4>
 <p>Trabajemos ahora con otro conjunto de valores:</p>
 <pre class="r"><code>m &lt;- scan(&quot;datasets/004-horno.txt&quot;)
 m</code></pre>
@@ -729,7 +728,52 @@ m</code></pre>
 ##   18 | 3</code></pre>
 <pre class="r"><code>mean(m)</code></pre>
 <pre><code>## [1] 10.03844</code></pre>
-<p>Ahora, la mediana</p>
+<p>Por lo anterior, podemos entender la media como una especie de balanza o punto de apoyo que nos permite equilibrar los pesos (las observaciones) en un eje horizontal. Ahora bien, este concepto tiene un gran problema: es muy sensible a valores extremos. Por ejemplo, consideremos el conjunto de temperaturas del <em>Challenger</em>:</p>
+<pre class="r"><code>temp &lt;- scan(&quot;datasets/001-challenger.txt&quot;)
+temp</code></pre>
+<pre><code>##  [1] 84 49 61 40 83 67 45 66 70 69 80 58 68 60 67 72 73 70 57 63 70 78 52
+## [24] 67 53 67 75 61 70 81 76 79 75 76 58 31</code></pre>
+<p>Como ya habíamos visto, la media resultaba ser:</p>
+<pre class="r"><code>mean(temp)</code></pre>
+<pre><code>## [1] 65.86111</code></pre>
+<p>Pero si agregamos un dato muy <em>extraño</em> o no esperado, aún más que el propio 31, como por ejemplo un catastrófico 350:</p>
+<pre class="r"><code>n.media &lt;- (sum(temp)+350)/(length(temp)+1)
+n.media</code></pre>
+<pre><code>## [1] 73.54054</code></pre>
+<p>Nuestra media se recorre demasiado hacia la derecha del conjunto, muy cerca del final de los datos, con el afán de «equilibrarlos». Cuando se trabaja con observaciones que pueden tener muchos datos extremos, es recomendable no elegir la media para representar su tendencia. En su lugar, se recomienda la <strong>mediana</strong>.</p>
+</div>
+</div>
+<div id="la-mediana" class="section level3">
+<h3>La mediana</h3>
+<p>La mediana es una medida de tendencia que literalmente, parte al conjunto de observaciones (previamente ordenadas de menor a mayor) por la mitad. Es decir, es el valor de en medio. Se denota por <span class="math inline">\(\tilde x\)</span>. La mediana se obtiene de dos maneras, dependiendo del número de observaciones <span class="math inline">\(n\)</span>.</p>
+<blockquote>
+<p>Si el número de observaciones es impar, la mediana es el valor que se encuentra en la siguiente posición:</p>
+</blockquote>
+<p><span class="math display">\[
+\tilde x=valor\ en\ el\ lugar\  \#  \frac{n+1}{2} \ ordenado
+\]</span></p>
+<blockquote>
+<p>Si es par, debemos localizar los dos valores centrales y calcular su media; el resultado es la mediana.</p>
+</blockquote>
+<p><span class="math display">\[
+\tilde x=promedio\ de\ los \ valores\   \#  \frac{n}{2}\ y\ el\ \# \frac{n}{2}+1 \ ordenados
+\]</span></p>
+<div id="ejemplo-1" class="section level4">
+<h4>Ejemplo</h4>
+<p>El riesgo de desarrollar deficiencia de hierro es especialmente alto durante el embarazo. El problema con la detección de tal deficiencia es que algunos métodos para determinar el estado del hierro pueden ser afectados por el estado de gravidez mismo. Considérense las siguientes observaciones de concentración de receptores de transferrina de una muestra de mujeres con evidencia de laboratorio de anemia por deficiencia de hierro evidente (“Serum Transferrin Receptor for the Detection of Iron Deficiency in Pregnancy”, Amer. J. of Clinical Nutrition, 1991: 1077-1081):</p>
+<pre class="r"><code>Fe &lt;- scan(&quot;datasets/008-hierro.txt&quot;)
+Fe</code></pre>
+<pre><code>##  [1] 11.9  9.4  8.3  7.6  9.7 20.4 11.5  9.4 15.2 10.4 16.2  9.3</code></pre>
+<p>Lo primero que debemos hacer es ordenar los datos de menor a mayor. Lo conseguimos en <em>R</em> con lo siguiente:</p>
+<pre class="r"><code>orden &lt;- sort(Fe)
+orden</code></pre>
+<pre><code>##  [1]  7.6  8.3  9.3  9.4  9.4  9.7 10.4 11.5 11.9 15.2 16.2 20.4</code></pre>
+<p>Ahora contamos el total de observaciones:</p>
+<pre class="r"><code>n &lt;- length(orden)
+n</code></pre>
+<pre><code>## [1] 12</code></pre>
+<p>Obtengamos la mediana, tomando en cuenta que tenemos un número par de observaciones:</p>
+</div>
 </div>
 </div>
 

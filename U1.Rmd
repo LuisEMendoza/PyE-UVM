@@ -278,7 +278,7 @@ $$
 $$
 Podemos escribir el numerador de la expresión informalmente como $\sum x_i$, entendiendo que la suma incluye todas las observaciones muestrales.
 
-### Ejemplo
+#### Ejemplo
 Veamos el caso de un proceso de elaboración de calderas de acero. El metal se encuentra sometido a esfuerzo cáustico, el cual causa agrietamientos, cuya longitud se recogió en la siguiente lista:
 
 ```{r}
@@ -315,7 +315,7 @@ R tiene la función ya predeterminada:
 mean(grietas)
 ```
 
-### Ejercicio
+#### Ejercicio
 
 Trabajemos ahora con otro conjunto de valores:
 
@@ -330,4 +330,63 @@ mean(m)
 ```
 
 
-Ahora, la mediana
+Por lo anterior, podemos entender la media como una especie de balanza o punto de apoyo que nos permite equilibrar los pesos (las observaciones) en un eje horizontal. Ahora bien, este concepto tiene un gran problema: es muy sensible a valores extremos. Por ejemplo, consideremos el conjunto de temperaturas del _Challenger_:
+
+```{r}
+temp <- scan("datasets/001-challenger.txt")
+temp
+```
+
+Como ya habíamos visto, la media resultaba ser:
+
+```{r}
+mean(temp)
+```
+
+Pero si agregamos un dato muy _extraño_ o no esperado, aún más que el propio 31, como por ejemplo un catastrófico 350:
+
+```{r}
+n.media <- (sum(temp)+350)/(length(temp)+1)
+n.media
+```
+
+Nuestra media se recorre demasiado hacia la derecha del conjunto, muy cerca del final de los datos, con el afán de «equilibrarlos». Cuando se trabaja con observaciones que pueden tener muchos datos extremos, es recomendable no elegir la media para representar su tendencia. En su lugar, se recomienda la __mediana__.
+
+
+### La mediana
+La mediana es una medida de tendencia que literalmente, parte al conjunto de observaciones (previamente ordenadas de menor a mayor) por la mitad. Es decir, es el valor de en medio. Se denota por $\tilde x$. La mediana se obtiene de dos maneras, dependiendo del número de observaciones $n$.
+
+> Si el número de observaciones es impar, la mediana es el valor que se encuentra en la siguiente posición:
+
+$$
+\tilde x=valor\ en\ el\ lugar\  \#  \frac{n+1}{2} \ ordenado
+$$
+
+>Si es par, debemos localizar los dos valores centrales y calcular su media; el resultado es la mediana.
+
+$$
+\tilde x=promedio\ de\ los \ valores\   \#  \frac{n}{2}\ y\ el\ \# \frac{n}{2}+1 \ ordenados
+$$
+
+#### Ejemplo
+El riesgo de desarrollar deficiencia de hierro es especialmente alto durante el embarazo. El problema con la detección de tal deficiencia es que algunos métodos para determinar el estado del hierro pueden ser afectados por el estado de gravidez mismo. Considérense las siguientes observaciones de concentración de receptores de transferrina de una muestra de mujeres con evidencia de laboratorio de anemia por deficiencia de hierro evidente (“Serum Transferrin Receptor for the Detection of Iron Deficiency in Pregnancy”, Amer. J. of Clinical Nutrition, 1991: 1077-1081):
+
+```{r}
+Fe <- scan("datasets/008-hierro.txt")
+Fe
+```
+
+Lo primero que debemos hacer es ordenar los datos de menor a mayor. Lo conseguimos en _R_ con lo siguiente:
+
+```{r}
+orden <- sort(Fe)
+orden
+```
+
+Ahora contamos el total de observaciones:
+```{r}
+n <- length(orden)
+n
+```
+Obtengamos la mediana, tomando en cuenta que tenemos un número par de observaciones:
+
