@@ -449,3 +449,4 @@ Para el segundo:
 median(u)
 ```
 
+![median](images/018-median.jpg)
