@@ -368,7 +368,7 @@ $$
 \tilde x=promedio\ de\ los \ valores\   \#  \frac{n}{2}\ y\ el\ \# \frac{n}{2}+1 \ ordenados
 $$
 
-#### Ejemplo
+#### Ejemplo 1
 El riesgo de desarrollar deficiencia de hierro es especialmente alto durante el embarazo. El problema con la detección de tal deficiencia es que algunos métodos para determinar el estado del hierro pueden ser afectados por el estado de gravidez mismo. Considérense las siguientes observaciones de concentración de receptores de transferrina de una muestra de mujeres con evidencia de laboratorio de anemia por deficiencia de hierro evidente (“Serum Transferrin Receptor for the Detection of Iron Deficiency in Pregnancy”, Amer. J. of Clinical Nutrition, 1991: 1077-1081):
 
 ```{r}
@@ -388,5 +388,64 @@ Ahora contamos el total de observaciones:
 n <- length(orden)
 n
 ```
-Obtengamos la mediana, tomando en cuenta que tenemos un número par de observaciones:
+Tenemos un conjunto par de observaciones, así que obtengamos los números que ocupan las posiciones centrales. Primero, el primero:
+
+```{r}
+n1 <-orden[n/2]
+n1
+```
+
+Y ahora el segundo:
+```{r}
+n2 <- orden[(n/2)+1]
+n2
+```
+
+Calculemos su media:
+
+```{r}
+mediana1 <- (n1+n2)/2
+mediana1
+```
+
+#### Ejemplo 2
+
+La exposición a productos microbianos, especialmente endotoxina, puede tener un impacto en la vulnerabilidad a enfermedades alérgicas. El artículo (“_Dust Sampling Methods for Endotoxin-An Essential, But Underestimated Issue_”, Indoor Air, 2006: 20-27) consideró temas asociados con la determinación de concentración de endotoxina. Se obtuvieron dos tipos de muestra para datos sobre concentración (EU/mg) en polvo asentado: hogares urbanos (U) y otra de casas campestres (C), las cuales fueron amablemente suministrados por los autores del artículo citado.
+
+A continuación se muestra la muestra urbana:
+
+```{r}
+u <- scan("datasets/009-toxinas-U.txt")
+u
+```
+Obtenemos el tamaño muestral:
+```{r}
+tamano <- length(u)
+tamano
+```
+
+En este caso tenemos un tamaño muestral impar, así que resulta más sencillo obtener la mediana. Ordenamos la muestra y enseguida obtenemos la posición del número central. La lista ordenada:
+
+```{r}
+u.ordenada <- sort(u)
+u.ordenada
+```
+
+La posición del valor central:
+```{r}
+mediana2 <- u.ordenada[(tamano+1)/2]
+mediana2
+```
+
+Este es el valor de la mediana. Hasta ahora hemos estado utilizando comandos aritméticos para determinarla, sin embargo, existe un comando único en _R_ para obtenerla. Para el primer conjunto de valores:
+
+```{r}
+median(Fe)
+```
+
+Para el segundo:
+
+```{r}
+median(u)
+```
 
