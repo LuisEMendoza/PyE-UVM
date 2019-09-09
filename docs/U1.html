@@ -759,7 +759,7 @@ n.media</code></pre>
 \tilde x=promedio\ de\ los \ valores\   \#  \frac{n}{2}\ y\ el\ \# \frac{n}{2}+1 \ ordenados
 \]</span></p>
 <div id="ejemplo-1" class="section level4">
-<h4>Ejemplo</h4>
+<h4>Ejemplo 1</h4>
 <p>El riesgo de desarrollar deficiencia de hierro es especialmente alto durante el embarazo. El problema con la detección de tal deficiencia es que algunos métodos para determinar el estado del hierro pueden ser afectados por el estado de gravidez mismo. Considérense las siguientes observaciones de concentración de receptores de transferrina de una muestra de mujeres con evidencia de laboratorio de anemia por deficiencia de hierro evidente (“Serum Transferrin Receptor for the Detection of Iron Deficiency in Pregnancy”, Amer. J. of Clinical Nutrition, 1991: 1077-1081):</p>
 <pre class="r"><code>Fe &lt;- scan(&quot;datasets/008-hierro.txt&quot;)
 Fe</code></pre>
@@ -772,7 +772,44 @@ orden</code></pre>
 <pre class="r"><code>n &lt;- length(orden)
 n</code></pre>
 <pre><code>## [1] 12</code></pre>
-<p>Obtengamos la mediana, tomando en cuenta que tenemos un número par de observaciones:</p>
+<p>Tenemos un conjunto par de observaciones, así que obtengamos los números que ocupan las posiciones centrales. Primero, el primero:</p>
+<pre class="r"><code>n1 &lt;-orden[n/2]
+n1</code></pre>
+<pre><code>## [1] 9.7</code></pre>
+<p>Y ahora el segundo:</p>
+<pre class="r"><code>n2 &lt;- orden[(n/2)+1]
+n2</code></pre>
+<pre><code>## [1] 10.4</code></pre>
+<p>Calculemos su media:</p>
+<pre class="r"><code>mediana1 &lt;- (n1+n2)/2
+mediana1</code></pre>
+<pre><code>## [1] 10.05</code></pre>
+</div>
+<div id="ejemplo-2" class="section level4">
+<h4>Ejemplo 2</h4>
+<p>La exposición a productos microbianos, especialmente endotoxina, puede tener un impacto en la vulnerabilidad a enfermedades alérgicas. El artículo (“<em>Dust Sampling Methods for Endotoxin-An Essential, But Underestimated Issue</em>”, Indoor Air, 2006: 20-27) consideró temas asociados con la determinación de concentración de endotoxina. Se obtuvieron dos tipos de muestra para datos sobre concentración (EU/mg) en polvo asentado: hogares urbanos (U) y otra de casas campestres (C), las cuales fueron amablemente suministrados por los autores del artículo citado.</p>
+<p>A continuación se muestra la muestra urbana:</p>
+<pre class="r"><code>u &lt;- scan(&quot;datasets/009-toxinas-U.txt&quot;)
+u</code></pre>
+<pre><code>##  [1]  6  5 11 33  4  5 80 18 35 17 23</code></pre>
+<p>Obtenemos el tamaño muestral:</p>
+<pre class="r"><code>tamano &lt;- length(u)
+tamano</code></pre>
+<pre><code>## [1] 11</code></pre>
+<p>En este caso tenemos un tamaño muestral impar, así que resulta más sencillo obtener la mediana. Ordenamos la muestra y enseguida obtenemos la posición del número central. La lista ordenada:</p>
+<pre class="r"><code>u.ordenada &lt;- sort(u)
+u.ordenada</code></pre>
+<pre><code>##  [1]  4  5  5  6 11 17 18 23 33 35 80</code></pre>
+<p>La posición del valor central:</p>
+<pre class="r"><code>mediana2 &lt;- u.ordenada[(tamano+1)/2]
+mediana2</code></pre>
+<pre><code>## [1] 17</code></pre>
+<p>Este es el valor de la mediana. Hasta ahora hemos estado utilizando comandos aritméticos para determinarla, sin embargo, existe un comando único en <em>R</em> para obtenerla. Para el primer conjunto de valores:</p>
+<pre class="r"><code>median(Fe)</code></pre>
+<pre><code>## [1] 10.05</code></pre>
+<p>Para el segundo:</p>
+<pre class="r"><code>median(u)</code></pre>
+<pre><code>## [1] 17</code></pre>
 </div>
 </div>
 </div>
