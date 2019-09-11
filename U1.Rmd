@@ -448,5 +448,56 @@ Para el segundo:
 ```{r}
 median(u)
 ```
+La media $\mu$ y la mediana $\tilde \mu$ poblacionales en general no serán idénticas. Si la distribución de la población es positiva o negativamente asimétrica, entonces $\mu \neq \tilde \mu$. Cuando éste es el caso, al hacer inferencias primero se debe decidir cuál de las dos características de la población es de mayor interés y luego proceder como corresponda.
 
-![median](images/018-median.jpg)
+![Solo en distribuciones normales simétricas](images/018-median.jpg)
+
+La mediana también puede calcularse con la función `quantile`, ya que a final de cuentas, es el segundo cuartil:
+
+```{r}
+quantile(u, probs = 0.5)
+```
+
+Podemos calcular cualquier cuantil, siendo los más comunes los cuartiles:
+
+```{r}
+quantile(u, probs = 0.25)
+quantile(u, probs = 0.75)
+quantile(u, probs = 0.20)
+```
+
+## Medidas de dispersión
+En ocasiones queremos saber qué tan dispersos se encuentran los valores de una muestra entre sí o con respecto a la media. Para ello utilizamos las medidas de dispersión. Usualmente son tres: el __rango__, la __varianza__ y la __desviación estándar__. 
+
+### El rango
+Considera solo la diferencia entre el valor máximo y el mínimo, por lo que no toma en cuenta los valores intermedios:
+
+```{r}
+u
+rango <- max(u) - min(u)
+```
+
+```{r}
+rango
+```
+
+### La varianza
+Su fórmula es la siguiente:
+
+$$
+s^2=\frac{\sum_{i=1}^n (x_i-\bar x)^2}{n-1}
+$$
+
+Y su obtención se consigue con:
+
+```{r}
+var(u)
+```
+
+### La desviación estándar
+No es más que la raíz cuadrada de la varianza. Se obtiene directamente con:
+
+```{r}
+sd(u)
+```
+

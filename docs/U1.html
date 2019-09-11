@@ -810,11 +810,55 @@ mediana2</code></pre>
 <p>Para el segundo:</p>
 <pre class="r"><code>median(u)</code></pre>
 <pre><code>## [1] 17</code></pre>
+<p>La media <span class="math inline">\(\mu\)</span> y la mediana <span class="math inline">\(\tilde \mu\)</span> poblacionales en general no serán idénticas. Si la distribución de la población es positiva o negativamente asimétrica, entonces <span class="math inline">\(\mu \neq \tilde \mu\)</span>. Cuando éste es el caso, al hacer inferencias primero se debe decidir cuál de las dos características de la población es de mayor interés y luego proceder como corresponda.</p>
 <div class="figure">
 <img src="images/018-median.jpg" alt="" />
-<p class="caption">median</p>
+<p class="caption">Solo en distribuciones normales simétricas</p>
+</div>
+<p>La mediana también puede calcularse con la función <code>quantile</code>, ya que a final de cuentas, es el segundo cuartil:</p>
+<pre class="r"><code>quantile(u, probs = 0.5)</code></pre>
+<pre><code>## 50% 
+##  17</code></pre>
+<p>Podemos calcular cualquier cuantil, siendo los más comunes los cuartiles:</p>
+<pre class="r"><code>quantile(u, probs = 0.25)</code></pre>
+<pre><code>## 25% 
+## 5.5</code></pre>
+<pre class="r"><code>quantile(u, probs = 0.75)</code></pre>
+<pre><code>## 75% 
+##  28</code></pre>
+<pre class="r"><code>quantile(u, probs = 0.20)</code></pre>
+<pre><code>## 20% 
+##   5</code></pre>
 </div>
 </div>
+</div>
+<div id="medidas-de-dispersion" class="section level2">
+<h2>Medidas de dispersión</h2>
+<p>En ocasiones queremos saber qué tan dispersos se encuentran los valores de una muestra entre sí o con respecto a la media. Para ello utilizamos las medidas de dispersión. Usualmente son tres: el <strong>rango</strong>, la <strong>varianza</strong> y la <strong>desviación estándar</strong>.</p>
+<div id="el-rango" class="section level3">
+<h3>El rango</h3>
+<p>Considera solo la diferencia entre el valor máximo y el mínimo, por lo que no toma en cuenta los valores intermedios:</p>
+<pre class="r"><code>u</code></pre>
+<pre><code>##  [1]  6  5 11 33  4  5 80 18 35 17 23</code></pre>
+<pre class="r"><code>rango &lt;- max(u) - min(u)</code></pre>
+<pre class="r"><code>rango</code></pre>
+<pre><code>## [1] 76</code></pre>
+</div>
+<div id="la-varianza" class="section level3">
+<h3>La varianza</h3>
+<p>Su fórmula es la siguiente:</p>
+<p><span class="math display">\[
+s^2=\frac{\sum_{i=1}^n (x_i-\bar x)^2}{n-1}
+\]</span></p>
+<p>Y su obtención se consigue con:</p>
+<pre class="r"><code>var(u)</code></pre>
+<pre><code>## [1] 497.2727</code></pre>
+</div>
+<div id="la-desviacion-estandar" class="section level3">
+<h3>La desviación estándar</h3>
+<p>No es más que la raíz cuadrada de la varianza. Se obtiene directamente con:</p>
+<pre class="r"><code>sd(u)</code></pre>
+<pre><code>## [1] 22.29961</code></pre>
 </div>
 </div>
 
