@@ -64,9 +64,11 @@ Una gráfica de tallos y hojas da información sobre los siguientes aspectos de 
 A modo de práctica, tomemos los siguientes valores que representan el flujo de agua en regaderas de Australia en litros por minuto, para _n = 130_. Se muestra también el código en _R_ para mostrar y calcular el diagrama:
 
 ```{r}
-flujo <- scan("datasets/002-flujo.txt")
+flujo <- scan("datasets/002-flujo.txt") 
 flujo
 ```
+
+> Si en un momento dado no sabemos exactamente dónde se encuentra el archivo fuente de nuestros datos, podemos utilizar el código `flujo <- scan(file.choose())`. Este nos abrirá una ventana que nos permitirá elegir el archivo de manera normal.
 
 Construyamos nuestro diagrama:
 
@@ -458,13 +460,15 @@ La mediana también puede calcularse con la función `quantile`, ya que a final 
 quantile(u, probs = 0.5)
 ```
 
-Podemos calcular cualquier cuantil, siendo los más comunes los cuartiles:
+Podemos calcular cualquier cuantil (también conocido como percentil), siendo los más comunes los cuartiles:
 
 ```{r}
 quantile(u, probs = 0.25)
 quantile(u, probs = 0.75)
 quantile(u, probs = 0.20)
 ```
+
+Los cuartiles dividen el conjunto de datos precisamente en cuartas partes. Como puede deducirse de lo anterior, el primer cuartil toma solo el primer 25% de las observaciones, dejando libre el restante 75%. El tercer cuartil hace lo mismo pero a la inversa: toma el 25% superior y deja libres los primeros datos, correspondiendo al 75% inferior.
 
 ## Medidas de dispersión
 En ocasiones queremos saber qué tan dispersos se encuentran los valores de una muestra entre sí o con respecto a la media. Para ello utilizamos las medidas de dispersión. Usualmente son tres: el __rango__, la __varianza__ y la __desviación estándar__. 
@@ -501,3 +505,142 @@ No es más que la raíz cuadrada de la varianza. Se obtiene directamente con:
 sd(u)
 ```
 
+#### Ejercicio
+
+La cantidad de luz reflejada por las hojas ha sido utilizada para varios propósitos, incluidas la evaluación del color del césped, la estimación del estado del nitrógeno y la medición de la biomasa. El artículo (“_Leaf Reflectance-Nitrogen-Chlorophyll Relations in Buffel-Grass_”, Photogrammetric Engr. and Remote Sensing, 1985: 463-466) dio las siguientes observaciones obtenidas por medio de espectrofotogrametría, de la reflexión de las hojas en condiciones experimentales.
+
+```{r}
+hojas <- read.table("datasets/011-hojas.txt", header = T)
+hojas
+```
+
+> Nótese que para capturar un archivo que no consta de una sola columna, en R podemos utilizar la función `read.table` con la función `header = TRUE`. Para _llamar_ una sola columna podemos utilizar la nomenclatura `nombredelatabla$nombredelacolumna`, o bien `nombredelacolumna[,númerodecolumna]`.
+
+La idea es calcular la varianza de las observaciones. Para ello debemos invocar solamente la columna que nos interesa, que es la que contiene los datos como tales: 
+
+```{r}
+datos <- hojas$xi
+datos
+```
+
+```{r}
+datos2 <- hojas[,2]
+datos2
+```
+
+Calculemos la varianza de dicha columna:
+
+```{r}
+var(datos)
+```
+
+> Podemos calcular directamente sobre la columna:
+
+```{r}
+var(hojas[,2])
+```
+
+Calculemos ahora la desviación estándar:
+
+```{r}
+sd(hojas[,2])
+```
+
+## Gráficas de caja
+Un gráfico que ha demostrado ser muy útil en la representación efectiva de los datos es precisamente el diagrama de caja. Este se construye a partir de medidas que son _resistentes_ a los datos extremos, es decir, la mediana y los cuartiles. Las características que nos muestra el gráfico son el centro, la dispersión, la asimetría y la presencia -o ausencia- de observaciones extremas. Para ello es necesario encontrar los siguientes números: 
+- Observaciones más pequeñas
+- Primer cuartil
+- Mediana
+- Tercer cuartil
+- Observaciones más grandes
+
+La distancia existente entre cuartiles es lo que se conoce como __rango intercuartílico__, y es representado por la altura de la caja dibujada si el es vertical (por lo tanto, se corresponde a la anchura si el eje fuera horizontal). 
+
+#### Ejercicio
+
+Se utilizó ultrasonido para reunir los datos de corrosión adjuntos de la placa de piso de un tanque elevado utilizado para almacenar petróleo crudo (“Statistical Analysis of UT Corrosion Data from Floor Plates of a Crude Oil Aboveground Storage Tank”, Materials Eval., 1994: 846-849); cada observación es la profundidad de picadura más grande en la placa, expresada en milésimas de pulgada.
+
+```{r}
+us <- scan("datasets/012-ultrasonido.txt")
+us
+```
+
+Obtengamos las medidas mencionadas anteriormente:
+```{r}
+min(us) #número más pequeño
+quantile(us, probs = 0.25) #primer cuartil
+median(us) #mediana
+quantile(us, probs = 0.75) #tercer cuartil
+max(us) #número más grande
+```
+> Podemos obtener dichas medidas (e incluso la media) con un simple comando en R:
+
+```{r}
+summary(us)
+```
+
+
+Trazamos un eje (puede ser horizontal o vertical) con la escala adecuada, en este caso podemos dividir de diez en diez, partiendo desde 30 hasta llegar a 130. Sobre dicho eje trazamos un rectángulo cuyo lado izquierdo se encuentre en el primer cuartil (72.5); y su lado derecho en el tercero (96.5). Dentro del rectángulo dibujaremos la línea que represente la mediana (90). Al finalizar esto, trazamos una línea que salga del lado izquierdo del rectángulo y termine en el número más pequeño (40). Así mismo, trazamos una línea que llegue al número más alto (125). La gráfica debería quedarnos más o menos como sigue:
+
+```{r}
+boxplot(us)
+```
+
+### Presencia de datos extremos
+La presencia de datos extremos puede ser contraproducente. Por lo tanto no es deseable tomarlos en cuenta si se quiere asumir que la distribución de los datos es _normal_. Por ello, debemos indicar explícitamente la presencia de datos atípicos, de los cuales podemos distinguir entre moderados y extremos. Para esto, debemos calcular el rango intercuartílico ($f_s$) y multiplicarlo por $1.5$. Cualquier dato que se encuentre a más de $1.5f_s$ del extremo de la caja se considera atípico o apartado. De entre estos valores apartados, asumiremos que todos son moderados con excepción de los que se encuentren a más de $3f_s$ del cuartil más cercano.
+
+#### Ejercicio con datos apartados
+Los efectos de descargas parciales en la degradación de materiales para cavidades aislantes tienen implicaciones importantes en relación con las duraciones de componentes de alto voltaje. Considérese la siguiente muestra de 25 anchos de pulso de descargas lentas en una cavidad cilíndrica de polietileno. (Estos datos son consistentes con un histograma de 250 observaciones en el artículo “Assessment of Dielectric Degradation by Ultrawide-band PD Detection”, IEEE Trans. on Dielectrics and Elec. Insul., 1995: 744-760.) El autor del artículo señala el impacto de una amplia variedad de herramientas estadísticas en la interpretación de datos de descarga.
+
+```{r}
+desc <- scan("datasets/013-descargas.txt")
+desc
+```
+
+Calculemos las 5 medidas primordiales para el gráfico de caja:
+
+```{r}
+summary(desc)
+```
+
+Es muy notorio que el dato inferior está muy alejado del primer cuartil. ¿Qué tan alejado se encuentra? ¿Habrá más en la parte inferior? ¿Habrá alguno en la superior? Calculemos $f_s$ y luego multipliquémoslo por 1.5:
+```{r}
+fs <- quantile(desc, probs = 0.75)-quantile(desc, probs = 0.25)
+fs
+lim <- fs*1.5
+lim
+```
+
+Toda observación que se encuentre separada por más de 9.75 de cualquier cuartil será un dato atípico. Calculemos los valores que delimitarán lo atípico en ambos extremos:
+
+```{r}
+lims <-quantile(desc, probs = 0.75)+lim
+lims
+```
+```{r}
+limi <- quantile(desc, probs = 0.25)-lim
+limi
+```
+
+Cualquier observación por encima de 106.45 o por debajo de 80.45 será atípica. Notemos que tenemos uno solo por encima,el máximo valor de hecho: $113.5$. Por la parte inferior existen cuatro: 5.3, 8.2, 13.8 y 74.1.
+
+Ahora veamos si tenemos datos atípicos extremos en la parte superior:
+```{r}
+limsx <- quantile(desc, probs = 0.75)+3*fs
+limsx
+```
+Ni siquiera el dato máximo supera esta marca. Así que no hay datos extremos en la parte superior de la caja.
+
+En seguida veamos en la parte inferior:
+```{r}
+limix <- quantile(desc, probs = 0.25)-3*fs
+limix
+```
+
+Podemos darnos cuenta que en este lado sí existen datos extremos: 5.3, 8.2 y 13.8. Por lo tanto, el rectángulo (la caja) sí se traza de manera normal, pero las líneas (los bigotes) no. Sus extremos llegan solamente hasta los datos que se consideran normales: 85.3 en el lado inferior y 106.0 en el superior. Las observaciones apartadas moderadas se trazan como círculos oscuros y las apartadas extremas como círculos claros. Cabe mencionar que algunos paquetes estadísticos no distinguen los datos anormales moderados de los extremos, como es el caso de R. Tracemos nuestra caja:
+```{r}
+boxplot.default(desc, horizontal = T)
+```
+
+
+## Análisis de dispersión
