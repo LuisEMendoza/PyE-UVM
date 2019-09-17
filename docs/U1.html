@@ -815,7 +815,7 @@ mediana2</code></pre>
 <pre><code>## [1] 17</code></pre>
 <p>La media <span class="math inline">\(\mu\)</span> y la mediana <span class="math inline">\(\tilde \mu\)</span> poblacionales en general no serán idénticas. Si la distribución de la población es positiva o negativamente asimétrica, entonces <span class="math inline">\(\mu \neq \tilde \mu\)</span>. Cuando éste es el caso, al hacer inferencias primero se debe decidir cuál de las dos características de la población es de mayor interés y luego proceder como corresponda.</p>
 <div class="figure">
-<img src="images/018-median.jpg" alt="" />
+<img src="images/018-median.jpg" alt="Solo en distribuciones normales simétricas" />
 <p class="caption">Solo en distribuciones normales simétricas</p>
 </div>
 <p>La mediana también puede calcularse con la función <code>quantile</code>, ya que a final de cuentas, es el segundo cuartil:</p>
@@ -997,6 +997,159 @@ limix</code></pre>
 </div>
 <div id="analisis-de-dispersion" class="section level2">
 <h2>Análisis de dispersión</h2>
+<div id="introduccion" class="section level3">
+<h3>Introducción</h3>
+<p>En el mundo de las matemáticas estamos muy acostumbrados a relacionar un par de variables de manera <em>determinística</em>, es decir, sabemos que cuando modificamos una variable, esta hará que otra cambie. Un buen ejemplo de esto es cuando llenamos el tanque de gasolina, sabemos que si compramos 20 litros, nos costará veinte veces el precio de un litro. Puesto que el litro se encuentra, supongamos a <span class="math inline">\(\$20.00\)</span>, entonces pagaremos veinte veces ese precio: <span class="math inline">\(\$400.00\)</span> en total. Sin embargo, no siempre las relaciones entre variables son así de sencillas. Habrá pares de variables cuyo comportamiento sea solo en parte explicado por su contraparte. Volviendo al caso de la gasolina, con esos veinte litros que cargamos podremos recorrer una cantidad de kilómetros. ¿Podemos saber exactamente cuántos? No es fácil, ya que el rendimiento de la gasolina depende no solamente de la distancia, si no de otros factores, como por ejemplo el tipo de conducción, el terreno recorrido, las condiciones atmosféricas, etc. Es este segundo tipo de relación entre variables el que nos interesa: <em>una relación no determinística</em>. Para estudiar estas relaciones contamos con el análisis de regresión, que es parte de la Estadística.</p>
+<p>Sabemos que existe una relación determinística entre dos variables que se puede representar mediante la expresión:</p>
+<p><span class="math display">\[
+\hat y=\beta_0+\beta_1x
+\]</span></p>
+<p>Este arreglo traza en el plano una línea recta que tendra a <span class="math inline">\(\beta_0\)</span> como su intersección en el eje <span class="math inline">\(y\)</span> o valor de arranque, mientras que el coeficiente <span class="math inline">\(\beta_1\)</span> se corresponde con la pendiente o cambio promedio de la propia <span class="math inline">\(y\)</span>. Consideremos pues, que de acuerdo a la expresión de arriba, <span class="math inline">\(y\)</span> es la variable dependiente, pronosticada, explicada o influenciada, mientras <span class="math inline">\(x\)</span> es la variable independiente, pronosticadora, explicativa o influenciadora. En otras palabras, <span class="math inline">\(\beta_0\)</span> es el valor de <span class="math inline">\(y\)</span> cuando <span class="math inline">\(x\)</span> es nula; por otro lado, por cada unidad que <span class="math inline">\(x\)</span> cambie, <span class="math inline">\(y\)</span> estará cambiando <span class="math inline">\(\beta_1\)</span> veces. A partir de ahora se trabajará con datos bivariables, es decir, datos con valores correspondientes a <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span>. El primer paso para comenzar un análisis de regresión es construir un gráfico de puntos bivariable, donde cada par <span class="math inline">\((x_i,y_i)\)</span> será representado por un punto en el plano <span class="math inline">\(xy\)</span>.</p>
+<div id="ejemplo-1-1" class="section level4">
+<h4>Ejemplo 1</h4>
+<p>Los problemas visuales y musculoesqueléticos asociados con el uso de terminales con pantallas de visualización (VDT, por sus siglas en inglés) se han vuelto un tanto comunes en años recientes. Algunos investigadores se han enfocado en la dirección vertical de la mirada fija como causa del cansancio e irritación de los ojos. Se sabe que esta relación está estrechamente relacionada con el área de la superficie ocular (OSA, por sus siglas en inglés), así que se requiere un método de medir el área de la superficie ocular. Los datos representativos adjuntos sobre <span class="math inline">\(y=\)</span> OSA (cm2) y <span class="math inline">\(x=\)</span> ancho de la fisura palprebal (es decir, el ancho horizontal de la apertura del ojo (en cm) se tomó del artículo “Analysis of Ocular Surface Area for Comfortable VDT Workstation Layout” (Ergonomics, 1996: 877-884). No se da el orden en el cual se obtuvieron las observaciones, así que por conveniencia aparecen en orden creciente de los valores <span class="math inline">\(x\)</span>.</p>
+<pre class="r"><code>osa &lt;- read.table(&quot;datasets/014-osa.txt&quot;, header = T)
+head(osa)</code></pre>
+<pre><code>##   i    x    y
+## 1 1 0.40 1.02
+## 2 2 0.42 1.21
+## 3 3 0.48 0.88
+## 4 4 0.51 0.98
+## 5 5 0.57 1.52
+## 6 6 0.60 1.83</code></pre>
+<p>El conjunto de datos completo se encuentra en la carpeta <em>datasets</em> en la página de la asignatura en <a href="https://github.com/LuisEMendoza/PyE-UVM/tree/master/datasets">GitHub</a>. Ahora bien, procedamos a trazar el gráfico:</p>
+<pre class="r"><code>ancho &lt;- osa$x
+area &lt;- osa$y
+plot(ancho, area)</code></pre>
+<p><img src="U1_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<p>Podemos observar en este gráfico que existen valores de <span class="math inline">\(x\)</span> que se repiten, pero no les corresponden los mismos valores en <span class="math inline">\(y\)</span>, como es el caso de ambos <span class="math inline">\(0.75\)</span> en <span class="math inline">\(x\)</span>, cuyos valores difieren para <span class="math inline">\(y\)</span> en cuanto a que uno es de <span class="math inline">\(1.80\)</span> y el segundo es de <span class="math inline">\(1.74\)</span>. Con esto podemos notar que los valores de <span class="math inline">\(y\)</span> no dependen exclusivamente de <span class="math inline">\(x\)</span>, sino de otros factores que de momento, no conocemos. Sin embargo, podemos deducir o pronosticar un valor de <span class="math inline">\(y\)</span> que corresponda a uno de <span class="math inline">\(x\)</span> que propongamos; debido a que es notorio que sí existe una relación lineal entre ambas variables, ya que al aumento de una, le corresponde el de la otra. Debemos encontrar una expresión que represente esta relación y su fuerza.</p>
+<p>Dicha expresión para un modelo determinístico <span class="math inline">\(\hat y=\beta_0+\beta_1x\)</span>, indica que el valor observado de <span class="math inline">\(y\)</span> es una función lineal de <span class="math inline">\(x\)</span>. La generalización apropiada de esto a un modelo probabilístico supone que el valor esperado de <span class="math inline">\(Y\)</span> es una función lineal de <span class="math inline">\(x\)</span>, pero que con <span class="math inline">\(x\)</span> fija, la variable <span class="math inline">\(Y\)</span> difiere de su valor esperado en una cantidad aleatoria.</p>
+<p>La ecuación de regresión cambia entonces para agregar el elemento probabilístico: el <strong>término de error aleatorio</strong> o <strong>desviación aleatoria</strong>.</p>
+<p><span class="math display">\[
+Y=\beta_0+\beta_1x+\epsilon
+\]</span> Donde <span class="math inline">\(\epsilon\)</span> es precisamente el error aleatorio. Sin este término, todos los puntos se encontrarían sobre la línea que representa la ecuación misma, pero al trazarla para este caso, podremos darnos cuenta de que no es así. Podemos pensar entonces que la distancia entre cada punto que representa un par de observaciones a la línea es precisamente el término de error aleatorio que le corresponde a dicho par. Tracemos una línea que represente la relación entre variables:</p>
+<p><img src="U1_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<p>Aquí se observa precisamente lo que se mencionaba nateriormente, la distancia que existe entre cada punto y la línea que representa la relación lineal entre ambas variables. Veamos otro caso:</p>
+</div>
+</div>
+<div id="metodo-de-minimos-cuadrados" class="section level3">
+<h3>Método de mínimos cuadrados</h3>
+<p>Se remite a los tiempos del matemático alemán <strong>Gauss</strong>, y consiste de las siguientes fórmulas para la obtención de la ecuación de regresión:</p>
+<p>$$ b_1= \  \</p>
+<p>b_0=y-b_1 x $$</p>
+<div id="ejemplo-2-1" class="section level4">
+<h4>Ejemplo 2</h4>
+<p>El concreto sin finos, hecho de un agregado grueso uniformemente graduado y una pasta de cemento y agua, es benéfico en áreas propensas a lluvias intensas debido a sus excelentes propiedades de drenaje. El artículo “Pavement Thickness Design for No-Fines Concrete Parking Lots” (J. of Transportation Engr., 1995: 476-484) empleó un análisis de mínimos cuadrados al estudiar cómo <span class="math inline">\(y=\)</span> porosidad (%) está relacionada con <span class="math inline">\(x=\)</span> peso unitario (pcf) en especímenes de concreto. Considere los siguientes datos representativos, mostrados en formato tabular conveniente para calcular los valores de los estadísticos resumidos:</p>
+<pre class="r"><code>concreto &lt;- read.table(&quot;datasets/015-concreto.txt&quot;, header = T)
+concreto</code></pre>
+<pre><code>##    Obs  peso porosidad
+## 1    1  99.0      28.8
+## 2    2 101.1      27.9
+## 3    3 102.7      27.0
+## 4    4 103.0      25.2
+## 5    5 105.4      22.8
+## 6    6 107.0      21.5
+## 7    7 108.7      20.9
+## 8    8 110.8      19.6
+## 9    9 112.1      17.1
+## 10  10 112.4      18.9
+## 11  11 113.6      16.0
+## 12  12 113.8      16.7
+## 13  13 115.1      13.0
+## 14  14 115.4      13.6
+## 15  15 120.0      10.8</code></pre>
+<p>Calculemos los valores que necesitamos para encontrar cada coeficiente. Definimos primero los vectores que utilizaremos para el análisis. El primero como <code>peso</code>:</p>
+<pre class="r"><code>peso &lt;- concreto$peso #definimos el vector &quot;peso&quot;
+peso</code></pre>
+<pre><code>##  [1]  99.0 101.1 102.7 103.0 105.4 107.0 108.7 110.8 112.1 112.4 113.6
+## [12] 113.8 115.1 115.4 120.0</code></pre>
+<p>Y el segundo como <code>porosidad</code>:</p>
+<pre class="r"><code>porosidad &lt;- concreto$porosidad #definimos el vector &quot;porosidad&quot;
+porosidad</code></pre>
+<pre><code>##  [1] 28.8 27.9 27.0 25.2 22.8 21.5 20.9 19.6 17.1 18.9 16.0 16.7 13.0 13.6
+## [15] 10.8</code></pre>
+<p>Ahora obtengamos la suma de ambos vectores y asignémoslo a sus propias variables. Primero la sumatoria de <code>peso</code>:</p>
+<pre class="r"><code>peso.suma &lt;- sum(peso)
+peso.suma</code></pre>
+<pre><code>## [1] 1640.1</code></pre>
+<p>Y luego la de <code>porosidad</code>.</p>
+<pre class="r"><code>porosidad.suma &lt;- sum(porosidad)
+porosidad.suma</code></pre>
+<pre><code>## [1] 299.8</code></pre>
+<p>Enseguida calculamos las medias de cada vector:</p>
+<pre class="r"><code>peso.media &lt;- mean(peso)
+peso.media</code></pre>
+<pre><code>## [1] 109.34</code></pre>
+<pre class="r"><code>porosidad.media &lt;- mean(porosidad)
+porosidad.media</code></pre>
+<pre><code>## [1] 19.98667</code></pre>
+<p>Toca calcular las columnas de <span class="math inline">\(peso^2\)</span>, <span class="math inline">\(porosidad^2\)</span> y <span class="math inline">\(peso*porosidad\)</span> y luego sus sumatorias. Vector <code>peso2</code>:</p>
+<pre class="r"><code>peso2 &lt;- peso^2 #elevamos peso al cuadrado
+peso2</code></pre>
+<pre><code>##  [1]  9801.00 10221.21 10547.29 10609.00 11109.16 11449.00 11815.69
+##  [8] 12276.64 12566.41 12633.76 12904.96 12950.44 13248.01 13317.16
+## [15] 14400.00</code></pre>
+<p>Su sumatoria:</p>
+<pre class="r"><code>peso2.suma &lt;- sum(peso2)
+peso2.suma</code></pre>
+<pre><code>## [1] 179849.7</code></pre>
+<p>Vector <code>porosidad2</code>:</p>
+<pre class="r"><code>porosidad2 &lt;- porosidad^2 #elevamos porosidad al cuadrado
+porosidad2</code></pre>
+<pre><code>##  [1] 829.44 778.41 729.00 635.04 519.84 462.25 436.81 384.16 292.41 357.21
+## [11] 256.00 278.89 169.00 184.96 116.64</code></pre>
+<p>Sumatoria de <code>porosidad2</code>:</p>
+<pre class="r"><code>porosidad2.suma &lt;- sum(porosidad2)
+porosidad2.suma</code></pre>
+<pre><code>## [1] 6430.06</code></pre>
+<p>Vector <code>peso*porosidad</code>:</p>
+<pre class="r"><code>pesoxporosidad &lt;- peso*porosidad # multiplicamos ambas columnas
+pesoxporosidad</code></pre>
+<pre><code>##  [1] 2851.20 2820.69 2772.90 2595.60 2403.12 2300.50 2271.83 2171.68
+##  [9] 1916.91 2124.36 1817.60 1900.46 1496.30 1569.44 1296.00</code></pre>
+<pre class="r"><code>pesoxporosidad.suma &lt;- sum(pesoxporosidad)
+pesoxporosidad.suma</code></pre>
+<pre><code>## [1] 32308.59</code></pre>
+<p>Procedemos a resolver para <span class="math inline">\(b_1\)</span>. Para no colocar código complicado de leer, vamos a dividir la expresión en dos cálculos, el numerador:</p>
+<pre class="r"><code>num.b1 &lt;- pesoxporosidad.suma-(peso.suma * porosidad.suma)/length(peso)
+num.b1</code></pre>
+<pre><code>## [1] -471.542</code></pre>
+<p>Y el denominador:</p>
+<pre class="r"><code>den.b1 &lt;- peso2.suma-peso.suma^2/length(peso)
+den.b1</code></pre>
+<pre><code>## [1] 521.196</code></pre>
+<p>Como paso final del cálculo, los dividimos:</p>
+<pre class="r"><code>b1 &lt;- num.b1/den.b0
+b1</code></pre>
+<pre><code>## [1] -0.9047307</code></pre>
+<p>Lo que hicimos fue la siguiente operación:</p>
+<p><span class="math display">\[
+b_1=\frac{32308.59-(1640.1*299.8)/15}{179849.7-1640.1/15}=\frac{-471.542}{521.196}=-0.9047
+\]</span></p>
+<p>El cálculo de <span class="math inline">\(b_0\)</span> es más sencillo. Tomamos la media de la porosidad y le restamos el producto de la media del peso y $b_1_.</p>
+<pre class="r"><code>b0 &lt;- porosidad.media-b1*peso.media
+b0</code></pre>
+<pre><code>## [1] 118.9099</code></pre>
+<p>Expresado con cantidades, lo que hicimos fue: <span class="math display">\[
+b_0=19.98-(-0.9047)*(109.34)=118.9099
+\]</span></p>
+<p>La ecuación de regresión para este ejercicio será entonces de la siguiente manera:</p>
+<p><span class="math display">\[
+\hat y=118.91-0.905x
+\]</span></p>
+<p>Con lo anterior, se estima que el cambio de porosidad esperado asociado con un incremento de una unidad en el peso unitario es de <span class="math inline">\(\approx -0.905%\)</span> (una reducción de 0.905%). La figura siguiente, muestra que la línea de mínimos cuadrados proporciona un excelente resumen de la relación entre las dos variables.</p>
+<p>Todo lo anterior puede ser conseguido con una sola línea de código en <em>R</em>:</p>
+<pre class="r"><code>rl &lt;- lm(porosidad~peso)
+rl</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = porosidad ~ peso)
+## 
+## Coefficients:
+## (Intercept)         peso  
+##    118.9099      -0.9047</code></pre>
+</div>
+</div>
 </div>
 
 

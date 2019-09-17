@@ -644,3 +644,198 @@ boxplot.default(desc, horizontal = T)
 
 
 ## Análisis de dispersión
+
+### Introducción
+
+En el mundo de las matemáticas estamos muy acostumbrados a relacionar un par de variables de manera _determinística_, es decir, sabemos que cuando modificamos una variable, esta hará que otra cambie. Un buen ejemplo de esto es cuando llenamos el tanque de gasolina, sabemos que si compramos 20 litros, nos costará veinte veces el precio de un litro. Puesto que el litro se encuentra, supongamos a $\$20.00$, entonces pagaremos veinte veces ese precio: $\$400.00$ en total. Sin embargo, no siempre las relaciones entre variables son así de sencillas. Habrá pares de variables cuyo comportamiento sea solo en parte explicado por su contraparte. Volviendo al caso de la gasolina, con esos veinte litros que cargamos podremos recorrer una cantidad de kilómetros. ¿Podemos saber exactamente cuántos? No es fácil, ya que el rendimiento de la gasolina depende no solamente de la distancia, si no de otros factores, como por ejemplo el tipo de conducción, el terreno recorrido, las condiciones atmosféricas, etc. Es este segundo tipo de relación entre variables el que nos interesa: _una relación no determinística_. Para estudiar estas relaciones contamos con el análisis de regresión, que es parte de la Estadística.
+
+Sabemos que existe una relación determinística entre dos variables que se puede representar mediante la expresión:
+
+$$
+\hat y=\beta_0+\beta_1x
+$$
+
+Este arreglo traza en el plano una línea recta que tendra a $\beta_0$ como su intersección en el eje $y$ o valor de arranque, mientras que el coeficiente $\beta_1$ se corresponde con la pendiente o cambio promedio de la propia $y$. Consideremos pues, que de acuerdo a la expresión de arriba, $y$ es la variable dependiente, pronosticada, explicada o influenciada, mientras $x$ es la variable independiente, pronosticadora, explicativa o influenciadora. En otras palabras, $\beta_0$ es el valor de $y$ cuando $x$ es nula; por otro lado, por cada unidad que $x$ cambie, $y$ estará cambiando $\beta_1$ veces. A partir de ahora se trabajará con datos bivariables, es decir, datos con valores correspondientes a $x$ y $y$. El primer paso para comenzar un análisis de regresión es construir un gráfico de puntos bivariable, donde cada par $(x_i,y_i)$ será representado por un punto en el plano $xy$.
+
+#### Ejemplo 1
+
+Los problemas visuales y musculoesqueléticos asociados con el uso de terminales con pantallas de visualización (VDT, por sus siglas en inglés) se han vuelto un tanto comunes en años recientes. Algunos investigadores se han enfocado en la dirección vertical de la mirada fija como causa del cansancio e irritación de los ojos. Se sabe que esta relación está estrechamente relacionada con el área de la superficie ocular (OSA, por sus siglas en inglés), así que se requiere un método de medir el área de la superficie ocular. Los datos representativos adjuntos sobre $y=$ OSA (cm2) y $x=$ ancho de la fisura palprebal (es decir, el ancho horizontal de la apertura del ojo (en cm) se tomó del artículo “Analysis of Ocular Surface Area for Comfortable VDT Workstation Layout” (Ergonomics, 1996: 877-884). No se da el orden en el cual se obtuvieron las observaciones, así que por conveniencia aparecen en orden creciente de los valores $x$.
+
+```{r}
+osa <- read.table("datasets/014-osa.txt", header = T)
+head(osa)
+```
+
+El conjunto de datos completo se encuentra en la carpeta _datasets_ en la página de la asignatura en [GitHub](https://github.com/LuisEMendoza/PyE-UVM/tree/master/datasets). Ahora bien, procedamos a trazar el gráfico:
+
+```{r}
+ancho <- osa$x
+area <- osa$y
+plot(ancho, area)
+```
+
+Podemos observar en este gráfico que existen valores de $x$ que se repiten, pero no les corresponden los mismos valores en $y$, como es el caso de ambos $0.75$ en $x$, cuyos valores difieren para $y$ en cuanto a que uno es de $1.80$ y el segundo es de $1.74$. Con esto podemos notar que los valores de $y$ no dependen exclusivamente de $x$, sino de otros factores que de momento, no conocemos. Sin embargo, podemos deducir o pronosticar un valor de $y$ que corresponda a uno de $x$ que propongamos; debido a que es notorio que sí existe una relación lineal entre ambas variables, ya que al aumento de una, le corresponde el de la otra. Debemos encontrar una expresión que represente esta relación y su fuerza.
+
+Dicha expresión para un modelo determinístico $\hat y=\beta_0+\beta_1x$, indica que el valor observado de $y$ es una función lineal de $x$. La generalización apropiada de esto a un modelo probabilístico supone que el valor esperado de $Y$ es una función lineal de $x$, pero que con $x$ fija, la variable $Y$ difiere de su valor esperado en una cantidad aleatoria.
+
+La ecuación de regresión cambia entonces para agregar el elemento probabilístico: el __término de error aleatorio__ o __desviación aleatoria__.
+
+$$
+Y=\beta_0+\beta_1x+\epsilon
+$$
+Donde $\epsilon$ es precisamente el error aleatorio. Sin este término, todos los puntos se encontrarían sobre la línea que representa la ecuación misma, pero al trazarla para este caso, podremos darnos cuenta de que no es así. Podemos pensar entonces que la distancia entre cada punto que representa un par de observaciones a la línea es precisamente el término de error aleatorio que le corresponde a dicho par. Tracemos una línea que represente la relación entre variables:
+
+```{r echo=F}
+r1 <- lm(area ~ ancho)
+plot(ancho,area)
+abline(r1)
+```
+
+Aquí se observa precisamente lo que se mencionaba nateriormente, la distancia que existe entre cada punto y la línea que representa la relación lineal entre ambas variables. Veamos otro caso:
+
+### Método de mínimos cuadrados
+
+Se remite a los tiempos del matemático alemán __Gauss__, y consiste de las siguientes fórmulas para la obtención de la ecuación de regresión:
+
+$$
+b_1=\frac{\sum x_iy_i-\frac{\sum x_i\sum y_i}{n}}{\sum x_i^2-\frac{(\sum x_i)^2}{n}} \\ \ \\
+
+b_0=\bar y-b_1 \bar x
+$$
+
+
+#### Ejemplo 2
+
+El concreto sin finos, hecho de un agregado grueso uniformemente graduado y una pasta de cemento y agua, es benéfico en áreas propensas a lluvias intensas debido a sus excelentes propiedades de drenaje. El artículo “Pavement Thickness Design for No-Fines Concrete Parking Lots” (J. of Transportation Engr., 1995: 476-484) empleó un análisis de mínimos cuadrados al estudiar cómo $y=$ porosidad (%) está relacionada con $x=$ peso unitario (pcf) en especímenes de concreto. Considere los siguientes datos representativos, mostrados en formato tabular conveniente para calcular los valores de los estadísticos resumidos:
+
+
+```{r}
+concreto <- read.table("datasets/015-concreto.txt", header = T)
+concreto
+```
+
+Calculemos los valores que necesitamos para encontrar cada coeficiente. Definimos primero los vectores que utilizaremos para el análisis. El primero como `peso`:
+
+```{r}
+peso <- concreto$peso #definimos el vector "peso"
+peso
+```
+
+Y el segundo como `porosidad`:
+```{r}
+porosidad <- concreto$porosidad #definimos el vector "porosidad"
+porosidad
+```
+
+Ahora obtengamos la suma de ambos vectores y asignémoslo a sus propias variables. Primero la sumatoria de `peso`:
+```{r}
+peso.suma <- sum(peso)
+peso.suma
+```
+
+Y luego la de `porosidad`.
+```{r}
+porosidad.suma <- sum(porosidad)
+porosidad.suma
+```
+
+Enseguida calculamos las medias de cada vector:
+```{r}
+peso.media <- mean(peso)
+peso.media
+```
+
+```{r}
+porosidad.media <- mean(porosidad)
+porosidad.media
+```
+
+
+Toca calcular las columnas de $peso^2$, $porosidad^2$ y $peso*porosidad$ y luego sus sumatorias. Vector `peso2`:
+
+```{r}
+peso2 <- peso^2 #elevamos peso al cuadrado
+peso2
+```
+Su sumatoria:
+```{r}
+peso2.suma <- sum(peso2)
+peso2.suma
+```
+
+Vector `porosidad2`:
+```{r}
+porosidad2 <- porosidad^2 #elevamos porosidad al cuadrado
+porosidad2
+```
+
+Sumatoria de `porosidad2`:
+```{r}
+porosidad2.suma <- sum(porosidad2)
+porosidad2.suma
+```
+
+Vector `peso*porosidad`:
+```{r}
+pesoxporosidad <- peso*porosidad # multiplicamos ambas columnas
+pesoxporosidad
+```
+
+```{r}
+pesoxporosidad.suma <- sum(pesoxporosidad)
+pesoxporosidad.suma
+```
+
+Procedemos a resolver para $b_1$. Para no colocar código complicado de leer, vamos a dividir la expresión en dos cálculos, el numerador:
+```{r}
+num.b1 <- pesoxporosidad.suma-(peso.suma * porosidad.suma)/length(peso)
+num.b1
+```
+
+Y el denominador:
+```{r}
+den.b1 <- peso2.suma-peso.suma^2/length(peso)
+den.b1
+```
+
+Como paso final del cálculo, los dividimos:
+
+```{r}
+b1 <- num.b1/den.b0
+b1
+```
+
+Lo que hicimos fue la siguiente operación:
+
+$$
+b_1=\frac{32308.59-(1640.1*299.8)/15}{179849.7-1640.1/15}=\frac{-471.542}{521.196}=-0.9047
+$$
+
+El cálculo de $b_0$ es más sencillo. Tomamos la media de la porosidad y le restamos el producto de la media del peso y $b_1_.
+
+```{r}
+b0 <- porosidad.media-b1*peso.media
+b0
+```
+
+Expresado con cantidades, lo que hicimos fue:
+$$
+b_0=19.98-(-0.9047)*(109.34)=118.9099
+$$
+
+La ecuación de regresión para este ejercicio será entonces de la siguiente manera:
+
+$$
+\hat y=118.91-0.905x
+$$
+
+Con lo anterior, se estima que el cambio de porosidad esperado asociado con un incremento de una unidad en el peso unitario es de $\approx -0.905%$ (una reducción de 0.905%). La figura siguiente, muestra que la línea de mínimos cuadrados proporciona un excelente resumen de la relación entre las dos variables.
+
+Todo lo anterior puede ser conseguido con una sola línea de código en _R_:
+
+```{r}
+rl <- lm(porosidad~peso)
+rl
+```
+
+
