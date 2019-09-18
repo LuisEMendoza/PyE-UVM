@@ -2,14 +2,14 @@
 title: "Contacto"
 output: html_document
 ---
-### Docente:
+### Docente
 M. en E. Luis Enrique Mendoza Ruiz
 
-### Correo institucional:
+### Correo institucional
 luis_mendozaru@my.uvm.edu.mx
 
 ### Página personal en GitHub
 https://luisemendoza.github.io
 
-### Página de repositorios en GitHub:
+### Página de repositorios en GitHub
 https://github.com/LuisEMendoza
