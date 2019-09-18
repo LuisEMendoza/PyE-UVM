@@ -8,5 +8,8 @@ M. en E. Luis Enrique Mendoza Ruiz
 ### Correo institucional:
 luis_mendozaru@my.uvm.edu.mx
 
-### Página en GitHub:
+### Página personal en GitHub
+https://luisemendoza.github.io
+
+### Página de repositorios en GitHub:
 https://github.com/LuisEMendoza

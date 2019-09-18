@@ -801,7 +801,7 @@ den.b1
 Como paso final del cálculo, los dividimos:
 
 ```{r}
-b1 <- num.b1/den.b0
+b1 <- num.b1/den.b1
 b1
 ```
 
