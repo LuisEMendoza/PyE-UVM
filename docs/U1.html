@@ -1035,8 +1035,11 @@ Y=\beta_0+\beta_1x+\epsilon
 <div id="metodo-de-minimos-cuadrados" class="section level3">
 <h3>Método de mínimos cuadrados</h3>
 <p>Se remite a los tiempos del matemático alemán <strong>Gauss</strong>, y consiste de las siguientes fórmulas para la obtención de la ecuación de regresión:</p>
-<p>$$ b_1= \  \</p>
-<p>b_0=y-b_1 x $$</p>
+<p><span class="math display">\[
+b_1=\frac{\sum x_iy_i-\frac{\sum x_i\sum y_i}{n}}{\sum x_i^2-\frac{(\sum x_i)^2}{n}} \\
+\ \\
+b_0=\bar y-b_1 \bar x
+\]</span></p>
 <div id="ejemplo-2-1" class="section level4">
 <h4>Ejemplo 2</h4>
 <p>El concreto sin finos, hecho de un agregado grueso uniformemente graduado y una pasta de cemento y agua, es benéfico en áreas propensas a lluvias intensas debido a sus excelentes propiedades de drenaje. El artículo “Pavement Thickness Design for No-Fines Concrete Parking Lots” (J. of Transportation Engr., 1995: 476-484) empleó un análisis de mínimos cuadrados al estudiar cómo <span class="math inline">\(y=\)</span> porosidad (%) está relacionada con <span class="math inline">\(x=\)</span> peso unitario (pcf) en especímenes de concreto. Considere los siguientes datos representativos, mostrados en formato tabular conveniente para calcular los valores de los estadísticos resumidos:</p>

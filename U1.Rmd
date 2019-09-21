@@ -698,8 +698,8 @@ Aquí se observa precisamente lo que se mencionaba nateriormente, la distancia q
 Se remite a los tiempos del matemático alemán __Gauss__, y consiste de las siguientes fórmulas para la obtención de la ecuación de regresión:
 
 $$
-b_1=\frac{\sum x_iy_i-\frac{\sum x_i\sum y_i}{n}}{\sum x_i^2-\frac{(\sum x_i)^2}{n}} \\ \ \\
-
+b_1=\frac{\sum x_iy_i-\frac{\sum x_i\sum y_i}{n}}{\sum x_i^2-\frac{(\sum x_i)^2}{n}} \\
+\ \\
 b_0=\bar y-b_1 \bar x
 $$
 
