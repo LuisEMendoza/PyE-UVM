@@ -691,7 +691,7 @@ plot(ancho,area)
 abline(r1)
 ```
 
-Aquí se observa precisamente lo que se mencionaba nateriormente, la distancia que existe entre cada punto y la línea que representa la relación lineal entre ambas variables. Veamos otro caso:
+Aquí se observa precisamente lo que se mencionaba nateriormente, la distancia que existe entre cada punto y la línea que representa la relación lineal entre ambas variables:
 
 ### Método de mínimos cuadrados
 
@@ -831,6 +831,13 @@ $$
 
 Con lo anterior, se estima que el cambio de porosidad esperado asociado con un incremento de una unidad en el peso unitario es de $\approx -0.905%$ (una reducción de 0.905%). La figura siguiente, muestra que la línea de mínimos cuadrados proporciona un excelente resumen de la relación entre las dos variables.
 
+```{r}
+r2 <- lm(porosidad~peso)
+plot(peso, porosidad)
+abline(r2)
+```
+
+
 Todo lo anterior puede ser conseguido con una sola línea de código en _R_:
 
 ```{r}
@@ -838,5 +845,34 @@ rl <- lm(porosidad~peso)
 rl
 ```
 
-  
+Aquí podemos observar que `Intercept` es nuestro coeficiente $b_0$ y `peso` se corresponde con $b_1$. El siguiente paso es obtener el valor pronosticado de $y$ para un determinado valor de $x$. Para ello sustituimos en nuestra ecuación de regresión un peso de _109_ y resolvemos para $y$:
 
+```{r}
+118.9099 - 0.9047*109
+```
+
+Lo anterior implica que para un peso de 109, la porosidad esperada sería de 20.2976. Podemos sustituir tantos valores de $x$ como queramos, pero no se recomienda que sean muy diferentes a los que se encuentran originalmente en la tabla de datos. 
+
+### Coeficiente de determinación
+Mientras el valor de $b_1$ nos indica si la relación entre las dos variables es positiva, no tenemos de momento una medida que nos cuantifique qué tan fuerte es dicha relación. Para ello contamos con el coeficiente de determinación, el cual podemos obtenr a partir del coeficiente de correlación, fácil de calcular en _R_:
+
+```{r}
+coef.cor <- cor(peso, porosidad)
+coef.cor
+```
+
+Este coeficiente nos indica la naturaleza de la relación. Al tener signo negativo, nos confirma lo que $b_1$ ya mostró: relación negativa. Pero aún no nos indica qué tan fuerte es dicha relación. Para ello calculamos el cuadrado de dicho coeficiente:
+
+```{r}
+coef.cor^2
+```
+
+La relación es bastante alta, ya que el coeficiente de determinación oscila en un rango muy pequeño, de cero a uno. Mientras más se acerque al uno, más exitoso es nuestro modelo explicando la naturaleza de lo que estamos estudiando. Convertido en porcentaje, nos indica que $x$ explica el 97.39% de la variación de $y$; o lo que es lo mismo, el 97.39% de la variación en la porosidad es explicada por el peso.
+
+El coeficiente de determinación también puede ser obtenido mediante la sentencia:
+
+```{r}
+summary(rl)
+```
+
+Con la cual, bajo el nombre de _R-squared_, aparece nuestro valor ya obtenido. Es importante notar que aparecen dos de estos. El primero (_Multiple..._) es el que tomamos para modelos que solo contengan una variable dependiente y otra independiente. El segudno (_Ajusted..._) es útil para modelos multivariables.
