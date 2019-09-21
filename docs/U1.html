@@ -1029,7 +1029,7 @@ plot(ancho, area)</code></pre>
 Y=\beta_0+\beta_1x+\epsilon
 \]</span> Donde <span class="math inline">\(\epsilon\)</span> es precisamente el error aleatorio. Sin este término, todos los puntos se encontrarían sobre la línea que representa la ecuación misma, pero al trazarla para este caso, podremos darnos cuenta de que no es así. Podemos pensar entonces que la distancia entre cada punto que representa un par de observaciones a la línea es precisamente el término de error aleatorio que le corresponde a dicho par. Tracemos una línea que represente la relación entre variables:</p>
 <p><img src="U1_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
-<p>Aquí se observa precisamente lo que se mencionaba nateriormente, la distancia que existe entre cada punto y la línea que representa la relación lineal entre ambas variables. Veamos otro caso:</p>
+<p>Aquí se observa precisamente lo que se mencionaba nateriormente, la distancia que existe entre cada punto y la línea que representa la relación lineal entre ambas variables:</p>
 </div>
 </div>
 <div id="metodo-de-minimos-cuadrados" class="section level3">
@@ -1042,22 +1042,22 @@ Y=\beta_0+\beta_1x+\epsilon
 <p>El concreto sin finos, hecho de un agregado grueso uniformemente graduado y una pasta de cemento y agua, es benéfico en áreas propensas a lluvias intensas debido a sus excelentes propiedades de drenaje. El artículo “Pavement Thickness Design for No-Fines Concrete Parking Lots” (J. of Transportation Engr., 1995: 476-484) empleó un análisis de mínimos cuadrados al estudiar cómo <span class="math inline">\(y=\)</span> porosidad (%) está relacionada con <span class="math inline">\(x=\)</span> peso unitario (pcf) en especímenes de concreto. Considere los siguientes datos representativos, mostrados en formato tabular conveniente para calcular los valores de los estadísticos resumidos:</p>
 <pre class="r"><code>concreto &lt;- read.table(&quot;datasets/015-concreto.txt&quot;, header = T)
 concreto</code></pre>
-<pre><code>##    Obs  peso porosidad
-## 1    1  99.0      28.8
-## 2    2 101.1      27.9
-## 3    3 102.7      27.0
-## 4    4 103.0      25.2
-## 5    5 105.4      22.8
-## 6    6 107.0      21.5
-## 7    7 108.7      20.9
-## 8    8 110.8      19.6
-## 9    9 112.1      17.1
-## 10  10 112.4      18.9
-## 11  11 113.6      16.0
-## 12  12 113.8      16.7
-## 13  13 115.1      13.0
-## 14  14 115.4      13.6
-## 15  15 120.0      10.8</code></pre>
+<pre><code>##     peso porosidad
+## 1   99.0      28.8
+## 2  101.1      27.9
+## 3  102.7      27.0
+## 4  103.0      25.2
+## 5  105.4      22.8
+## 6  107.0      21.5
+## 7  108.7      20.9
+## 8  110.8      19.6
+## 9  112.1      17.1
+## 10 112.4      18.9
+## 11 113.6      16.0
+## 12 113.8      16.7
+## 13 115.1      13.0
+## 14 115.4      13.6
+## 15 120.0      10.8</code></pre>
 <p>Calculemos los valores que necesitamos para encontrar cada coeficiente. Definimos primero los vectores que utilizaremos para el análisis. El primero como <code>peso</code>:</p>
 <pre class="r"><code>peso &lt;- concreto$peso #definimos el vector &quot;peso&quot;
 peso</code></pre>
@@ -1138,6 +1138,10 @@ b_0=19.98-(-0.9047)*(109.34)=118.9099
 \hat y=118.91-0.905x
 \]</span></p>
 <p>Con lo anterior, se estima que el cambio de porosidad esperado asociado con un incremento de una unidad en el peso unitario es de <span class="math inline">\(\approx -0.905%\)</span> (una reducción de 0.905%). La figura siguiente, muestra que la línea de mínimos cuadrados proporciona un excelente resumen de la relación entre las dos variables.</p>
+<pre class="r"><code>r2 &lt;- lm(porosidad~peso)
+plot(peso, porosidad)
+abline(r2)</code></pre>
+<p><img src="U1_files/figure-html/unnamed-chunk-91-1.png" width="672" /></p>
 <p>Todo lo anterior puede ser conseguido con una sola línea de código en <em>R</em>:</p>
 <pre class="r"><code>rl &lt;- lm(porosidad~peso)
 rl</code></pre>
@@ -1148,7 +1152,43 @@ rl</code></pre>
 ## Coefficients:
 ## (Intercept)         peso  
 ##    118.9099      -0.9047</code></pre>
+<p>Aquí podemos observar que <code>Intercept</code> es nuestro coeficiente <span class="math inline">\(b_0\)</span> y <code>peso</code> se corresponde con <span class="math inline">\(b_1\)</span>. El siguiente paso es obtener el valor pronosticado de <span class="math inline">\(y\)</span> para un determinado valor de <span class="math inline">\(x\)</span>. Para ello sustituimos en nuestra ecuación de regresión un peso de <em>109</em> y resolvemos para <span class="math inline">\(y\)</span>:</p>
+<pre class="r"><code>118.9099 - 0.9047*109</code></pre>
+<pre><code>## [1] 20.2976</code></pre>
+<p>Lo anterior implica que para un peso de 109, la porosidad esperada sería de 20.2976. Podemos sustituir tantos valores de <span class="math inline">\(x\)</span> como queramos, pero no se recomienda que sean muy diferentes a los que se encuentran originalmente en la tabla de datos.</p>
 </div>
+</div>
+<div id="coeficiente-de-determinacion" class="section level3">
+<h3>Coeficiente de determinación</h3>
+<p>Mientras el valor de <span class="math inline">\(b_1\)</span> nos indica si la relación entre las dos variables es positiva, no tenemos de momento una medida que nos cuantifique qué tan fuerte es dicha relación. Para ello contamos con el coeficiente de determinación, el cual podemos obtenr a partir del coeficiente de correlación, fácil de calcular en <em>R</em>:</p>
+<pre class="r"><code>coef.cor &lt;- cor(peso, porosidad)
+coef.cor</code></pre>
+<pre><code>## [1] -0.9868573</code></pre>
+<p>Este coeficiente nos indica la naturaleza de la relación. Al tener signo negativo, nos confirma lo que <span class="math inline">\(b_1\)</span> ya mostró: relación negativa. Pero aún no nos indica qué tan fuerte es dicha relación. Para ello calculamos el cuadrado de dicho coeficiente:</p>
+<pre class="r"><code>coef.cor^2</code></pre>
+<pre><code>## [1] 0.9738874</code></pre>
+<p>La relación es bastante alta, ya que el coeficiente de determinación oscila en un rango muy pequeño, de cero a uno. Mientras más se acerque al uno, más exitoso es nuestro modelo explicando la naturaleza de lo que estamos estudiando. Convertido en porcentaje, nos indica que <span class="math inline">\(x\)</span> explica el 97.39% de la variación de <span class="math inline">\(y\)</span>; o lo que es lo mismo, el 97.39% de la variación en la porosidad es explicada por el peso.</p>
+<p>El coeficiente de determinación también puede ser obtenido mediante la sentencia:</p>
+<pre class="r"><code>summary(rl)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = porosidad ~ peso)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.7754 -0.5727 -0.1325  0.6034  1.6818 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 118.90992    4.49912   26.43 1.10e-12 ***
+## peso         -0.90473    0.04109  -22.02 1.12e-11 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.938 on 13 degrees of freedom
+## Multiple R-squared:  0.9739, Adjusted R-squared:  0.9719 
+## F-statistic: 484.8 on 1 and 13 DF,  p-value: 1.125e-11</code></pre>
+<p>Con la cual, bajo el nombre de <em>R-squared</em>, aparece nuestro valor ya obtenido. Es importante notar que aparecen dos de estos. El primero (<em>Multiple…</em>) es el que tomamos para modelos que solo contengan una variable dependiente y otra independiente. El segudno (<em>Ajusted…</em>) es útil para modelos multivariables.</p>
 </div>
 </div>
 
