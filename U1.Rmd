@@ -875,4 +875,4 @@ El coeficiente de determinación también puede ser obtenido mediante la sentenc
 summary(rl)
 ```
 
-Con la cual, bajo el nombre de _R-squared_, aparece nuestro valor ya obtenido. Es importante notar que aparecen dos de estos. El primero (_Multiple..._) es el que tomamos para modelos que solo contengan una variable dependiente y otra independiente. El segudno (_Ajusted..._) es útil para modelos multivariables.
+Con la cual, bajo el nombre de _R-squared_, aparece nuestro valor ya obtenido. Es importante notar que aparecen dos de estos. El primero (_Multiple..._) es el que tomamos para modelos que solo contengan una variable dependiente y otra independiente. El segundo (_Ajusted..._) es útil para modelos multivariables.
