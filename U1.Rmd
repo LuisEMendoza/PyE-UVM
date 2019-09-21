@@ -592,7 +592,7 @@ Trazamos un eje (puede ser horizontal o vertical) con la escala adecuada, en est
 boxplot(us)
 ```
 
-### Gráficas de caja con datos extremos
+### Gráficas de caja con datos atípicos
 La presencia de datos extremos puede ser contraproducente. Por lo tanto no es deseable tomarlos en cuenta si se quiere asumir que la distribución de los datos es _normal_. Por ello, debemos indicar explícitamente la presencia de datos atípicos, de los cuales podemos distinguir entre moderados y extremos. Para esto, debemos calcular el rango intercuartílico ($f_s$) y multiplicarlo por $1.5$. Cualquier dato que se encuentre a más de $1.5f_s$ del extremo de la caja se considera atípico o apartado. De entre estos valores apartados, asumiremos que todos son moderados con excepción de los que se encuentren a más de $3f_s$ del cuartil más cercano.
 
 #### Ejercicio con datos apartados
