@@ -3,7 +3,7 @@ title: "Estadística Descriptiva"
 output:
   html_document:
     toc: true
-    toc_depth: 3
+    toc_float: true
 ---
 
 Los métodos estadísticos son muy importantes, ya que ellos nos permiten conocer los fenómenos que nos rodean, en aspectos que quizá no nos imaginamos. Por doquier estamos expuestos a los __datos__, y eso se extiende a científicos e ingenieros en sus actividades profesionales.  
