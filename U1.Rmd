@@ -16,7 +16,7 @@ A las características podemos dividirlas en dos: __categóricas__ y __numérica
 Dividiremos la Estadística en dos ramas por el momento. En primera instancia, es necesario recopilar, organizar, resumir y presentar los datos; de esto se encarga la __Estadística Descriptiva__. Por otro lado, se desea extender las propiedades de la muestra hacia la población, mediante inferencias que permitan comprender mejor su comportamiento e incluso pronosticarlo; esa es la función de la __Estadística Inferencial__.
 
 ## Estadística Descriptiva en acción
-La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131). Los datos se presentan en una sola columna para dejar en claro que se refieren a datos univariables. Cabe mencionar que los datos se encuentran en la carpeta _datasets_ del repositorio de la asignatura en [GitHub](https://github.com/LuisEMendoza/RMarkdown-test/tree/master/datasets).
+La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131). Los datos se presentan en una sola columna para dejar en claro que se refieren a datos univariables. Cabe mencionar que los datos se encuentran en la carpeta _datasets_ del repositorio de la asignatura en [GitHub](https://github.com/LuisEMendoza/PyE-UVM/tree/master/datasets).
 
 ```{r echo=FALSE}
 temp <- scan("datasets/001-challenger.txt")
@@ -550,7 +550,9 @@ Calculemos ahora la desviación estándar:
 sd(hojas[,2])
 ```
 
-## Gráficas de caja
+## Medidas de forma
+
+### Gráficas de caja
 Un gráfico que ha demostrado ser muy útil en la representación efectiva de los datos es precisamente el diagrama de caja. Este se construye a partir de medidas que son _resistentes_ a los datos extremos, es decir, la mediana y los cuartiles. Las características que nos muestra el gráfico son el centro, la dispersión, la asimetría y la presencia -o ausencia- de observaciones extremas. Para ello es necesario encontrar los siguientes números: 
 - Observaciones más pequeñas
 - Primer cuartil
@@ -590,7 +592,7 @@ Trazamos un eje (puede ser horizontal o vertical) con la escala adecuada, en est
 boxplot(us)
 ```
 
-### Presencia de datos extremos
+### Gráficas de caja con datos extremos
 La presencia de datos extremos puede ser contraproducente. Por lo tanto no es deseable tomarlos en cuenta si se quiere asumir que la distribución de los datos es _normal_. Por ello, debemos indicar explícitamente la presencia de datos atípicos, de los cuales podemos distinguir entre moderados y extremos. Para esto, debemos calcular el rango intercuartílico ($f_s$) y multiplicarlo por $1.5$. Cualquier dato que se encuentre a más de $1.5f_s$ del extremo de la caja se considera atípico o apartado. De entre estos valores apartados, asumiremos que todos son moderados con excepción de los que se encuentren a más de $3f_s$ del cuartil más cercano.
 
 #### Ejercicio con datos apartados
