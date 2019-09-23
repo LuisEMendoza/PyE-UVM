@@ -859,13 +859,19 @@ Aquí podemos observar que `Intercept` es nuestro coeficiente $b_0$ y `peso` se 
 
 Lo anterior implica que para un peso de 109, la porosidad esperada sería de 20.2976. Podemos sustituir tantos valores de $x$ como queramos, pero no se recomienda que sean muy diferentes a los que se encuentran originalmente en la tabla de datos. 
 
-### Coeficiente de determinación
-Mientras el valor de $b_1$ nos indica si la relación entre las dos variables es positiva, no tenemos de momento una medida que nos cuantifique qué tan fuerte es dicha relación. Para ello contamos con el coeficiente de determinación, el cual podemos obtenr a partir del coeficiente de correlación, fácil de calcular en _R_:
+### Coeficiente de correlación
+Mientras el valor de $b_1$ nos indica si la relación entre las dos variables es positiva, no tenemos de momento una medida que nos cuantifique qué tan fuerte es dicha relación. Para ello contamos con el coeficiente de determinación, el cual podemos obtener a partir del coeficiente de correlación, fácil de calcular en _R_:
 
 ```{r}
 coef.cor <- cor(peso, porosidad)
 coef.cor
 ```
+
+La fórmula es la siguiente:
+
+$$
+r=\frac{n\sum xy-\sum x \sum y}{(\sqrt{n\sum x^2-(\sum x)^2}) (\sqrt{n\sum y^2-(\sum y)^2})}
+$$
 
 Este coeficiente nos indica la naturaleza de la relación. Al tener signo negativo, nos confirma lo que $b_1$ ya mostró: relación negativa. Pero aún no nos indica qué tan fuerte es dicha relación. Para ello calculamos el cuadrado de dicho coeficiente:
 
