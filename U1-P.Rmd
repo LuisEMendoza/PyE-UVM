@@ -1,0 +1,106 @@
+---
+title: "Problemario EP1-U1"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+Los siguientes ejercicios deben ser realizados en dos formas, primero de manera manual y posteriormente por medio de software. Al ser realizados a mano, deben ser hechos con limpieza y orden, para posteriormente ser digitalizados por el método que tengan a su alcance. Al ser realizados por medio de software se recomienda el uso de RSTudio para la resolución de los problemas y la generación del documento a entregar. La combinación de ambos documentos debe ser enviada en una carpeta comprimida a la plataforma habilitada para tal uso. No se admiten evidencias en físico.
+
+## Tablas de frecuencia
+Enseguida se presentan algunas tablas. Las columnas son arbitrarias y no implican variables diferentes ni nada por el estilo, es decir, los datos se dividieron en columnas solo para una mejor presentación en pantalla. En realidad se refieren a una sola columna.
+
+1. Los cinco automóviles más vendidos en Estados Unidos durante 2003 fueron la camioneta Chevrolet Silverado/C/K, la camioneta Dodge Ram, la camioneta Ford F-Series, el Honda Accord y el Toyota Camry (Motor Trend, 2003). En la siguiente tabla se presenta una muestra de 50 compras de automóviles.
+
+```{r echo=FALSE}
+coches <- read.table("datasets/016-coches.txt", header = F)
+coches
+```
+
+a) Elabore una distribución de frecuencia y otra de frecuencia porcentual (relativa).
+b) ¿Cuál es la camioneta y el automóvil de pasajeros más vendidos?
+c) Haga una gráfica de pastel.
+
+2.  El Higher Education Research Institute de UCLA cuenta con estadísticas sobre las áreas que son más elegidas por los estudiantes de nuevo ingreso. Las cinco más elegidas son arte y humanidades (A), administración de negocios (B), ingeniería (E), política (P) y ciencias sociales (S) (The New York Times Almanac, 2006). Otras áreas (O), entre las que se encuentran biología, física, ciencias de la computación y educación se agruparon todas en una sola categoría. Las siguientes fueron las áreas elegidas por 64 estudiantes de recién ingreso de una muestra.
+
+```{r echo=FALSE}
+estudiantes <- read.table("datasets/017-estudiantes.txt", header = F)
+estudiantes
+```
+
+a) Dé una distribución de frecuencia y otra de frecuencia porcentual.
+b) Elabore una gráfica de barras.
+c) ¿Que porcentaje de los estudiantes de nuevo ingreso elige una de las cinco áreas más elegidas?
+d) ¿Cuál es el área más elegida por los estudiantes de nuevo ingreso? ¿Qué porcentaje de los estudiantes de nuevo ingreso elige esta área?
+ 
+## Distribuciones de frecuencia
+3. Cada año en Estados Unidos, aproximadamente 1.5 millones de los estudiantes de educación superior presentan un examen de aptitud escolar (SAT, por sus siglas en inglés). Cerca de 80% de las universidades e instituciones de educación superior emplean las puntuaciones obtenidas por los estudiantes en este examen como criterio de admisión (College Board, marzo de 2006). A continuación se presentan las puntuaciones obtenidas en las áreas de matemáticas y expresión verbal por una muestra de estudiantes.
+
+```{r echo=FALSE}
+puntuaciones <- read.table("datasets/018-puntuaciones.txt")
+puntuaciones
+```
+
+a) Presente una distribución de frecuencia y un histograma de estas puntuaciones. 
+b) Elabore otra distribución e histograma con la primera clase comenzando en la puntuación 750 y la amplitud de clase deberá ser 100.
+c) Dé un comentario sobre la forma de la distribución.
+d) ¿Qué otras observaciones puede hacer acerca de estas puntuaciones con base en los resúmenes tabulares y gráficos?
+
+## Diagrama de tallo y hojas
+4. Drug Store News (septiembre de 2002) proporciona datos sobre ventas de medicamentos de las principales farmacias de Estados Unidos. Los datos siguientes son ventas anuales en millones.
+
+```{r echo=FALSE}
+farmacias <- read.table("datasets/019-farmacias.txt", header = T)
+farmacias
+```
+
+a) Elabore un diagrama de tallo y hojas.
+b) Indique cuáles son las ventas anuales menores, mayores e intermedias.
+c) ¿Cuáles son las dos farmacias mayores?
+
+5.  A continuación se presentan las temperaturas diarias más altas y más bajas registradas en 20 ciudades de Estados Unidos (USA Today, 3 de marzo 2006).
+
+```{r echo=FALSE}
+temperaturas <- read.table("datasets/020-temperaturas.txt", header = T)
+temperaturas
+```
+
+a)  Con las temperaturas altas elabore un diagrama de tallo y hojas.
+b)  Con las temperaturas bajas elabore un diagrama de tallo y hojas.
+c)  Compare los dos diagramas y haga comentarios acerca de las diferencias entre las tempera turas más altas y las más bajas.
+d)  Proporcione una distribución de frecuencia de las temperaturas más altas y de las más bajas.
+
+## Medidas de tendencia, dispersión y forma
+6. De acuerdo con 2003 Annual Consumer Spending Survey, el cargo promedio mensual a una tarjeta de crédito Bank of America Visa fue de $1,838 (U.S. Airways Attaché Magazine, diciembre de 2003). En una muestra de cargos mensuales a tarjetas de crédito los datos obtenidos son los siguientes.
+
+```{r echo=FALSE}
+cargos <- read.table("datasets/021-cargos.txt")
+cargos
+```
+
+a) Calcule la media y la mediana.
+b) Calcule el primero y tercer cuartil.
+c) Calcule el rango y el rango intercuartílico.
+d) Calcule la varianza y la desviación estándar.
+e) Comente la forma de la distribución. ¿Esta es la forma que esperaría? ¿Por qué sí o por qué no?
+f) ¿Hay observaciones atípicas en estos datos?
+g) Trace el gráfico de caja pertinente.
+
+7. La oficina de censos de Estados Unidos proporciona estadísticas sobre las familias en ese país, informaciones como edad al contraer el primer matrimonio, estado civil actual y tamaño de la casa (www.census.gov, 20 de marzo de 2006). Los datos siguientes son edades al contraer el primer matrimonio en una muestra de hombres y en una muestra de mujeres.
+
+```{r echo=FALSE}
+edades <- read.table("datasets/022-edades.txt")
+edades
+```
+
+a. Determine la mediana en la edad de hombres y mujeres al contraer el primer matrimonio.
+b. Calcule el primer y tercer cuartil tanto en los hombres como en las mujeres.
+c. Hace 30 años la mediana en la edad al contraer el primer matrimonio era 25 años entre los hombres y 22 años entre las mujeres. ¿Qué indica esta información acerca de la edad a la que deciden contraer matrimonio los jóvenes de hoy en día?
+d. Trace la gráfica de caja para este problema.
+
+## Análisis de dispersión  
+Vuelva al conjunto de datos del problema 5.
+
+a. Elabore un diagrama de dispersión que muestre la relación entre las dos variables, tempera
+tura más alta y temperatura más baja.

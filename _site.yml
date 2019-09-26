@@ -15,6 +15,9 @@
           href: U1.html
         - text: "Unidad 2"
           href: U2.html
+        - text: "Problemarios"
+        - text: "Primer Parcial"
+          href: U1-P.html
   output:
     html_document:
         theme: cosmo
