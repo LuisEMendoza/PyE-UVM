@@ -1,0 +1,10 @@
+Silverado 	 Ram  	Accord  	Camry  	Camry 
+Silverado 	 Silverado 	 Camry  	Ram  	F-Series 
+Ram  	F-Series 	 Accord  	Ram  	Ram 
+Silverado 	 F-Series 	 F-Series 	 Silverado 	 Ram 
+Ram  	Ram  	Accord  	Silverado 	 Camry 
+F-Series  	Ram  	Silverado 	 Accord  	Silverado 
+Camry  	F-Series 	 F-Series 	 F-Series  	Silverado 
+F-Series  	Silverado 	 F-Series 	 F-Series  	Ram 
+Silverado 	 Silverado 	 Camry  	Camry  	F-Series 
+Silverado 	 F-Series 	 F-Series 	 Accord  	Accord 

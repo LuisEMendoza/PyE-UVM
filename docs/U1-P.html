@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Problemario EP1-U1</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Inicio</a>
+</li>
+<li>
+  <a href="Ayuda.html">¿Cómo utilizar estos apuntes?</a>
+</li>
+<li>
+  <a href="GitHub_en_RStudio.html">Git y GitHub en RStudio</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Contenido
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Unidades</li>
+    <li>
+      <a href="U1.html">Unidad 1</a>
+    </li>
+    <li>
+      <a href="U2.html">Unidad 2</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Problemarios y tareas
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Problemarios</li>
+    <li>
+      <a href="U1-P.html">Primer Parcial</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Problemario EP1-U1</h1>
+
+</div>
+
+
+<p>Los siguientes ejercicios deben ser realizados en dos formas, primero de manera manual y posteriormente por medio de software. Al ser realizados a mano, deben ser hechos con limpieza y orden, para posteriormente ser digitalizados por el método que tengan a su alcance. Al ser realizados por medio de software se recomienda el uso de RSTudio para la resolución de los problemas y la generación del documento a entregar. La combinación de ambos documentos debe ser enviada en una carpeta comprimida a la plataforma habilitada para tal uso. No se admiten evidencias en físico.</p>
+<div id="tablas-de-frecuencia" class="section level2">
+<h2>Tablas de frecuencia</h2>
+<p>Enseguida se presentan algunas tablas. Las columnas son arbitrarias y no implican variables diferentes ni nada por el estilo, es decir, los datos se dividieron en columnas solo para una mejor presentación en pantalla. En realidad se refieren a una sola columna.</p>
+<ol style="list-style-type: decimal">
+<li>Los cinco automóviles más vendidos en Estados Unidos durante 2003 fueron la camioneta Chevrolet Silverado/C/K, la camioneta Dodge Ram, la camioneta Ford F-Series, el Honda Accord y el Toyota Camry (Motor Trend, 2003). En la siguiente tabla se presenta una muestra de 50 compras de automóviles.</li>
+</ol>
+<pre><code>##           V1        V2        V3        V4        V5
+## 1  Silverado       Ram    Accord     Camry     Camry
+## 2  Silverado Silverado     Camry       Ram  F-Series
+## 3        Ram  F-Series    Accord       Ram       Ram
+## 4  Silverado  F-Series  F-Series Silverado       Ram
+## 5        Ram       Ram    Accord Silverado     Camry
+## 6   F-Series       Ram Silverado    Accord Silverado
+## 7      Camry  F-Series  F-Series  F-Series Silverado
+## 8   F-Series Silverado  F-Series  F-Series       Ram
+## 9  Silverado Silverado     Camry     Camry  F-Series
+## 10 Silverado  F-Series  F-Series    Accord    Accord</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Elabore una distribución de frecuencia y otra de frecuencia porcentual (relativa).</li>
+<li>¿Cuál es la camioneta y el automóvil de pasajeros más vendidos?</li>
+<li>Haga una gráfica de pastel.</li>
+</ol>
+<ol start="2" style="list-style-type: decimal">
+<li>El Higher Education Research Institute de UCLA cuenta con estadísticas sobre las áreas que son más elegidas por los estudiantes de nuevo ingreso. Las cinco más elegidas son arte y humanidades (A), administración de negocios (B), ingeniería (E), política (P) y ciencias sociales (S) (The New York Times Almanac, 2006). Otras áreas (O), entre las que se encuentran biología, física, ciencias de la computación y educación se agruparon todas en una sola categoría. Las siguientes fueron las áreas elegidas por 64 estudiantes de recién ingreso de una muestra.</li>
+</ol>
+<pre><code>##   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16
+## 1  S  P  P  O  B  E  O  E  P   O   O   B   O   O   O   A
+## 2  O  E  E  B  S  O  B  O  A   O   E   O   E   O   B   P
+## 3  B  A  S  O  E  A  B  O  S   S   O   O   E   B   O   B
+## 4  A  E  B  E  A  A  P  O  O   E   O   B   B   O   P   B</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Dé una distribución de frecuencia y otra de frecuencia porcentual.</li>
+<li>Elabore una gráfica de barras.</li>
+<li>¿Que porcentaje de los estudiantes de nuevo ingreso elige una de las cinco áreas más elegidas?</li>
+<li>¿Cuál es el área más elegida por los estudiantes de nuevo ingreso? ¿Qué porcentaje de los estudiantes de nuevo ingreso elige esta área?</li>
+</ol>
+</div>
+<div id="distribuciones-de-frecuencia" class="section level2">
+<h2>Distribuciones de frecuencia</h2>
+<ol start="3" style="list-style-type: decimal">
+<li>Cada año en Estados Unidos, aproximadamente 1.5 millones de los estudiantes de educación superior presentan un examen de aptitud escolar (SAT, por sus siglas en inglés). Cerca de 80% de las universidades e instituciones de educación superior emplean las puntuaciones obtenidas por los estudiantes en este examen como criterio de admisión (College Board, marzo de 2006). A continuación se presentan las puntuaciones obtenidas en las áreas de matemáticas y expresión verbal por una muestra de estudiantes.</li>
+</ol>
+<pre><code>##     V1   V2   V3   V4   V5
+## 1 1025 1042 1195  880  945
+## 2 1102  845 1095  936  790
+## 3 1097  913 1245 1040  998
+## 4  998  940 1043 1048 1130
+## 5 1017 1140 1030 1171 1035</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Presente una distribución de frecuencia y un histograma de estas puntuaciones.</li>
+<li>Elabore otra distribución e histograma con la primera clase comenzando en la puntuación 750 y la amplitud de clase deberá ser 100.</li>
+<li>Dé un comentario sobre la forma de la distribución.</li>
+<li>¿Qué otras observaciones puede hacer acerca de estas puntuaciones con base en los resúmenes tabulares y gráficos?</li>
+</ol>
+</div>
+<div id="diagrama-de-tallo-y-hojas" class="section level2">
+<h2>Diagrama de tallo y hojas</h2>
+<ol start="4" style="list-style-type: decimal">
+<li>Drug Store News (septiembre de 2002) proporciona datos sobre ventas de medicamentos de las principales farmacias de Estados Unidos. Los datos siguientes son ventas anuales en millones.</li>
+</ol>
+<pre><code>##          Farmacia Ventas
+## 1       Ahold-USA   1700
+## 2             CVS  12700
+## 3          Eckerd   7739
+## 4           Kmart   1863
+## 5          Kroger   3400
+## 6  MedicineShoppe   1757
+## 7        Rite-Aid   8637
+## 8         Safeway   2150
+## 9       Walgreens  11660
+## 10       Wal-Mart   7250</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Elabore un diagrama de tallo y hojas.</li>
+<li>Indique cuáles son las ventas anuales menores, mayores e intermedias.</li>
+<li>¿Cuáles son las dos farmacias mayores?</li>
+</ol>
+<ol start="5" style="list-style-type: decimal">
+<li>A continuación se presentan las temperaturas diarias más altas y más bajas registradas en 20 ciudades de Estados Unidos (USA Today, 3 de marzo 2006).</li>
+</ol>
+<pre><code>##          Ciudad Alta Baja
+## 1   Albuquerque   66   39
+## 2       Atlanta   61   35
+## 3     Baltimore   42   26
+## 4     Charlotte   60   29
+## 5    Cincinnati   41   21
+## 6        Dallas   62   47
+## 7        Denver   60   31
+## 8       Houston   70   54
+## 9  Indianapolis   42   22
+## 10     LasVegas   65   43
+## 11   LosAngeles   60   46
+## 12        Miami   84   65
+## 13  Minneapolis   30   11
+## 14   NewOrleans   68   50
+## 15 OklahomaCity   62   40
+## 16      Phoenix   77   50
+## 17     Portland   54   38
+## 18     St.Louis   45   27
+## 19 SanFrancisco   55   43
+## 20      Seattle   52   36</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Con las temperaturas altas elabore un diagrama de tallo y hojas.</li>
+<li>Con las temperaturas bajas elabore un diagrama de tallo y hojas.</li>
+<li>Compare los dos diagramas y haga comentarios acerca de las diferencias entre las tempera turas más altas y las más bajas.</li>
+<li>Proporcione una distribución de frecuencia de las temperaturas más altas y de las más bajas.</li>
+</ol>
+</div>
+<div id="medidas-de-tendencia-dispersion-y-forma" class="section level2">
+<h2>Medidas de tendencia, dispersión y forma</h2>
+<ol start="6" style="list-style-type: decimal">
+<li>De acuerdo con 2003 Annual Consumer Spending Survey, el cargo promedio mensual a una tarjeta de crédito Bank of America Visa fue de $1,838 (U.S. Airways Attaché Magazine, diciembre de 2003). En una muestra de cargos mensuales a tarjetas de crédito los datos obtenidos son los siguientes.</li>
+</ol>
+<pre><code>##    V1   V2   V3   V4   V5
+## 1 236 1710 1351  825 7450
+## 2 316 4135 1333 1584  387
+## 3 991 3396  170 1428 1688</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Calcule la media y la mediana.</li>
+<li>Calcule el primero y tercer cuartil.</li>
+<li>Calcule el rango y el rango intercuartílico.</li>
+<li>Calcule la varianza y la desviación estándar.</li>
+<li>Comente la forma de la distribución. ¿Esta es la forma que esperaría? ¿Por qué sí o por qué no?</li>
+<li>¿Hay observaciones atípicas en estos datos?</li>
+<li>Trace el gráfico de caja pertinente.</li>
+</ol>
+<ol start="7" style="list-style-type: decimal">
+<li>La oficina de censos de Estados Unidos proporciona estadísticas sobre las familias en ese país, informaciones como edad al contraer el primer matrimonio, estado civil actual y tamaño de la casa (www.census.gov, 20 de marzo de 2006). Los datos siguientes son edades al contraer el primer matrimonio en una muestra de hombres y en una muestra de mujeres.</li>
+</ol>
+<pre><code>##         V1      V2
+## 1  HOMBRES MUJERES
+## 2       26      20
+## 3       23      28
+## 4       28      23
+## 5       25      30
+## 6       27      24
+## 7       30      29
+## 8       26      26
+## 9       35      25
+## 10      28      22
+## 11      21      22
+## 12      24      25
+## 13      27      23
+## 14      29      27
+## 15      30      26
+## 16      27      19
+## 17      32    &lt;NA&gt;
+## 18      27    &lt;NA&gt;
+## 19      25    &lt;NA&gt;</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Determine la mediana en la edad de hombres y mujeres al contraer el primer matrimonio.</li>
+<li>Calcule el primer y tercer cuartil tanto en los hombres como en las mujeres.</li>
+<li>Hace 30 años la mediana en la edad al contraer el primer matrimonio era 25 años entre los hombres y 22 años entre las mujeres. ¿Qué indica esta información acerca de la edad a la que deciden contraer matrimonio los jóvenes de hoy en día?</li>
+<li>Trace la gráfica de caja para este problema.</li>
+</ol>
+</div>
+<div id="analisis-de-dispersion" class="section level2">
+<h2>Análisis de dispersión</h2>
+<p>Vuelva al conjunto de datos del problema 5.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Elabore un diagrama de dispersión que muestre la relación entre las dos variables, tempera tura más alta y temperatura más baja.</li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
