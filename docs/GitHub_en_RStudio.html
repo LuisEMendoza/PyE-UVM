@@ -296,6 +296,19 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Problemarios y tareas
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Problemarios</li>
+    <li>
+      <a href="U1-P.html">Primer Parcial</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -354,11 +367,11 @@ git config --global user.name &quot;TuNombreEnGithub&quot;</code></pre>
 <h2>Consolidar y empujar los cambios a GitHub</h2>
 <ol style="list-style-type: decimal">
 <li><p>Con nuestro archivo guardado, es momento de «consolidar». Para ello, nos dirigimos a la pestaña <em>Git</em> que se encuentra en el panel superior derecho: <img src="images/013-github.png" alt="commit" /></p></li>
-<li>Presionamos <em>Commit</em>.</li>
+<li><p>Presionamos <em>Commit</em>.</p></li>
 <li><p>En la ventana <em>Review Changes</em> seleccionamos todos los archivos mostrados.Todos deberán cambiar su <em>status</em> a una letra A de color verde. Agregamos un mensaje al <em>commit</em> y presionamos el botón <em>Commit</em>: <img src="images/014-github.png" alt="commit" /></p></li>
-<li>Después de un pequeño lapso, se mostrará una ventana con algunos mensajes. La cerramos con el botón <em>Close</em>.</li>
-<li>Presionamos <em>Pull</em> en la ventana <em>Review Changes</em> que queda, esto es para «jalar» los cambios hechos en el repositorio de manera remota. Esperamos a que aparezca otra ventana y el mensaje «Ya está actualizado» y la cerramos con <em>Close</em>.</li>
-<li>Ahora presionamos <em>Push</em> para «empujar» nuestros cambios hechos recientemente al repositorio. Aquí Git nos pedirá el nombre de usuario y la contraseña de la cuenta. Podremos cerrar la ventana cuando aparezca el botón <em>Close</em>.</li>
+<li><p>Después de un pequeño lapso, se mostrará una ventana con algunos mensajes. La cerramos con el botón <em>Close</em>.</p></li>
+<li><p>Presionamos <em>Pull</em> en la ventana <em>Review Changes</em> que queda, esto es para «jalar» los cambios hechos en el repositorio de manera remota. Esperamos a que aparezca otra ventana y el mensaje «Ya está actualizado» y la cerramos con <em>Close</em>.</p></li>
+<li><p>Ahora presionamos <em>Push</em> para «empujar» nuestros cambios hechos recientemente al repositorio. Aquí Git nos pedirá el nombre de usuario y la contraseña de la cuenta. Podremos cerrar la ventana cuando aparezca el botón <em>Close</em>.</p></li>
 <li><p>Ahora hay que dirigirnos a nuestro repositorio GitHub para verificar los cambios realizados.</p></li>
 </ol>
 </div>
@@ -375,7 +388,7 @@ git config --global user.name &quot;TuNombreEnGithub&quot;</code></pre>
 <h2>Creando ramas localmente</h2>
 <p>Un concepto intrínseco en GitHub es el uso de ramas, las cuales permiten desarrollar el proyecto principal en instancias separadas. Así, los cambios realizados no se reflejan en él de inmediato, si no que se someten a revisión cuando una de las ramas se considera terminada. Cuando los cambios hechos en una rama se consideran lo adecuados para implementarse en el proyecto principal, se realiza una petición <em>pull</em>. Al aprobarse, converge en la rama principal, que se llama <em>Master</em>. Para crearlas a través de RStudio: 1. Nos dirigimos al panel inferior izquierdo, damos clic a la pestaña <em>Terminal</em> y escribimos:</p>
 <div class="figure">
-<img src="images/015-github.png" alt="commit" />
+<img src="images/015-github.png" alt="" />
 <p class="caption">commit</p>
 </div>
 <pre><code>git branch NombreDeRama</code></pre>
@@ -454,8 +467,8 @@ git config --global user.name &quot;TuNombreEnGithub&quot;</code></pre>
 <h2>Creando la página del sitio</h2>
 <p>Ahora queremos publicar este documento en formato HTML como la página del sitio. Hay que realizar los siguientes pasos:</p>
 <ol style="list-style-type: decimal">
-<li>Entrar a la pestaña <em>Settings</em> del repositorio.</li>
-<li>Bajar hasta la sección <em>GitHub Pages</em>.</li>
+<li><p>Entrar a la pestaña <em>Settings</em> del repositorio.</p></li>
+<li><p>Bajar hasta la sección <em>GitHub Pages</em>.</p></li>
 <li><p>En <em>Source</em> dar clic en el botón desplegable que dice <em>None</em> y seleccionar <em>master branch/docs folder</em>. <img src="images/017-github.png" alt="pages" /></p></li>
 <li><p>Aparecerá un mensaje en la misma sección <em>GitHub Pages</em> diciendo que el sitio ha sido publicado en una dirección con dominio <em>github.io</em>.</p></li>
 <li><p>Damos clic en el sitio mostrado para poder acceder a nuestra página.</p></li>

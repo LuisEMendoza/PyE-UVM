@@ -1,0 +1,11 @@
+Farmacia 	Ventas 
+Ahold-USA 	1700 
+CVS 	12700 
+Eckerd 	7739 
+Kmart 	1863 
+Kroger 	3400 
+MedicineShoppe 	1757 
+Rite-Aid 	8637 
+Safeway 	2150 
+Walgreens 	11660 
+Wal-Mart 	7250 
