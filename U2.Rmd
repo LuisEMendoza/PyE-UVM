@@ -370,7 +370,7 @@ $$
 P(A|M)=\frac{P(A\cap M)}{P(M)}=\frac{0.03}{0.20}=0.15
 $$
 
-Podemos darnos cuenta que la probabilidad de ser ascendido dado que se es mujer es la mitad de la probabilidad para el hombre. Esto no prueba cabalmente que exista discriminación, pero sí confirma las sospechas y el argumento de las mujeres. Dentro de lo que cabe, no existe justicia en los ascensos.
+Podemos darnos cuenta que la probabilidad de ser ascendido dado que se es mujer es la mitad de la probabilidad para el hombre. Esto no prueba cabalmente que exista discriminación, pero sí confirma las sospechas y el argumento de las mujeres. Dentro del punto de vista probabilístico, no existe justicia en los ascensos.
 
 ### Eventos independientes
 
