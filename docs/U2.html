@@ -10,7 +10,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="LEMR" />
 
 
 <title>Probabilidad</title>
@@ -21,9 +20,16 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="site_libs/viz-0.3/viz.js"></script>
+<link href="site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="site_libs/grViz-binding-1.0.1/grViz.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -249,6 +255,63 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -256,6 +319,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -323,16 +396,311 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Probabilidad</h1>
-<h4 class="author">LEMR</h4>
-<h4 class="date">25/8/2019</h4>
 
 </div>
 
 
-<p>En construcción</p>
+<p>La probabilidad es una medida numérica de la posibilidad de que ocurra un evento. Por tanto, las probabilidades son una medida del grado de incertidumbre asociado con cada uno de los eventos previamente enunciados. Si cuenta con las probabilidades, tiene la capacidad de determinar la posibilidad de ocurrencia que tiene cada evento. La probabilidad sempre se expresa en término decimales o porcentajes, siendo 0 el valor de probabilidad de algo improbable y 1 (o 100%) el de algo seguro.</p>
+<div id="experimentos-reglas-de-conteo-y-asignacion-de-probabilidades" class="section level2">
+<h2>Experimentos, reglas de conteo y asignación de probabilidades</h2>
+<p>Un <strong>experimento</strong> es un proceso que arroja resultados definidos y en cada una de las ocasiones que se lleve a cabo generará solo uno de todos los posibles resultados. Podemos definir como experimentos:</p>
+<p><strong>Arrojar una moneda</strong>, cuyos posibles resultados son <em>águila</em> o <em>sello</em>. <strong>Inspeccionar una pieza</strong>, con defecto o sin defecto. <strong>Realizar una llamada de ventas</strong>, se consigue la compra o no. <strong>Jugar un partido de futbol</strong>, se gana, se empata o se pierde.</p>
+<p>Todos los posibles resultados de un experimento se definen como el <strong>campo muestral</strong> del mismo. Mientras que a cada posible resultado se le conoce como <strong>punto muestra</strong>. El espacio muestral se denota por la letra <span class="math inline">\(S\)</span> y por tanto, se puede utilizar la siguiente notación para describirlo en función de los posibles resultados <span class="math inline">\(x_i\)</span>:</p>
+<p><span class="math display">\[
+S=\{x_1, x_2, x_3,...x_n\}
+\]</span></p>
+<p>Si por ejemplo, tomamos el caso de una moneda, podremos describirlo así:</p>
+<p><span class="math display">\[
+S_{moneda}=\{águila, sello \}
+\]</span></p>
+<p>O en el caso de un dado:</p>
+<p><span class="math display">\[
+S_{dado}=\{1,2,3,4,5,6\}
+\]</span></p>
+<div id="reglas-de-conteo" class="section level3">
+<h3>Reglas de conteo</h3>
+<p>Veamos cómo se identifican y cuentan los resultados experimentales. Existen tres reglas de conteo que son muy utilizadas.</p>
+<div id="experimentos-de-pasos-multiples" class="section level4">
+<h4>Experimentos de pasos múltiples</h4>
+<p>Considere un experimento que consiste en lanzar dos monedas. ¿Cuántos posibles resultados tiene este experimento? Tomemos en cuenta que primero se lanza una moneda y enseguida la otra. Si denotamos <em>águila</em> con <span class="math inline">\(A\)</span> y <em>sello</em> con <span class="math inline">\(B\)</span>, entonces los posibles resultados son:</p>
+<p><span class="math display">\[
+S_{monedas}=\{(A,A),(A,B),(B,A),(B,B) \}
+\]</span></p>
+<blockquote>
+<p>Un experimento se describe como una sucesión de <span class="math inline">\(k\)</span> pasos en los que hay <span class="math inline">\(n_1\)</span> resultados posibles en el primer paso, <span class="math inline">\(n_2\)</span> resultados posibles en el segundo y así sucesivamente. Por lo tanto, el número total de resultados experimentales es <span class="math inline">\((n_1)(n_2)...(n_k)\)</span>.</p>
+</blockquote>
+<p>Si retomamos el caso anterior, lanzar la primera moneda implica <span class="math inline">\((n_1=2)\)</span> y la segunda <span class="math inline">\((n_2=2)\)</span>, siguiendo la regla de conteo <span class="math inline">\((2)(2)=4\)</span>, así que tenemos cuatro posibles resultados. Ahora bien, si por ejemplo lanzamos tres monedas, tendremos <span class="math inline">\((2)(2)(2)=8\)</span> resultados experimentales.</p>
+<p>Un diagrama que puede apoyar en la elaboración de reglas de conteo es el <strong>diagrama de árbol</strong>, el cual se muestra a continuación para el problema del lanzamiento de dos monedas.</p>
+<div id="htmlwidget-a38de095c42991abf429" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a38de095c42991abf429">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"M\"]\na\n\nnode [fillcolor = white,\n      label = \"A\"]\nb d f\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p>La secuencia va de izquierda a derecha, donde el primer paso representa los posibles resultados del primer lanzamiento y el segundo al de la segunda moneda. En cada paso los dos posibles resultados son <span class="math inline">\((A,B)\)</span>, y podemos notar que a cada resultado del primer paso le corresponden otros dos posibles resultados: los del segundo lanzamiento. Cada uno de los extremos de la derecha se corresponde con un resultado experimental. Cada ruta, saliendo desde el inicio hasta cada una de las ramificaciones se corresponde con una secuencia única de resultados experimentales.</p>
+<p>Veamos ahora otro ejemplo donde podemos aplicar la regla de conteo con experimentos de pasos múltiples. Una empresa ha comenzado un proyecto que busca incrementar la capacidad de generación de una de sus plantas. El proyecto ha sido dividido en dos etapas: diseño y construcción. A los administrativos no les resultó posible definir el tiempo exacto requerido en cada una de las tareas que conforman las dos etapas, debido a que es la primera vez que se enfrentan a ese tipo de proyectos. Por analogía con otros proyectos, han estimado que la duración de la etapa de diseño podría durar dos, tres o cuatro meses; mientras que la construcción tardaría seis, siete u ocho meses. Los directivos han establecido como meta la terminación del proyecto en diez meses.</p>
+<p>Apliquemos la regla de conteo: existen tres posibles resultados en el diseño y otros tres posibles resultados en la construcción: <span class="math inline">\((3)(3)=9\)</span>. Describiremos los posibles resutados con una notación de dos números, el primero para la etapa 1 y el segundo para la 2. Así, <span class="math inline">\((2,6)\)</span> implica que el diseño tardó dos meses y la construcción, seis; dando una duración de ocho meses. Mostremos todo el espacio muestral con el diagrama de árbol pertinente:</p>
+<div id="htmlwidget-585f6683ec071d7bcd4b" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-585f6683ec071d7bcd4b">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = UD]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"D\"]\na\n\nnode [fillcolor = white,\n      label = \"2\"]\nb\n\nnode [fillcolor = white,\n      label = \"3\"]\nc\n\nnode [fillcolor = white,\n      label = \"4\"]\nd\n\nnode [fillcolor = white,\n      label = \"6\"]\ne h k\n\nnode [fillcolor = white,\n      label = \"7\"]\nf i l\n\nnode [fillcolor = white,\n      label = \"8\"]\ng j m\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c d}\nb -> {e f g}\nc -> {h i j}\nd -> {k l m}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p>Como podemos observar, hay nueve combinaciones o duraciones para este proyecto. Tabulémoslas:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Resultados experimentales</th>
+<th align="center">Duración</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">(2,6)</td>
+<td align="center">8</td>
+</tr>
+<tr class="even">
+<td align="center">(2,7)</td>
+<td align="center">9</td>
+</tr>
+<tr class="odd">
+<td align="center">(2,8)</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td align="center">(3,6)</td>
+<td align="center">9</td>
+</tr>
+<tr class="odd">
+<td align="center">(3,7)</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td align="center">(3,8)</td>
+<td align="center">11</td>
+</tr>
+<tr class="odd">
+<td align="center">(4,6)</td>
+<td align="center">10</td>
+</tr>
+<tr class="even">
+<td align="center">(4,7)</td>
+<td align="center">11</td>
+</tr>
+<tr class="odd">
+<td align="center">(4,8)</td>
+<td align="center">12</td>
+</tr>
+</tbody>
+</table>
+<p>Recordemos que se fijó una meta de terminación del proyecto en diez meses. De los nueve posibles resultados, seis cumplen con dicho propósito. Por lo tanto, la probabilidad de terminar dentro de lo fijado es <span class="math inline">\(6/9=0.6667=66.67\%\)</span>.</p>
+</div>
+<div id="combinaciones" class="section level4">
+<h4>Combinaciones</h4>
+<p>Permite conocer el número de resultados experimentales cuando el propio experimento consiste en seleccionar <span class="math inline">\(n\)</span> objetos de un conjunto usualmente mayor de <span class="math inline">\(N\)</span> objetos.</p>
+<blockquote>
+<p>El número de combinaciones de <span class="math inline">\(N\)</span> objetos tomados de <span class="math inline">\(n\)</span> en <span class="math inline">\(n\)</span> es: <span class="math display">\[
+C_N^n= \left( \begin{array}{c}N\\ n \end{array}  \right) = \frac{N!}{n!(N-n)!}\\
+\ \\
+Donde: N!=N(N-1)(N-2)...(2)(1)\\
+n!=n(n-1)(n-2)...(2)(1)\\
+0!=1
+\]</span></p>
+</blockquote>
+<p>Recordemos que el signo <span class="math inline">\(!\)</span> en matemáticas significa <em>factorial</em>. Así, por ejemplo, el factorial de <span class="math inline">\(5\)</span> es: <span class="math display">\[
+5!=(5)(4)(3)(2)(1)=120
+\]</span> En <em>R</em> lo calculamos así:</p>
+<pre class="r"><code>factorial(5)</code></pre>
+<pre><code>## [1] 120</code></pre>
+<p>Para ilustrar la regla de conteo para combinaciones, veamos el caso de un proceso en el que se quiere inspeccionar la calidad. Se toma una muestra de seis piezas, de las cuales se revisarán dos para comprobar que no tengan defectos. A partir de esas seis piezas, ¿cuántas combinaciones de dos partes pueden existir?</p>
+<p>Hagamos <span class="math inline">\(N=6\)</span>, por ser el conjunto mayor y <span class="math inline">\(n=2\)</span> por ser la submuestra, se tiene que:</p>
+<p><span class="math display">\[
+C_2^5=\left(\begin{array}{c}6\\ 2 \end{array} \right)=\frac{6!}{2!(6-2)!}=\frac{720}{48}=15
+\]</span></p>
+<p>En <em>R</em> lo calculamos así:</p>
+<pre class="r"><code>combn(6,2) #ponemos &#39;N&#39; primero y enseguida &#39;n&#39;</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
+## [1,]    1    1    1    1    1    2    2    2    2     3     3     3     4
+## [2,]    2    3    4    5    6    3    4    5    6     4     5     6     5
+##      [,14] [,15]
+## [1,]     4     5
+## [2,]     6     6</code></pre>
+<p>Notemos que <em>R</em> nos muestra todas las posibles combinaciones en columnas y las enumera. Si solo queremos que nos diga la cantidad de combinaciones podemos usar un pequeño atajo:</p>
+<pre class="r"><code>c &lt;- combn(6,2) #asignemos el resultado a una variable &#39;c&#39;
+ncol(c) #solo queremos que nos cuente las columnas y nos lo diga</code></pre>
+<pre><code>## [1] 15</code></pre>
+<p>De modo que la persona que va a inspeccionar las piezas tiene hasta 15 posibles combinaciones. Supongamos ahora la lotería de algunos países. Los boletos consisten en combinaciones de hasta seis cifras, a partir de 53 números. ¿Cuántos boletos diferentes surgen de una lotería así?</p>
+<p>Resolvamos esta cuestión con la regla de conteo para combinaciones:</p>
+<p><span class="math display">\[
+C_6^{53}=\left(\begin{array}{c}53\\6 \end{array} \right)=\frac{53!}{6!(53-6)!}=22&#39;957,480
+\]</span></p>
+<pre class="r"><code>d &lt;- combn(53,6) #asignemos el resultado a una variable &#39;c&#39;
+ncol(d) #solo queremos que nos cuente las columnas y nos lo diga</code></pre>
+<pre><code>## [1] 22957480</code></pre>
+<p>Existen casi 23 millones de boletos. Significa que una persona que compra un solo boleto tiene una posibilidad en casi 23 millones de ganar. Dicha regla permite calcular el número de resultados cuando se seleccionan <span class="math inline">\(n\)</span> objetos</p>
+</div>
+<div id="permutaciones-de-un-conjunto-de-n-objetos-y-el-orden-de-seleccion-es-relevante." class="section level4">
+<h4>Permutaciones de un conjunto de <span class="math inline">\(N\)</span> objetos y el orden de selección es <em>relevante</em>.</h4>
+<blockquote>
+<p>El número de permutaciones de <span class="math inline">\(N\)</span> objetos tomados de <span class="math inline">\(n\)</span> en <span class="math inline">\(n\)</span> está dado por: <span class="math display">\[
+P_n^N=n!\left(\begin{array}{c}N\\ n \end{array} \right)=\frac{N!}{(N-n)!}
+\]</span></p>
+</blockquote>
+<p>Retomando el ejemplo del inspector y las seis piezas, veamos cuántas posibles permutaciones (o combinaciones con orden relavante) pueden salir:</p>
+<p><span class="math display">\[
+P_2^5=\frac{6!}{(6-2)!}=\frac{6!}{3!}=\frac{720}{6}=120
+\]</span></p>
+</div>
+</div>
+<div id="asignacion-de-probabilidades" class="section level3">
+<h3>Asignación de probabilidades</h3>
+<p>Antes de asignar probabilidades es importante recordar dos puntos:</p>
+<ol style="list-style-type: decimal">
+<li>Toda probabilidad debe estar entre 0 y 1.</li>
+<li>La suma de las probabilidades de todos los resultados debe ser igual a 1.</li>
+</ol>
+<p>Existen tres maneras de asignar probabilidades a los resultados experimentales, los cuales son el <em>método clásico</em>, el de <em>frecuencia relativa</em> y el <em>subjetivo</em>.</p>
+<div id="metodo-clasico" class="section level4">
+<h4>Método clásico</h4>
+<p>Se aplica cuando todos los resultados tienen la misma posibilidad. Es decir, si se tienen <span class="math inline">\(n\)</span> posibles resultados, la probabilidad asignada a cada uno es <span class="math inline">\(1/n\)</span>. Como ejemplos clásicos tenemos el lanzamiento de una moneda (cada resultado tiene <span class="math inline">\(1/2\)</span> de probabilidad de ocurrir), de un dado (<span class="math inline">\(1/6\)</span>) o la probabilidad de sacar un as de un mazo de cartas españolas (<span class="math inline">\(1/52\)</span>).</p>
+</div>
+<div id="metodo-de-frecuencia-relativa" class="section level4">
+<h4>Método de frecuencia relativa</h4>
+<p>Es el más conveniente cuando existen datos para estimar la proporción de veces que se presentarán los resultados si el experimento se repite muchas veces. Por ejemplo, un estudio sobre los tiempos de espera en el departamento de rayos <span class="math inline">\(x\)</span> de un hospital pequeño. Durante 20 días sucesivos un empleado registra el número de personas que están esperando el servicio a las 9:00am; los resultados son los siguientes.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Número de personas que esperan</th>
+<th align="center">Número de días: resultados de ocurrencia</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">2</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">5</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">6</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="center">Total = 20</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Podemos notar que de los 20 días, en dos había nadie esperando; en cinco días había un paciente; en seis había dos pacientes y así sucesivamente. Para saber la probabilidad de que un día dado haya nadie esperando, simplemente sacamos la frecuencia relativa de dicha situación: <span class="math inline">\(P(0)=2/20=0.10\)</span>. La probabilidad de que un día haya cuatro personas esperando su turno a las 9:00am es <span class="math inline">\(3/20\)</span>, es decir, <span class="math inline">\(P(4)=3/20=0.15\)</span>.</p>
+</div>
+<div id="metodo-subjetivo" class="section level4">
+<h4>Método subjetivo</h4>
+<p>Es el más indicado cuando no es factible suponer que todos los resultados de un experimento sean igualmente posibles y, además, cuenta con pocos datos relevantes. Usa toda la información disponible, por ejemplo, la propia experiencia o la intuición. Después de considerar dicha información se asigna un valor de probabilidad que expresa el grado de confianza (en una escala de 0 a 1) que tiene acerca de que un resultado experimental ocurra. Como la probabilidad subjetiva expresa el grado de confianza que tiene un individuo, es personal. Cuando se usa el método de probabilidad subjetiva, es de esperarse que personas distintas asignen probabilidades diferentes a los mismos resultados de un experimento.</p>
+</div>
+</div>
+</div>
+<div id="relaciones-basicas-de-probabilidad" class="section level2">
+<h2>Relaciones básicas de probabilidad</h2>
+<div id="complemento-de-un-evento" class="section level3">
+<h3>Complemento de un evento</h3>
+<p>Dado un evento <span class="math inline">\(A\)</span>, el complemento de <span class="math inline">\(A\)</span> se define como el evento que consta de todos los puntos muestrales que no están en <span class="math inline">\(A\)</span>. El complemento de <span class="math inline">\(A\)</span> se denota <span class="math inline">\(A^c\)</span>. En la siguiente figura se observa un <strong>diagrama de Venn</strong>, el cual representa todo el espacio muestral con el rectángulo, mientras los puntos muestrales que pertenecen al evento <em>A</em>, están encerrados en el círculo. Por definición, todo lo restante del espacio muestral que no está dentro del círculo representa el evento complementario de <span class="math inline">\(A\)</span>.</p>
+<p><img src="images/018-complementoA.png" /></p>
+<blockquote>
+<p>En cualquier evento probabilístico ocurre <span class="math inline">\(A\)</span> o su complemento <span class="math inline">\(A^c\)</span>. Por lo tanto, el cálculo de una probabilidad usando su complemento es: <span class="math display">\[
+P(A)+P(A^C)=1\\
+o \\
+P(A)=1-P(A^C)
+\]</span></p>
+</blockquote>
+</div>
+<div id="ley-de-la-adicion" class="section level3">
+<h3>Ley de la adición</h3>
+<p>Sirve para determinar la probabilidad de que ocurra por lo menos uno de dos eventos. Por ejemplo, si tenemos dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, nos interesa saber la probabilidad de que ocurra <span class="math inline">\(A\)</span> o <span class="math inline">\(B\)</span> o ambos. Pero antes debemos entender dos conceptos relacionados y fundamentales: la <em>unión</em> y la <em>intersección</em> de dos eventos.</p>
+<blockquote>
+<p>La unión de dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> es el evento que contiene todos los puntos muestrales que pertenecen a <span class="math inline">\(A\)</span> o a <span class="math inline">\(B\)</span> o a ambos. Se denota por <span class="math inline">\(A \cup B\)</span>.</p>
+</blockquote>
+<p><img src="images/019-unionAB.png" /></p>
+<p>Es importante notar que el diagrama de Venn muestra que ambos círculos están traslapados, lo que implica que existen puntos muestrales contenidos tanto en <span class="math inline">\(A\)</span> como en <span class="math inline">\(B\)</span>.</p>
+<blockquote>
+<p>La intersección de dos eventos es el evento que contiene los puntos muestrales que pertenecen tanto a <span class="math inline">\(A\)</span> como a <span class="math inline">\(B\)</span>. Se denota por <span class="math inline">\(A\cap B\)</span></p>
+</blockquote>
+<p><img src="images/20-cap.png" /></p>
+<p>A diferencia de la unión que incluye a todos los puntos que pertenecen a <span class="math inline">\(A\)</span> y a <span class="math inline">\(B\)</span>, la intersección solo incluye a los puntos que pertenecen a ambos eventos al mismo tiempo.</p>
+<p>Ya podemos abordar la ley de la adición, la cual podemos definir como la manera de calcular la probabilidad de que ocurra la unión de dos eventos. Se expresa de la siguiente manera:</p>
+<p><span class="math display">\[
+P(A\cup B)=P(A)+P(B)-P(A\cap B)
+\]</span></p>
+<p>Debe restarse la intersección, ya que de no hacerlo, se contarían dos veces los puntos muestrales contenidos allí. Veamos un ejemplo.</p>
+<p>El director de personal de una empresa ha realizado un estudio que encontró que 15 de los empleados que se van antes de dos años, lo hacen por incorfomidad con el salario; 10 se van por estar descontentos con el trabajo y 6 por estar insatisfechos con ambas cosas. ¿Cuál es la probabilidad de que de 50 empleados, uno se marche de la empresa antes de dos años por insatisfacción con el salario, el trabajo o ambas cosas?</p>
+<p>Definamos la insatisfacción con el salario como <span class="math inline">\(S\)</span> y la insatisfacción con el trabajo como <span class="math inline">\(T\)</span>. Ahora calculamos la probabilidad de cada evento por separado:</p>
+<p><span class="math display">\[
+P(S)=\frac{15}{50}=0.30\\
+P(T)=\frac{10}{50}=0.20\\
+P(S\cap T)= \frac {6}{50}=0.12
+\]</span></p>
+<p>Apliquemos la ley de la adición para dar respuesta al problema:</p>
+<p><span class="math display">\[
+P(S\cup T)=P(S)+P(T)-P(S\cap T)=0.30+0.20-0.12=0.38
+\]</span></p>
+<p>Así, la probabilidad de que un empleado se vaya de la empresa por inconformidad con el salario o el trabajo, o ambos, es de 0.38, o del 38%.</p>
+<p>Para dar por terminado el tema, debemos mencionar el caso en el que los dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son <strong>mutuamente excluyentes</strong>, es decir, que si uno ocurre, el segundo no puede ocurrir. Un caso típico es ser empleado o no serlo, estar vivo o muerto, etcétera. La ley de la adición para estos casos queda:</p>
+<p><span class="math display">\[
+P(S\cup T)=P(S)+P(T)
+\]</span></p>
+<p>Ya que no existe una intersección como tal, por ende no es necesario eliminarla.</p>
+<p><img src="images/20-cup-me.png" /></p>
+</div>
+</div>
+<div id="probabilidad-condicional" class="section level2">
+<h2>Probabilidad condicional</h2>
+<p>En ocasiones sucede que en la probabilidad de un evento cualquiera <span class="math inline">\(A\)</span> influye el hecho de que otro evento <span class="math inline">\(B\)</span>, relacionados ambos, ya ha ocurrido. Esto implica que el cálculo de la probabilidad de <span class="math inline">\(A\)</span> <span class="math inline">\(P(A)\)</span> se mira afectado y ésta es diferente. A esta condición se le conoce como <strong>probabilidad condicional</strong> y se denota por <span class="math inline">\(P(A|B)\)</span>. Se está considerando la probabilidad de <span class="math inline">\(A\)</span> dada la condición de que <span class="math inline">\(B\)</span> ya ha ocurrido. Se lee <em>probabilidad de <span class="math inline">\(A\)</span> dado <span class="math inline">\(B\)</span></em>.</p>
+<p>Como ejemplo de la probabilidad condicional, considere el caso de las promociones de los agentes de policía de una determinada ciudad. La fuerza policiaca consta de 1200 agentes, 960 hombres y 240 mujeres. De éstos, en los últimos dos años, fueron promovidos 340. En la tabla se muestra cómo quedaron repartidas estas promociones entre los hombres y mujeres.</p>
+<p>-|Hombre|Mujer|Total <em>Promovido</em>|288|36|324 <em>No promovido</em>|672|204|876 <em>Total</em>|960|240|1200</p>
+<p>Después de analizar el registro de las promociones, un comité femenil protestó, ya que habían sido promovidos 288 agentes hombres, frente a sólo 36 mujeres. Los directivos de la fuerza policiaca argumentaron que el número de mujeres promovidas no se debía a una discriminación, sino a que el número de mujeres que son agentes de policía es una cantidad pequeña. Ahora veamos cómo emplear la probabilidad condicional para analizar esta acusación de discriminación.</p>
+<div id="solucion" class="section level4">
+<h4>Solución</h4>
+<p>Sea <span class="math inline">\(H=\)</span> el evento de que el agente sea hombre; <span class="math inline">\(M=\)</span> el evento de que sea mujer; <span class="math inline">\(A=\)</span> el evento de ser promovido y <span class="math inline">\(A^c=\)</span> el evento de no ser promovido. Calculemos las <strong>probabilidades conjuntas</strong>, esto es, la probabilidad de la intersección de dos eventos:</p>
+<p><span class="math display">\[
+P(H\cap A)=\frac{288}{1200}=0.24\\
+P(H\cap A^c)= \frac{672}{1200}=0.56\\
+P(M\cap A)=\frac{36}{1200}=0.03\\
+P(M\cap A^c)=\frac{204}{1200}=0.17
+\]</span></p>
+<p>Armemos una tabla de probabilidades conjuntas y <strong>probabilidades marginales</strong>, esto es, las probabilidad de cada evento por separado:</p>
+<p>-|Hombre|Mujer|Probabilidad marginal <em>Promovido</em>|0.24|0.03|0.27 <em>No promovido</em>|0.56|0.17|0.73 <em>Probabilidad marginal</em>|0.80|0.20|</p>
+<p>Las probabilidades marginales nos permiten conocer la probabilidad de ser <em>hombre</em> <span class="math inline">\(P(H)=0.80\)</span>, de ser <em>mujer</em> <span class="math inline">\(P(M)=0.20\)</span>, de ser promovido <span class="math inline">\(P(A)=0.27\)</span> y de no serlo <span class="math inline">\(P(A^c)=0.73\)</span>. Toca mencionar la fórmula para calcular probabilidades condicionales:</p>
+<blockquote>
+<p>La probabilidad condicional se calcula así: <span class="math display">\[
+P(A|B)=\frac{P(A\cap B)}{P(B)}
+\]</span></p>
+</blockquote>
+<p>Calculemos pues la probabilidad de ser ascendido dado que se es hombre:</p>
+<p><span class="math display">\[
+P(A|H)=\frac{P(A\cap H)}{P(H)}=\frac{0.24}{0.80}=0.30
+\]</span></p>
+<p>Ahora calculemos la probabilidad condicional para el caso de las mujeres:</p>
+<p><span class="math display">\[
+P(A|M)=\frac{P(A\cap M)}{P(M)}=\frac{0.03}{0.20}=0.15
+\]</span></p>
+<p>Podemos darnos cuenta que la probabilidad de ser ascendido dado que se es mujer es la mitad de la probabilidad para el hombre. Esto no prueba cabalmente que exista discriminación, pero sí confirma las sospechas y el argumento de las mujeres. Dentro del punto de vista probabilístico, no existe justicia en los ascensos.</p>
+</div>
+<div id="eventos-independientes" class="section level3">
+<h3>Eventos independientes</h3>
+</div>
+<div id="ley-de-la-multiplicacion" class="section level3">
+<h3>Ley de la multiplicación</h3>
+</div>
+</div>
+<div id="teorema-de-bayes" class="section level2">
+<h2>Teorema de Bayes</h2>
+</div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -365,6 +733,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
