@@ -30,6 +30,12 @@
 <script src="site_libs/viz-0.3/viz.js"></script>
 <link href="site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="site_libs/grViz-binding-1.0.1/grViz.js"></script>
+<script src="site_libs/d3-3.3.8/d3.min.js"></script>
+<script src="site_libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="site_libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="site_libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<script src="site_libs/chromatography-0.1/chromatography.js"></script>
+<script src="site_libs/DiagrammeR-binding-1.0.1/DiagrammeR.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -431,13 +437,13 @@ S_{monedas}=\{(A,A),(A,B),(B,A),(B,B) \}
 </blockquote>
 <p>Si retomamos el caso anterior, lanzar la primera moneda implica <span class="math inline">\((n_1=2)\)</span> y la segunda <span class="math inline">\((n_2=2)\)</span>, siguiendo la regla de conteo <span class="math inline">\((2)(2)=4\)</span>, así que tenemos cuatro posibles resultados. Ahora bien, si por ejemplo lanzamos tres monedas, tendremos <span class="math inline">\((2)(2)(2)=8\)</span> resultados experimentales.</p>
 <p>Un diagrama que puede apoyar en la elaboración de reglas de conteo es el <strong>diagrama de árbol</strong>, el cual se muestra a continuación para el problema del lanzamiento de dos monedas.</p>
-<div id="htmlwidget-a38de095c42991abf429" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a38de095c42991abf429">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"M\"]\na\n\nnode [fillcolor = white,\n      label = \"A\"]\nb d f\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1f4269222ccd87061670" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1f4269222ccd87061670">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"M\"]\na\n\nnode [fillcolor = white,\n      label = \"A\"]\nb d f\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>La secuencia va de izquierda a derecha, donde el primer paso representa los posibles resultados del primer lanzamiento y el segundo al de la segunda moneda. En cada paso los dos posibles resultados son <span class="math inline">\((A,B)\)</span>, y podemos notar que a cada resultado del primer paso le corresponden otros dos posibles resultados: los del segundo lanzamiento. Cada uno de los extremos de la derecha se corresponde con un resultado experimental. Cada ruta, saliendo desde el inicio hasta cada una de las ramificaciones se corresponde con una secuencia única de resultados experimentales.</p>
 <p>Veamos ahora otro ejemplo donde podemos aplicar la regla de conteo con experimentos de pasos múltiples. Una empresa ha comenzado un proyecto que busca incrementar la capacidad de generación de una de sus plantas. El proyecto ha sido dividido en dos etapas: diseño y construcción. A los administrativos no les resultó posible definir el tiempo exacto requerido en cada una de las tareas que conforman las dos etapas, debido a que es la primera vez que se enfrentan a ese tipo de proyectos. Por analogía con otros proyectos, han estimado que la duración de la etapa de diseño podría durar dos, tres o cuatro meses; mientras que la construcción tardaría seis, siete u ocho meses. Los directivos han establecido como meta la terminación del proyecto en diez meses.</p>
 <p>Apliquemos la regla de conteo: existen tres posibles resultados en el diseño y otros tres posibles resultados en la construcción: <span class="math inline">\((3)(3)=9\)</span>. Describiremos los posibles resutados con una notación de dos números, el primero para la etapa 1 y el segundo para la 2. Así, <span class="math inline">\((2,6)\)</span> implica que el diseño tardó dos meses y la construcción, seis; dando una duración de ocho meses. Mostremos todo el espacio muestral con el diagrama de árbol pertinente:</p>
-<div id="htmlwidget-585f6683ec071d7bcd4b" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-585f6683ec071d7bcd4b">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = UD]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"D\"]\na\n\nnode [fillcolor = white,\n      label = \"2\"]\nb\n\nnode [fillcolor = white,\n      label = \"3\"]\nc\n\nnode [fillcolor = white,\n      label = \"4\"]\nd\n\nnode [fillcolor = white,\n      label = \"6\"]\ne h k\n\nnode [fillcolor = white,\n      label = \"7\"]\nf i l\n\nnode [fillcolor = white,\n      label = \"8\"]\ng j m\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c d}\nb -> {e f g}\nc -> {h i j}\nd -> {k l m}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1c90d063b8d8d7df246b" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1c90d063b8d8d7df246b">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = UD]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"D\"]\na\n\nnode [fillcolor = white,\n      label = \"2\"]\nb\n\nnode [fillcolor = white,\n      label = \"3\"]\nc\n\nnode [fillcolor = white,\n      label = \"4\"]\nd\n\nnode [fillcolor = white,\n      label = \"6\"]\ne h k\n\nnode [fillcolor = white,\n      label = \"7\"]\nf i l\n\nnode [fillcolor = white,\n      label = \"8\"]\ng j m\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c d}\nb -> {e f g}\nc -> {h i j}\nd -> {k l m}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>Como podemos observar, hay nueve combinaciones o duraciones para este proyecto. Tabulémoslas:</p>
 <table>
 <thead>
@@ -688,13 +694,181 @@ P(A|M)=\frac{P(A\cap M)}{P(M)}=\frac{0.03}{0.20}=0.15
 </div>
 <div id="eventos-independientes" class="section level3">
 <h3>Eventos independientes</h3>
+<p>En el caso estudiado anteriormente se concluyó que a la probabilidad de ser promovido le afecta si el sujeto en cuestión es hombre o mujer. Más en términos probabilísticos, como $P(A|M) P(A) $, los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(M\)</span> son eventos dependientes.</p>
+<blockquote>
+<p>Dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes si: <span class="math display">\[
+P(A|B)=P(A)\\
+o\\
+P(B|A)=P(B)
+\]</span></p>
+</blockquote>
 </div>
 <div id="ley-de-la-multiplicacion" class="section level3">
 <h3>Ley de la multiplicación</h3>
+<p>Mientras la ley de la adición permite conocer la probabilidad de la unión de dos eventos, la ley de la multiplicación permite calcular la probabilidad de la intersección de dichos eventos. Se fundamenta en la <em>probabilidad condicional</em>, por lo cual puede obtenerse despejando la expresión de ésta:</p>
+<p><span class="math display">\[
+P(A\cap B)=P(B)\cdot P(A|B)
+\]</span></p>
+<p>Por ejemplo, una ocasión se realizó una prueba <em>antidoping</em> sorpresiva en cierta escuela y se encontró una probabilidad de <span class="math inline">\(0.72\)</span> de seleccionar aleatoriamente hombres. De dichos estudiantes masculinos, resultó una probabilidad de <span class="math inline">\(0.12\)</span> de salir positivos. Es decir, ser hombre en la prueba tiene una <span class="math inline">\(P(H)= 0.72\)</span>, mientras que salir positivo siendo hombre es <span class="math inline">\(P(p|H)=0.12\)</span>. ¿Cuál es la probabilidad de que un estudiante sea hombre y salga positivo a dicha droga?</p>
+<p><span class="math display">\[
+P(p\cap H)=P(H)\cdot P(p|H)=(0.72)(0.12)=0.0864
+\]</span></p>
+<p>Así, se puede saber que el 8.64% de los estudiantes son hombres y salieron positivos en la prueba.</p>
+<p>Para finalizar, veamos el caso en el que los dos eventos no son dependientes. Se sabe que la probabilidad de que un cliente pague con tarjeta es de 0.60. ¿Cuál es la probabilidad de que dos clientes consecutivos paguen de la misma manera?</p>
+<p>Debemos recordar que en este caso, el resultado no depende de lo que haya pasado anteriormente. Asignemos <span class="math inline">\(A\)</span> al evento donde el primer cliente paga con tarjeta y <span class="math inline">\(B\)</span> al caso de que el segundo realice lo mismo. Así que la probabilidad se encontraría simplemente multiplicando:</p>
+<p><span class="math display">\[
+P(A\cap B)=P(A)\cdot P(B)=(0.60)(0.60)=0.36
+\]</span></p>
 </div>
 </div>
 <div id="teorema-de-bayes" class="section level2">
 <h2>Teorema de Bayes</h2>
+<p>En la vida real se repite muy seguido el hecho de que las probabilidades involucran eventos relacionados entre sí. Y en muchas ocasiones, mientras se va recolectando información, es necesario modificar las <strong>probabilidades previas</strong>, obteniendo <strong>probabilidades posteriores</strong>. El <strong>Teorema de Bayes</strong> nos permite obtener dichas probabilidades modificadas, después de haber utilizado información proveniente de otras fuentes. El flujo de trabajo quedaría entonces así:</p>
+<div id="htmlwidget-29f3aa1eb36bda7838b7" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-29f3aa1eb36bda7838b7">{"x":{"diagram":"\ngraph LR\nA[Probabilidades <br/> previas]-->B[Nueva<br/> información]\nB-->C[Teorema <br/>de Bayes]\nC-->D[Probabilidades <br/>posteriores]\n"},"evals":[],"jsHooks":[]}</script>
+<p>Consideremos una fábrica que compra piezas de dos proveedores. Sea <span class="math inline">\(A_1\)</span> el evento en el que la pieza proviene del proveedor 1 y <span class="math inline">\(A_2\)</span> el evento en el que la pieza proviene del proveedor 2. De las piezas que compra la fábrica, 65% proviene del proveedor 1 y 35% restante proviene del proveedor 2. Por tanto, si toma una pieza aleatoriamente, le asignará las probabilidades previas <span class="math inline">\(P(A_1) = 0.65\)</span> y <span class="math inline">\(P(A_2) = 0.35\)</span>.</p>
+<p><span class="math display">\[
+Probabilidades\ previas\\
+P(A_1) = 0.65\\
+P(A_2) = 0.35
+\]</span></p>
+<p>La calidad de las piezas compradas varía de acuerdo con el proveedor. Por experiencia, sabe que la calidad de los dos proveedores es tal, que el primero solo entrega un 2% de piezas defectuosas, mientras el segundo tiene una proporción del 5%. Si <span class="math inline">\(S\)</span> denota el evento <em>pieza sin defecto</em> y <span class="math inline">\(C\)</span> denota el evento <em>pieza con defecto</em>, debemos trabajar la información para obtener la probabilidad de tener una pieza sin defectos, viniendo tanto del primer proveedor como del segundo.</p>
+<p><span class="math display">\[
+Probabilidades\ condicionales\ S\\
+P(S|A_1)=0.98\\
+P(S|A_1)=0.95\\
+\]</span></p>
+<p><span class="math display">\[
+Probabilidades\ condicionales\ C\\
+P(C|A_1)=0.02\\
+P(C|A_2)=0.05
+\]</span></p>
+<p>Representemos los posibles resultados, comenzamos con un árbol de probabilidades:</p>
+<div id="htmlwidget-c3170b0f01cd6956392d" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c3170b0f01cd6956392d">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"X\"]\na\n\nnode [fillcolor = white,\n      label = \"P1\"]\nb \n\nnode [fillcolor = white,\n      label = \"P2\"]\nc\n\nnode [fillcolor = white\n      label = \"S\"]\nd f\n\nnode [fillcolor = white\n      label = \"C\"]\ne g\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p>Como podemos observar, tenemos cuatro posibles resultados. Pero la cuestión ahora es, ya que la pieza es defectuosa, ¿cuál es la probabilidad de que viene del primer proveedor? O bien, ¿del segundo?</p>
+<p>Para ello, debemos recordar la ley de la multiplicación. La probabilidad condicional de recibir una pieza defectuosa del primer proveedor es del 2%. Por lo tanto, la probabilidad de tener una pieza con defecto y que sea del primer proveedor es del:</p>
+<p><span class="math display">\[
+P(C\cap A_1)=P(A_1)\cdot P(C|A_1)=(0.65)(0.02)=0.0130
+\]</span></p>
+<p>Para el segundo proveedor sería:</p>
+<p><span class="math display">\[
+P(C\cap A_2)=P(A_2)\cdot P(C|A_2)=(0.35)(0.05)=0.0175
+\]</span></p>
+<p>Puede realizarse lo mismo con diagrama de árbol más complejo, en el que se colocan las probabilidades y se calculan en el mismo. El cálculo queda mejor comprendido de esa manera:</p>
+<pre><code>## Warning: Prefixing `UQ()` with the rlang namespace is deprecated as of rlang 0.3.0.
+## Please use the non-prefixed form or `!!` instead.
+## 
+##   # Bad:
+##   rlang::expr(mean(rlang::UQ(var) * 100))
+## 
+##   # Ok:
+##   rlang::expr(mean(UQ(var) * 100))
+## 
+##   # Good:
+##   rlang::expr(mean(!!var * 100))
+## 
+## This warning is displayed once per session.</code></pre>
+<p><img src="images/021-bayes.png" /></p>
+<p>En este árbol podemos distinguir las <strong>probabilidades conjuntas</strong> como los valores que tienen las ramas.</p>
+<p><span class="math display">\[
+Probabilidades\ conjuntas\ S\\
+P(S\cap A_1)=0.6370\\
+P(S\cap A_2)=0.3325\\
+\]</span></p>
+<p><span class="math display">\[
+Probabilidades\ conjuntas\ C\\
+P(C\cap A_1)=0.0130\\
+P(C\cap A_2)=0.0175
+\]</span></p>
+<p>Ahora aplicaremos el teorema de Bayes para conocer la probabilidad de que, dado que la pieza es defectuosa, ésta provino del proveedor 1. Dicho teorema se obtiene así para dos eventos:</p>
+<p><span class="math display">\[
+P(A_1|B)=\frac{P(A_1)\cdot P(B|A_1)}{P(A_1)\cdot P(B|A_1)+P(A_2)\cdot P(B|A_2)}\\
+\ \\
+P(A_2|B)=\frac{P(A_2)\cdot P(B|A_2)}{P(A_1)\cdot P(B|A_1)+P(A_2)\cdot P(B|A_2)}
+\]</span></p>
+<p>Apliquemos el teorema de Bayes para conocer las probabilidades posteriores (probabilidad de que la pieza venga del primer proveedor <span class="math inline">\(P(A_1)\)</span>, dado que es defectuosa <span class="math inline">\(C\)</span>:</p>
+<p><span class="math display">\[
+P(A_1|C)=\frac{P(A_1)\cdot P(C|A_1)}{P(A_1)\cdot P(C|A_1)+P(A_2)\cdot P(C|A_2)}=\\
+\frac{(0.65)(0.02)}{(0.65)(0.02)+(0.35)(0.05)}=\frac{0.0130}{0.0130+0.0175}=\frac{0.0130}{0.0305
+}=0.4262
+\]</span></p>
+<p>Ahora para el segundo proveedor:</p>
+<p><span class="math display">\[
+P(A_2|C)=\frac{P(A_2)\cdot P(C|A_2)}{P(A_1)\cdot P(C|A_1)+P(A_2)\cdot P(C|A_2)}=\\
+\frac{(0.35)(0.05)}{(0.65)(0.02)+(0.35)(0.05)}=\frac{0.0175}{0.0130+0.0175}=\frac{0.0175}{0.0305
+}=0.5738
+\]</span></p>
+<p>Observemos que al principio de este ejemplo, la probabilidad de seleccionar una pieza y que fuera del proveedor 1 era <span class="math inline">\(0.65\)</span>. Sin embargo, dada la información de que la pieza está defectuosaala, la probabilidad de que la pieza provenga del proveedor 1 bajó a <span class="math inline">\(0.4262\)</span>. En efecto, si la pieza es defectuosa, la posibilidad de que sea del proveedor 2 es mayor que 50-50; es decir, <span class="math inline">\(P(A_2 | B)= 0.5738\)</span>.</p>
+<p><span class="math display">\[
+Probabilidades\ posteriores\ C\\
+P(A_1|C)=0.4262\\
+P(A_2|C)=0.5738
+\]</span></p>
+<p>Notemos que la suma de las probabilidades posteriores para piezas con defecto es igual a 1.</p>
+<p>Para poder aplicar el teorema de Bayes es imprescindible que la unión de todos los eventos incluidos sea todo el espacio muestral. Además, deben ser mutuamente excluyentes. El teorema de Bayes para <span class="math inline">\(n\)</span> eventos mutuamente excluyentes queda así:</p>
+<p><span class="math display">\[
+P(A_i|B)=\frac{P(A_i)\cdot P(B|A_i)}{P(A_1)\cdot P(B|A_1)+P(A_2)\cdot P(B|A_2)+...+P(A_n)\cdot P(B|A_n)}
+\]</span></p>
+<div id="metodo-tabular-para-el-teorema-de-bayes" class="section level3">
+<h3>Método tabular para el teorema de Bayes</h3>
+<p>Podemos realizar los cálculos necesarios para obtener las probabilidades posteriores mediante una tabla. Los pasos a seguir son como sigue:</p>
+<ol style="list-style-type: decimal">
+<li>La tabla tendrá cinco columnas, de las cuales, las primeras tres son llenadas con información de la que se dispone <em>a priori</em>:</li>
+</ol>
+<ul>
+<li>En la primera se especifican los eventos mutuamente excluyentes <span class="math inline">\(A_i\)</span> de los que se quieren conocer las probabilidades posteriores.</li>
+<li>La segunda contendrá las <em>probabilidades previas</em> <span class="math inline">\(P(A_i)\)</span> de los eventos.</li>
+<li>En la tercera se colocan las <em>probabilidades condicionales</em> <span class="math inline">\(P(B|A_i)\)</span> que surjan gracias a la nueva información <span class="math inline">\(B\)</span> del evento.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>En la cuarta columna se calculan las <em>probabilidades conjuntas</em>. Estas se obtienen multiplicando las previas por sus correspondientes conjuntas.</li>
+<li>Se suman las probabilidades de la columna 4. Esta suma es la probabilidad de la nueva información <span class="math inline">\(B\)</span>.</li>
+<li>Se divide cada una de las probabilidades conjuntas entre la sumatoria de las mismas. El cociente resultante de cada división es la probabilidad posterior del evento correspondiente.</li>
+</ol>
+<p>Para el ejemplo anterior quedaría así:</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Eventos <span class="math inline">\(A_i\)</span></th>
+<th align="center">Probabilidades previas <span class="math inline">\(P(A_i)\)</span></th>
+<th align="center">Probabilidades condicionales <span class="math inline">\(P(B|A_i)\)</span></th>
+<th align="center">Probabilidades conjuntas <span class="math inline">\(P(A_i\cap B)\)</span></th>
+<th align="center">Probabilidades posteriores $P(A_i</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(A_1\)</span></td>
+<td align="center"><span class="math inline">\(0.65\)</span></td>
+<td align="center"><span class="math inline">\(0.02\)</span></td>
+<td align="center"><span class="math inline">\(0.0130\)</span></td>
+<td align="center"><span class="math inline">\(0.0130/0.0305=0.4262\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(A_2\)</span></td>
+<td align="center"><span class="math inline">\(0.35\)</span></td>
+<td align="center"><span class="math inline">\(0.05\)</span></td>
+<td align="center"><span class="math inline">\(0.1750\)</span></td>
+<td align="center"><span class="math inline">\(0.01750/0.0305=0.5738\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center">-</td>
+<td align="center"><span class="math inline">\(Total = 1\)</span></td>
+<td align="center">-</td>
+<td align="center"><span class="math inline">\(P(B)=0.0305\)</span></td>
+<td align="center"><span class="math inline">\(Total=1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
