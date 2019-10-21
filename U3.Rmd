@@ -20,7 +20,7 @@ Es toda variable aleatoria cuyo valor pertenece a un conjunto finito de valores 
 
 Describen cómo se distribuyen las probabilidades entre los valores de la variable aleatoria discreta $x$, la distribución de probabilidad está definida por una función de probabilidad, denotada por $f(x)$. La función de probabilidad da la probabilidad de cada valor de la variable aleatoria.
 
-Como ejemplo de una variable aleatoria discreta y de su distribución de probabilidad, considere las ventas de automóviles en una agencia automotriz. Durante los últimos 300 días de operación, los datos de ventas muestran que hubo 54 días en los que no se vendió ningún automóvil, 117 días en los que se vendió 1 automóvil, 72 días en los que se  vendieron 2 automóviles, 42 días en los que se vendieron 3, 12 días en los que se vendieron 4 y 3 días en los que se vendieron 5. Suponga que considera el experimento de seleccionar un día de operación en DiCarlo Motors y se define la variable aleatoria de interés como $x=$ número de automóviles vendidos en un día. En cuanto a la notación de funciones de probabilidad, ésta se escribe como $f(x)$. Así, siguiendo lo ya aprendido sobre frecuencias relativas, $f(0)=54/300=0.18$. Esto último implica que la probabilidad de vender cero automóviles al día es del 0.18. Continuando con los demás valores, podemos obtener las demás probabilidades $f(1)$, $f(2)$, $f(3)$, $f(4)$ y $f(5)$.
+Como ejemplo de una variable aleatoria discreta y de su distribución de probabilidad, considere las ventas de automóviles en una agencia automotriz. Durante los últimos 300 días de operación, los datos de ventas muestran que hubo 54 días en los que no se vendió ningún automóvil, 117 días en los que se vendió 1 automóvil, 72 días en los que se  vendieron 2 automóviles, 42 días en los que se vendieron 3, 12 días en los que se vendieron 4 y 3 días en los que se vendieron 5. Suponga que considera el experimento de seleccionar un día de operación y se define la variable aleatoria de interés como $x=$ número de automóviles vendidos en un día. En cuanto a la notación de funciones de probabilidad, ésta se escribe como $f(x)$. Así, siguiendo lo ya aprendido sobre frecuencias relativas, $f(0)=54/300=0.18$. Esto último implica que la probabilidad de vender cero automóviles al día es del 0.18. Continuando con los demás valores, podemos obtener las demás probabilidades $f(1)$, $f(2)$, $f(3)$, $f(4)$ y $f(5)$.
 
 
 ```{r}
@@ -129,11 +129,11 @@ La distribución de probabilidad binomial es una distribución de probabilidad q
 
 Tiene las siguientes propiedades:
 
-1. El experimento consiste en una serie de n ensayos idénticos.
+1. El experimento consiste en una serie de $n$ ensayos idénticos.
 
 2. En cada ensayo hay dos resultados posibles. A uno de estos resultados se le llama éxito y al otro se le llama fracaso.
 
-3. La probabilidad de éxito, que se denota p, no cambia de un ensayo a otro. Por ende, la probabilidad de fracaso, que se denota 1  p, tampoco cambia de un ensayo a otro.
+3. La probabilidad de éxito, que se denota $p$, no cambia de un ensayo a otro. Por ende, la probabilidad de fracaso, que se denota $1 - p$, tampoco cambia de un ensayo a otro.
 
 4. Los ensayos son independientes.
 
@@ -220,9 +220,11 @@ $e=2.71828$
 
 Antes de considerar un ejemplo para ver cómo se usa la distribución de Poisson, observemos que el número de ocurrencias $x$, no tiene límite superior. Ésta es una variable aleatoria discreta que toma los valores de una sucesión infinita de números $(x= 0, 1, 2, . . . )$.
 
+### Intervalos de tiempo
+
 Supongamos que deseamos saber el número de llegadas, en un lapso de 15 minutos, a la rampa del cajero automático de un banco. Si se puede suponer que la probabilidad de llegada de los automóviles es la misma en cualesquiera dos lapsos de la misma duración y si la llegada o no–llegada de un automóvil en cualquier lapso es independiente de la llegada o no–llegada de un automóvil en cualquier otro lapso, se puede aplicar la función de probabilidad de Poisson. Dichas condiciones se satisfacen y en un análisis de datos pasados encuentra que el número promedio de automóviles que llegan en un lapso de 15 minutos es 10.
 
-Aquí la variable aleatoria es $x =$ número de automóviles que llegan en un lapso de 15 minutos. Si la administración desea saber la probabilidad de que lleguen exactamente cinco automóviles en 15 minutos, $x= 5$, y se obtiene:
+Aquí la variable aleatoria es $x=$ número de automóviles que llegan en un lapso de 15 minutos. Si la administración desea saber la probabilidad de que lleguen exactamente cinco automóviles en 15 minutos, $x=5$, y se obtiene:
 
 $$
 f(5)=\frac{10^5e^{-10}}{5!}= 0.0378
@@ -234,6 +236,23 @@ Lo calculamos en _R_ así:
 dpois(5, 10)
 ```
 
+### Intervalos de espacio o longitud
+
+Nos interesa la ocurrencia de una avería importante en una autopista un mes después de que ha sido repavimentada. Supongamos que la probabilidad de que haya una avería es la misma en cualesquiera dos tramos, de una misma longitud, de la autopista y que la ocurrencia o no–ocurrencia de una avería en un tramo es independiente de la ocurrencia o no-ocurrencia de una avería en cualquier otro tramo.
+
+También sabemos que el promedio de averías importantes, un mes después de la repavimentación, son dos averías por kilómetro. Desea determinar la probabilidad de que no haya ninguna avería en un determinado tramo de tres kilómetros de autopista. Como lo que interesa es un intervalo cuya longitud es de tres kilómetros, $μ=(2 averías/milla)(3 kilómetros)=6$ representa el número esperado de averías importantes en un tramo de tres kilómetros de autopista. 
+
+La probabilidad de que no haya ninguna avería importante es $f(0)=6^0e^{-6}/0!=0.0025$. Por tanto, es poco probable que no haya ninguna avería importante en este tramo de tres kilómetros. En efecto, este ejemplo indica que hay una probabilidad de $1-0.0025=0.9975$ de que haya por lo menos una avería importante en este tramo de tres kilómetros de autopista.
+
+## Distribución de probabilidad hipergeométrica
+
+La distribución de probabilidad hipergeométrica está estrechamente relacionada con la distribución binomial. Pero difieren en dos puntos: en la distribución hipergeométrica los ensayos no son independientes y la probabilidad de éxito varía de ensayo a ensayo.
+
+En la notación usual en la distribución hipergeométrica, $r$ denota el número de elementos considerados como éxitos que hay en una población de tamaño $N$, y $N - r$ denota el número de elementos considerados como fracasos que hay en dicha población. La función de probabilidad hipergeométrica se usa para calcular la probabilidad de que en una muestra aleatoria de $n$ elementos, seleccionados sin reemplazo, se tengan $x$ éxitos y $n- x$ fracasos. Para que se presenteeste resultado, debe tener $x$ éxitos de los $r$ éxitos que hay en la población y $n-x$ fracasos de los $N-r$ fracasos. La siguiente función de probabilidad hipergeométrica proporciona $f(x)$, la probabilidad de tener $x$ éxitos en una muestra de tamaño $n$.
+
+$$
+f(x)=\frac{}{}
+$$
 
 
 

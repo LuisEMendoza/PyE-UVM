@@ -413,7 +413,7 @@ div.tocify {
 <div id="distribuciones-de-probabilidad-discreta" class="section level3">
 <h3>Distribuciones de probabilidad discreta</h3>
 <p>Describen cómo se distribuyen las probabilidades entre los valores de la variable aleatoria discreta <span class="math inline">\(x\)</span>, la distribución de probabilidad está definida por una función de probabilidad, denotada por <span class="math inline">\(f(x)\)</span>. La función de probabilidad da la probabilidad de cada valor de la variable aleatoria.</p>
-<p>Como ejemplo de una variable aleatoria discreta y de su distribución de probabilidad, considere las ventas de automóviles en una agencia automotriz. Durante los últimos 300 días de operación, los datos de ventas muestran que hubo 54 días en los que no se vendió ningún automóvil, 117 días en los que se vendió 1 automóvil, 72 días en los que se vendieron 2 automóviles, 42 días en los que se vendieron 3, 12 días en los que se vendieron 4 y 3 días en los que se vendieron 5. Suponga que considera el experimento de seleccionar un día de operación en DiCarlo Motors y se define la variable aleatoria de interés como <span class="math inline">\(x=\)</span> número de automóviles vendidos en un día. En cuanto a la notación de funciones de probabilidad, ésta se escribe como <span class="math inline">\(f(x)\)</span>. Así, siguiendo lo ya aprendido sobre frecuencias relativas, <span class="math inline">\(f(0)=54/300=0.18\)</span>. Esto último implica que la probabilidad de vender cero automóviles al día es del 0.18. Continuando con los demás valores, podemos obtener las demás probabilidades <span class="math inline">\(f(1)\)</span>, <span class="math inline">\(f(2)\)</span>, <span class="math inline">\(f(3)\)</span>, <span class="math inline">\(f(4)\)</span> y <span class="math inline">\(f(5)\)</span>.</p>
+<p>Como ejemplo de una variable aleatoria discreta y de su distribución de probabilidad, considere las ventas de automóviles en una agencia automotriz. Durante los últimos 300 días de operación, los datos de ventas muestran que hubo 54 días en los que no se vendió ningún automóvil, 117 días en los que se vendió 1 automóvil, 72 días en los que se vendieron 2 automóviles, 42 días en los que se vendieron 3, 12 días en los que se vendieron 4 y 3 días en los que se vendieron 5. Suponga que considera el experimento de seleccionar un día de operación y se define la variable aleatoria de interés como <span class="math inline">\(x=\)</span> número de automóviles vendidos en un día. En cuanto a la notación de funciones de probabilidad, ésta se escribe como <span class="math inline">\(f(x)\)</span>. Así, siguiendo lo ya aprendido sobre frecuencias relativas, <span class="math inline">\(f(0)=54/300=0.18\)</span>. Esto último implica que la probabilidad de vender cero automóviles al día es del 0.18. Continuando con los demás valores, podemos obtener las demás probabilidades <span class="math inline">\(f(1)\)</span>, <span class="math inline">\(f(2)\)</span>, <span class="math inline">\(f(3)\)</span>, <span class="math inline">\(f(4)\)</span> y <span class="math inline">\(f(5)\)</span>.</p>
 <pre class="r"><code>ventas.coches &lt;- read.table(&quot;datasets/026-ventas_coches.txt&quot;, header = T)
 ventas.coches.df &lt;- as.data.frame(ventas.coches)
 ventas.coches.df</code></pre>
@@ -538,9 +538,9 @@ ventas.coches</code></pre>
 <h3>Experimento binomial</h3>
 <p>Tiene las siguientes propiedades:</p>
 <ol style="list-style-type: decimal">
-<li><p>El experimento consiste en una serie de n ensayos idénticos.</p></li>
+<li><p>El experimento consiste en una serie de <span class="math inline">\(n\)</span> ensayos idénticos.</p></li>
 <li><p>En cada ensayo hay dos resultados posibles. A uno de estos resultados se le llama éxito y al otro se le llama fracaso.</p></li>
-<li><p>La probabilidad de éxito, que se denota p, no cambia de un ensayo a otro. Por ende, la probabilidad de fracaso, que se denota 1  p, tampoco cambia de un ensayo a otro.</p></li>
+<li><p>La probabilidad de éxito, que se denota <span class="math inline">\(p\)</span>, no cambia de un ensayo a otro. Por ende, la probabilidad de fracaso, que se denota <span class="math inline">\(1 - p\)</span>, tampoco cambia de un ensayo a otro.</p></li>
 <li><p>Los ensayos son independientes.</p></li>
 </ol>
 <p>Considere el ejemplo siguiente. De acuerdo con la experiencia, el gerente de una tienda de ropa estima que la probabilidad de que un cliente realice una compra es 0.30. ¿Cuál es la probabilidad de que dos de los próximos tres clientes realicen una compra?</p>
@@ -598,14 +598,31 @@ f(x)=\frac{\mu^xe^{-\mu}}{x!}
 \]</span></p>
 <p>Donde: <span class="math inline">\(f(x)=\)</span> probabilidad de <span class="math inline">\(x\)</span> ocurrencias en un intervalo <span class="math inline">\(\mu=\)</span> valor esperado o número medio de ocurrencias en un intervalo <span class="math inline">\(e=2.71828\)</span></p>
 <p>Antes de considerar un ejemplo para ver cómo se usa la distribución de Poisson, observemos que el número de ocurrencias <span class="math inline">\(x\)</span>, no tiene límite superior. Ésta es una variable aleatoria discreta que toma los valores de una sucesión infinita de números <span class="math inline">\((x= 0, 1, 2, . . . )\)</span>.</p>
+<div id="intervalos-de-tiempo" class="section level3">
+<h3>Intervalos de tiempo</h3>
 <p>Supongamos que deseamos saber el número de llegadas, en un lapso de 15 minutos, a la rampa del cajero automático de un banco. Si se puede suponer que la probabilidad de llegada de los automóviles es la misma en cualesquiera dos lapsos de la misma duración y si la llegada o no–llegada de un automóvil en cualquier lapso es independiente de la llegada o no–llegada de un automóvil en cualquier otro lapso, se puede aplicar la función de probabilidad de Poisson. Dichas condiciones se satisfacen y en un análisis de datos pasados encuentra que el número promedio de automóviles que llegan en un lapso de 15 minutos es 10.</p>
-<p>Aquí la variable aleatoria es <span class="math inline">\(x =\)</span> número de automóviles que llegan en un lapso de 15 minutos. Si la administración desea saber la probabilidad de que lleguen exactamente cinco automóviles en 15 minutos, <span class="math inline">\(x= 5\)</span>, y se obtiene:</p>
+<p>Aquí la variable aleatoria es <span class="math inline">\(x=\)</span> número de automóviles que llegan en un lapso de 15 minutos. Si la administración desea saber la probabilidad de que lleguen exactamente cinco automóviles en 15 minutos, <span class="math inline">\(x=5\)</span>, y se obtiene:</p>
 <p><span class="math display">\[
 f(5)=\frac{10^5e^{-10}}{5!}= 0.0378
 \]</span></p>
 <p>Lo calculamos en <em>R</em> así:</p>
 <pre class="r"><code>dpois(5, 10)</code></pre>
 <pre><code>## [1] 0.03783327</code></pre>
+</div>
+<div id="intervalos-de-espacio-o-longitud" class="section level3">
+<h3>Intervalos de espacio o longitud</h3>
+<p>Nos interesa la ocurrencia de una avería importante en una autopista un mes después de que ha sido repavimentada. Supongamos que la probabilidad de que haya una avería es la misma en cualesquiera dos tramos, de una misma longitud, de la autopista y que la ocurrencia o no–ocurrencia de una avería en un tramo es independiente de la ocurrencia o no-ocurrencia de una avería en cualquier otro tramo.</p>
+<p>También sabemos que el promedio de averías importantes, un mes después de la repavimentación, son dos averías por kilómetro. Desea determinar la probabilidad de que no haya ninguna avería en un determinado tramo de tres kilómetros de autopista. Como lo que interesa es un intervalo cuya longitud es de tres kilómetros, <span class="math inline">\(μ=(2 averías/milla)(3 kilómetros)=6\)</span> representa el número esperado de averías importantes en un tramo de tres kilómetros de autopista.</p>
+<p>La probabilidad de que no haya ninguna avería importante es <span class="math inline">\(f(0)=6^0e^{-6}/0!=0.0025\)</span>. Por tanto, es poco probable que no haya ninguna avería importante en este tramo de tres kilómetros. En efecto, este ejemplo indica que hay una probabilidad de <span class="math inline">\(1-0.0025=0.9975\)</span> de que haya por lo menos una avería importante en este tramo de tres kilómetros de autopista.</p>
+</div>
+</div>
+<div id="distribucion-de-probabilidad-hipergeometrica" class="section level2">
+<h2>Distribución de probabilidad hipergeométrica</h2>
+<p>La distribución de probabilidad hipergeométrica está estrechamente relacionada con la distribución binomial. Pero difieren en dos puntos: en la distribución hipergeométrica los ensayos no son independientes y la probabilidad de éxito varía de ensayo a ensayo.</p>
+<p>En la notación usual en la distribución hipergeométrica, <span class="math inline">\(r\)</span> denota el número de elementos considerados como éxitos que hay en una población de tamaño <span class="math inline">\(N\)</span>, y <span class="math inline">\(N - r\)</span> denota el número de elementos considerados como fracasos que hay en dicha población. La función de probabilidad hipergeométrica se usa para calcular la probabilidad de que en una muestra aleatoria de <span class="math inline">\(n\)</span> elementos, seleccionados sin reemplazo, se tengan <span class="math inline">\(x\)</span> éxitos y <span class="math inline">\(n- x\)</span> fracasos. Para que se presenteeste resultado, debe tener <span class="math inline">\(x\)</span> éxitos de los <span class="math inline">\(r\)</span> éxitos que hay en la población y <span class="math inline">\(n-x\)</span> fracasos de los <span class="math inline">\(N-r\)</span> fracasos. La siguiente función de probabilidad hipergeométrica proporciona <span class="math inline">\(f(x)\)</span>, la probabilidad de tener <span class="math inline">\(x\)</span> éxitos en una muestra de tamaño <span class="math inline">\(n\)</span>.</p>
+<p><span class="math display">\[
+f(x)=\frac{}{}
+\]</span></p>
 </div>
 
 
