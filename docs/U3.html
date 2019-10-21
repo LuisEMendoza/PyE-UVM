@@ -584,6 +584,13 @@ db0</code></pre>
 plot(k, dbinom(c(0,1,2,3),3,0.30), type = &quot;b&quot;, main = &quot;Distribución binomial&quot;, sub = &quot;Ventas&quot;, xlab = &quot;éxito&quot;, ylab = &quot;Probabilidad&quot;, ylim = c(0,0.5))</code></pre>
 <p><img src="U3_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
+<div id="valor-esperado-y-varianza-binomiales" class="section level3">
+<h3>Valor esperado y varianza binomiales</h3>
+<p><span class="math display">\[
+E(x)=\mu=np\\
+Var(x)=\sigma^2=np(1-p)
+\]</span></p>
+</div>
 </div>
 <div id="distribucion-de-probabilidad-de-poisson" class="section level2">
 <h2>Distribución de probabilidad de Poisson</h2>
@@ -619,10 +626,22 @@ f(5)=\frac{10^5e^{-10}}{5!}= 0.0378
 <div id="distribucion-de-probabilidad-hipergeometrica" class="section level2">
 <h2>Distribución de probabilidad hipergeométrica</h2>
 <p>La distribución de probabilidad hipergeométrica está estrechamente relacionada con la distribución binomial. Pero difieren en dos puntos: en la distribución hipergeométrica los ensayos no son independientes y la probabilidad de éxito varía de ensayo a ensayo.</p>
-<p>En la notación usual en la distribución hipergeométrica, <span class="math inline">\(r\)</span> denota el número de elementos considerados como éxitos que hay en una población de tamaño <span class="math inline">\(N\)</span>, y <span class="math inline">\(N - r\)</span> denota el número de elementos considerados como fracasos que hay en dicha población. La función de probabilidad hipergeométrica se usa para calcular la probabilidad de que en una muestra aleatoria de <span class="math inline">\(n\)</span> elementos, seleccionados sin reemplazo, se tengan <span class="math inline">\(x\)</span> éxitos y <span class="math inline">\(n- x\)</span> fracasos. Para que se presenteeste resultado, debe tener <span class="math inline">\(x\)</span> éxitos de los <span class="math inline">\(r\)</span> éxitos que hay en la población y <span class="math inline">\(n-x\)</span> fracasos de los <span class="math inline">\(N-r\)</span> fracasos. La siguiente función de probabilidad hipergeométrica proporciona <span class="math inline">\(f(x)\)</span>, la probabilidad de tener <span class="math inline">\(x\)</span> éxitos en una muestra de tamaño <span class="math inline">\(n\)</span>.</p>
+<p>En la notación usual en la distribución hipergeométrica, <span class="math inline">\(r\)</span> denota el número de elementos considerados como éxitos que hay en una población de tamaño <span class="math inline">\(N\)</span>, y <span class="math inline">\(N - r\)</span> denota el número de elementos considerados como fracasos que hay en dicha población. La función de probabilidad hipergeométrica se usa para calcular la probabilidad de que en una muestra aleatoria de <span class="math inline">\(n\)</span> elementos, seleccionados sin reemplazo, se tengan <span class="math inline">\(x\)</span> éxitos y <span class="math inline">\(n- x\)</span> fracasos. Para que se presente este resultado, debe tener <span class="math inline">\(x\)</span> éxitos de los <span class="math inline">\(r\)</span> éxitos que hay en la población y <span class="math inline">\(n-x\)</span> fracasos de los <span class="math inline">\(N-r\)</span> fracasos. La siguiente función de probabilidad hipergeométrica proporciona <span class="math inline">\(f(x)\)</span>, la probabilidad de tener <span class="math inline">\(x\)</span> éxitos en una muestra de tamaño <span class="math inline">\(n\)</span>.</p>
 <p><span class="math display">\[
-f(x)=\frac{}{}
+f(x)=\frac{\left(\begin{array}{c}r\\ x \end{array} \right)\left(\begin{array}{c}N-r\\ n-x \end{array} \right)}{\left(\begin{array}{c}N\\ n \end{array} \right)} \ para\ 0\leq x \leq r
 \]</span></p>
+<p>donde: <span class="math inline">\(f(x) =\)</span> probabilidad de <span class="math inline">\(x\)</span> éxitos en <span class="math inline">\(n\)</span> ensayos <span class="math inline">\(n=\)</span> número de ensayos <span class="math inline">\(N=\)</span>número de elementos en la población <span class="math inline">\(r=\)</span> número de elementos en la población considerados como éxitos</p>
+<p>Para ilustrar los cálculos que se emplean al usar esta expresión, consideremos la siguiente aplicación al control de calidad. Una empresa fabrica fusibles que empaca en cajas de 12 unidades cada una. Asumiremos que un inspector selecciona al azar tres de los 12 fusibles de una caja para inspeccionarlos. Si la caja contiene exactamente cinco fusibles defectuosos, ¿cuál es la probabilidad de que el inspector encuentre que uno de los tres fusibles está defectuoso? En esta aplicación <span class="math inline">\(n=3\)</span> y <span class="math inline">\(N=12\)</span>. Si <span class="math inline">\(r=5\)</span> fusibles defectuosos en la caja, la probabilidad de hallar <span class="math inline">\(x=1\)</span> defectuoso es</p>
+<p><span class="math display">\[
+f(1)=\frac{\left(\begin{array}{c}5\\ 1 \end{array} \right)\left(\begin{array}{c}7\\ 2 \end{array} \right)}{\left(\begin{array}{c}12\\ 3 \end{array} \right)}=\frac{\left(\begin{array}{c}5!\\ 1!4! \end{array} \right)\left(\begin{array}{c}7!\\ 2!5! \end{array} \right)}{\left(\begin{array}{c}12!\\ 3!9! \end{array} \right)}=\frac{(5)(21)}{220}=0.4773
+\]</span></p>
+<div id="valor-esperado-y-varianza-hipergeometricas" class="section level3">
+<h3>Valor esperado y varianza hipergeométricas</h3>
+<p><span class="math display">\[
+E(x)=\mu=n \left(\begin{array}{c}r\\ N \end{array} \right)\\
+Var(x)=\sigma^2=n \left(\begin{array}{c}r\\ N \end{array} \right) \left(1- \begin{array}{c}r\\ N \end{array} \right) \left(\begin{array}{c}N-n\\ N-1 \end{array} \right)
+\]</span></p>
+</div>
 </div>
 
 

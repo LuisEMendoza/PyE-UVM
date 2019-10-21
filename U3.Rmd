@@ -200,6 +200,13 @@ k <- seq(0,3,by=1)
 plot(k, dbinom(c(0,1,2,3),3,0.30), type = "b", main = "Distribución binomial", sub = "Ventas", xlab = "éxito", ylab = "Probabilidad", ylim = c(0,0.5))
 ```
 
+### Valor esperado y varianza binomiales
+
+$$
+E(x)=\mu=np\\
+Var(x)=\sigma^2=np(1-p)
+$$
+
 ## Distribución de probabilidad de Poisson
 
 Los experimentos de Poisson deben cumplir con:
@@ -248,12 +255,30 @@ La probabilidad de que no haya ninguna avería importante es $f(0)=6^0e^{-6}/0!=
 
 La distribución de probabilidad hipergeométrica está estrechamente relacionada con la distribución binomial. Pero difieren en dos puntos: en la distribución hipergeométrica los ensayos no son independientes y la probabilidad de éxito varía de ensayo a ensayo.
 
-En la notación usual en la distribución hipergeométrica, $r$ denota el número de elementos considerados como éxitos que hay en una población de tamaño $N$, y $N - r$ denota el número de elementos considerados como fracasos que hay en dicha población. La función de probabilidad hipergeométrica se usa para calcular la probabilidad de que en una muestra aleatoria de $n$ elementos, seleccionados sin reemplazo, se tengan $x$ éxitos y $n- x$ fracasos. Para que se presenteeste resultado, debe tener $x$ éxitos de los $r$ éxitos que hay en la población y $n-x$ fracasos de los $N-r$ fracasos. La siguiente función de probabilidad hipergeométrica proporciona $f(x)$, la probabilidad de tener $x$ éxitos en una muestra de tamaño $n$.
+En la notación usual en la distribución hipergeométrica, $r$ denota el número de elementos considerados como éxitos que hay en una población de tamaño $N$, y $N - r$ denota el número de elementos considerados como fracasos que hay en dicha población. La función de probabilidad hipergeométrica se usa para calcular la probabilidad de que en una muestra aleatoria de $n$ elementos, seleccionados sin reemplazo, se tengan $x$ éxitos y $n- x$ fracasos. Para que se presente este resultado, debe tener $x$ éxitos de los $r$ éxitos que hay en la población y $n-x$ fracasos de los $N-r$ fracasos. La siguiente función de probabilidad hipergeométrica proporciona $f(x)$, la probabilidad de tener $x$ éxitos en una muestra de tamaño $n$.
 
 $$
-f(x)=\frac{}{}
+f(x)=\frac{\left(\begin{array}{c}r\\ x \end{array} \right)\left(\begin{array}{c}N-r\\ n-x \end{array} \right)}{\left(\begin{array}{c}N\\ n \end{array} \right)} \ para\ 0\leq x \leq r
 $$
 
+donde:
+$f(x) =$ probabilidad de $x$ éxitos en $n$ ensayos
+$n=$ número de ensayos
+$N=$número de elementos en la población
+$r=$ número de elementos en la población considerados como éxitos
+
+Para ilustrar los cálculos que se emplean al usar esta expresión, consideremos la siguiente aplicación al control de calidad. Una empresa fabrica fusibles que empaca en cajas de 12 unidades cada una. Asumiremos que un inspector selecciona al azar tres de los 12 fusibles de una caja para inspeccionarlos. Si la caja contiene exactamente cinco fusibles defectuosos, ¿cuál es la probabilidad de que el inspector encuentre que uno de los tres fusibles está defectuoso? En esta aplicación $n=3$ y $N=12$. Si $r=5$ fusibles defectuosos en la caja, la probabilidad de hallar $x=1$ defectuoso es
+
+$$
+f(1)=\frac{\left(\begin{array}{c}5\\ 1 \end{array} \right)\left(\begin{array}{c}7\\ 2 \end{array} \right)}{\left(\begin{array}{c}12\\ 3 \end{array} \right)}=\frac{\left(\begin{array}{c}5!\\ 1!4! \end{array} \right)\left(\begin{array}{c}7!\\ 2!5! \end{array} \right)}{\left(\begin{array}{c}12!\\ 3!9! \end{array} \right)}=\frac{(5)(21)}{220}=0.4773
+$$
+
+### Valor esperado y varianza hipergeométricas
+
+$$
+E(x)=\mu=n \left(\begin{array}{c}r\\ N \end{array} \right)\\
+Var(x)=\sigma^2=n \left(\begin{array}{c}r\\ N \end{array} \right) \left(1- \begin{array}{c}r\\ N \end{array} \right) \left(\begin{array}{c}N-n\\ N-1 \end{array} \right)
+$$
 
 
 
