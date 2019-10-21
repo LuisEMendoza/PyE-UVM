@@ -87,7 +87,7 @@ ventas.coches.df
 Calculamos la sumatoria de la tercera columna:
 
 ```{r}
-sum(ventas.coches.df$xfx)
+sum(ventas.coches.df$xf.x)
 ```
 
 De aquí se desprende que el _valor esperado_ para este caso es $E(x)=1.50$. Esto implica que cabría esperar la venta de 1.50 automóviles diarios. Esto permite realizar el pronóstico de ventas promedio por semana de $5(1.50)=7.5$ o promedio por mes de $30(1.50)=45$.
