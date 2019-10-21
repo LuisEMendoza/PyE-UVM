@@ -1,0 +1,128 @@
+---
+title: "Problemario EP1-U2"
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+---
+
+## Experimentos, reglas de conteo y asignación de probabilidades
+
+1. Un experimento consta de cuatro pasos; para el primer paso hay dos resultados posibles, para el segundo hay cuatro resultados posibles, para el tercer paso hay cuatro posibles y para el cuarto paso hay tres resultados. ¿Cuántos resultados distintos hay para el experimento completo?
+
+2. ¿De cuántas maneras es posible seleccionar tres objetos de un conjunto de siete? Use las letras A, B, C, D, E, F y G para identificar a los objetos y enumere todas las combinaciones diferentes de tres objetos.
+
+3. ¿Cuántas permutaciones de tres objetos se pueden seleccionar de un grupo de siete objetos? Use las letras A, B, C, D, E, F y G para identificar a los objetos y enumere cada una de las permutaciones factibles para los objetos B, D y F.
+
+4. Un experimento que tiene tres resultados es repetido 60 veces y se ve que $E_1$  aparece 25 veces, $E_2$ 23 veces y $E_3$ 12 veces. Asigne probabilidades a los resultados. ¿Qué método empleó?
+
+5. Una persona que toma las decisiones asigna las probabilidades siguientes a los cuatro resultados
+de un experimento: $P(E_1)= 0.10$, $P(E_2)= 0.15$, $P(E3) = 0.45$ y $P(E4)= 0.25$. ¿Son válidas estas asignaciones de probabilidades? Argumente.
+
+6. El muestreo aleatorio simple usa una muestra de tamaño $n$ tomada de una población de tamaño $N$ para obtener datos para hacer inferencias acerca de las características de la población. Suponga que, de una población de 65 cuentas bancarias, desea tomar una muestra de seis cuentas con objeto de tener información acerca de la población. ¿Cuantas muestras diferentes de seis cuentas pueden obtener?
+
+7. El capital de riesgo es una fuerte ayuda para los fondos disponibles de las empresas. De acuerdo con _Venture Economics_, de 2,437 desembolsos en capital de riesgo, 1,343 son de empresas en CDMX, 430 de empresas en Guadalajara, 257 de empresas en Guanajuato y 98 de empresas en Querétaro. Veintisiete por ciento de las empresas que reciben fondos se encuentran en las etapas iniciales de desarrollo y 48% en la etapa de expansión. Suponga que desea tomar en forma aleatoria una de estas empresas para saber cómo son usados los fondos de capital de riesgo.
+
+a. ¿Cuál es la probabilidad de que la empresa que seleccione sea de CDMX?
+b. ¿De que la empresa no sea de ninguno de los lugares citados?
+c. ¿De que la empresa elegida no se encuentre en las etapas iniciales de desarrollo?
+d. Si admite que las empresas en las etapas iniciales de desarrollo tuvieran una distribución homogénea en todo el país, ¿cuántas empresas de Guadalajara que reciben fondos de capital de riesgo se encuentran en las etapas iniciales de desarrollo?
+e. La cantidad total de fondos invertidos es $32.4 mil millones. Estime la cantidad destinada a Querétaro.
+
+8. Se realizó una investigación para saber si los conductores de la zona están usando sus cinturones de seguridad. Los datos muestrales fueron los siguientes.
+
+```{r echo=FALSE}
+cint <- read.table("datasets/023-cinturones.txt", header = T)
+cint
+```
+
+a. ¿Cuál es la probabilidad de que un conductor lleve puesto el cinturón?
+b. ¿Cuál es la probabilidad de que se use el cinturón en las distintas regiones del país? ¿En qué región se usa más el cinturón?
+d. En la muestra, ¿qué proporción de los conductores provenía de cada región del país? ¿En qué región se seleccionaron más conductores? ¿Qué región viene en segundo lugar?
+
+9. Una asociación deportiva realiza un sondeo entre las personas mayores a 6 años respecto de su participación en actividades deportivas. A continuación se presenta el número de participantes en los cinco deportes principales.
+
+```{r echo=FALSE}
+deportes <- read.table("datasets/024-deportes.txt", header = T)
+deportes
+```
+
+a. Estime la probabilidad de que una mujer, elegida al azar, participe en cada una de estas actividades deportivas.
+b. Estime la probabilidad de que un hombre, elegido en forma aleatoria, participe en cada una de estas actividades deportivas.
+c. Estime la probabilidad de que una persona, elegida en forma aleatoria, haga ejercicio caminando.
+d. Suponga que acaba de ver una persona que pasa caminando para hacer ejercicio. ¿Cuál es la probabilidad de que sea mujer?, ¿de que sea hombre?
+
+## Relaciones de probabilidad
+
+10. Suponga que se tiene el espacio muestral $S= \{E_1, E_2, E_3, E_4, E_5, E_6, E_7\}$, donde $E_1, E_2, ..., E_7$ denotan puntos muestrales. La asignación de probabilidades es la siguiente: $P(E_1) =0.05, P(E_2)=0.20, P(E_3) = 0.20, P(E_4) = 0.25, P(E_5)= 0.15, P(E_6) = 0.10$ y $P(E_7) = 0.05$. Sea
+
+$$
+A = \{E_1 , E_4, E_6\}\\
+B =\{E_2 , E_4, E_7\}\\
+C = \{E_2, E_3, E_5, E_7\}
+$$
+
+a. Halle $P(A)$, $P(B)$ y $P(C)$.
+b. Encuentre $A \cup B$ y $P(A \cup B)$.
+c. Halle $A \cap B$ y $P(A \cap B)$.
+d. ¿Los eventos $A$ y $B$ son mutuamente excluyentes?
+e. Halle $B^c$ y $P(B^c)$
+
+11. En una encuesta en la pretemporada de futbol mexicano se preguntó: ¿Este año habrá un equipo del norte o de los «cuatro grandes» en la final de la liguilla? De los 14,278 interrogados, 2,961 dijeron que habría uno del norte, 4,494 señalaron que habría uno de los «cuatro grandes» y 6,823 expresaron que ni de uno ni otro grupo tendría un equipo en la final.
+
+a. ¿Cuál es la probabilidad de que el interrogado responda que ni el primero ni el segundo grupo tendrán un equipo en la final?
+
+b. ¿De que afirme que el norte o «los cuatro grandes» tendrán un equipo en el partido?
+c. Halle la probabilidad de que la respuesta sea que tanto el norte como los «cuatro grandes» tendrán un equipo en el partido final.
+
+12. Cada año hay más estudiantes con buenas calificaciones que desean inscribirse a las mejores universidades del país. Como el número de lugares permanece relativamente estable, algunas universidades rechazan solicitudes de admisión anticipadas. Cierta famosa universidad recibió 2,866 solicitudes para admisión anticipada. De éstas admitió a 1,038 estudiantes, rechazó definitivamente a 859 estudiantes y dejó a 969 para el plazo de admisión normal. Esta universidad admitió a cerca de 18% de los solicitantes en el plazo normal para hacer un total (número de admisiones anticipadas más número de admisiones normales) de 2,375 estudiantes. Sean los eventos: $E$, un estudiante que solicita admisión anticipada es admitido; $R$ rechazado definitivamente y $D$ dejado para el plazo normal de admisión, sea $A$ el evento de que un estudiante es admitido en el plazo normal.
+
+a. Use los datos para estimar $P(E)$, $P(R)$ y $P(D)$.
+
+b. ¿Son mutuamente excluyentes los eventos $E$ y $D$? Halle $P(E \cup D)$.
+
+c. De los 2,375 estudiantes admitidos en esta universidad, ¿cuál es la probabilidad de que un estudiante tomado en forma aleatoria haya tenido una admisión anticipada?
+
+d. Suponga que un estudiante solicita admisión anticipada en esta universidad. ¿Cuál es la probabilidad de que el estudiante tenga una admisión anticipada o en el periodo normal de admisión?
+
+## Probabilidad condicional
+
+13. Suponga dos eventos, $A$ y $B$, y que $P(A)= 0.50$, $P(B) = 0.60$ y $P(A \cap B) = 0.40$.
+a. Halle $P(A | B)$.
+b. Halle $P(B | A)$.
+c. ¿A y B son independientes? ¿Por qué sí o por qué no?
+
+14. La tabla siguiente muestra las probabilidades de los distintos tipos sanguíneo en la población.
+
+```{r echo=FALSE}
+blood <- read.table("datasets/025-sangre.txt", header = T)
+blood
+```
+
+a. ¿Cuál es la probabilidad de que una persona tenga sangre tipo $A$?
+
+b. ¿De que tenga sangre $Rh+$?
+
+c. ¿Cuál es la probabilidad de que una persona sea $Rh-$ dado que la persona tiene sangre tipo $O$?
+
+d. ¿Cuál es la probabilidad de que una persona tenga sangre tipo $B$ dado que es $Rh-$?
+
+e. ¿Cuál es la probabilidad de que en un matrimonio, los dos sean $Rh-$?
+
+f. ¿Cuál es la probabilidad de que en un matrimonio, los dos tengan sangre $AB$?
+
+## Teorema de Bayes
+
+15. Una empresa de consultoría presenta una oferta para un gran proyecto de investigación. El director de la firma piensa inicialmente que tiene 50% de posibilidades de obtener el proyecto. Sin embargo, mas tarde, el organismo al que se le hizo la oferta pide más información sobre la oferta. Por experiencia se sabe que en 75% de las ofertas aceptadas y en 40% de las ofertas no aceptadas, este organismo solicita más información.
+
+a. ¿Cuál es la probabilidad previa de que la oferta sea aceptada (es decir, antes de la solicitud dé más información)?
+
+b. ¿Cuál es la probabilidad condicional de que se solicite más información dado que la oferta será finalmente aceptada?
+
+c. Calcule la probabilidad posterior de que la oferta sea aceptada dado que se solicitó más información.
+
+16. En los automóviles pequeños el rendimiento de la gasolina es mayor, pero no son tan seguros como los coches grandes. Los automóviles pequeños constituyen 18% de los vehículos en circulación, pero en accidentes con automóviles pequeños se registraron 11,898 victimas mortales en uno de los últimos años. Suponga que la probabilidad de que un automóvil pequeño tenga un accidente es 0.18. La probabilidad de que en un accidente con un automóvil pequeño haya una víctima mortal es 0.128 y la probabilidad de que haya una víctima mortal si el automóvil no es pequeño es 0.05. Usted se entera de un accidente en el que hubo una víctima mortal. ¿Cuál es la probabilidad de que el accidente lo haya tenido un automóvil pequeño?
+
+
+
+

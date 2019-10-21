@@ -1,0 +1,6 @@
+Actividad  	Hombres  	Mujeres 
+Ciclismo  	22.2  	21.0 
+Acampar  	25.6  	24.3 
+Caminar  	28.7  	57.7 
+Gimnasio 	 20.4  	24.4 
+Nadar  	26.4  	34.4 
