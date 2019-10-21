@@ -76,7 +76,7 @@ $$
 E(x)=\mu=\sum xf(x)
 $$
 
-Para el caso de las ventas de coches, tomamos la columna $x$ y a multiplicamos por la columna $f(x)$. Obtendremos la columna $xf(x)$:
+Para el caso de las ventas de coches, tomamos la columna $x$ y la multiplicamos por la columna $f(x)$. Obtendremos la columna $xf(x)$:
 
 ```{r}
 ventas.coches.ve <- ventas.coches$x*ventas.coches$f.x
