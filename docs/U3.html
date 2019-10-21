@@ -12,7 +12,7 @@
 
 
 
-<title>Distribuciones de probabilidad</title>
+<title>Distribuciones de probabilidad discretas</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -397,12 +397,216 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Distribuciones de probabilidad</h1>
+<h1 class="title toc-ignore">Distribuciones de probabilidad discretas</h1>
 
 </div>
 
 
-<p>En construcción.</p>
+<p>En esta unidad se abordarán los conceptos de variable discreta aleatoria y distribuciones de probabilidad discretas, en este caso, tres: distribución binomial, de Poisson e hipergeométrica.</p>
+<div id="variables-aleatorias" class="section level2">
+<h2>Variables aleatorias</h2>
+<p>Una variable aleatoria proporciona un medio para describir los resultados experimentales empleando valores numéricos. Las variables aleatorias deben tomar valores numéricos. En efecto, una variable aleatoria asocia un valor numérico a cada uno de los resultados experimentales. El valor numérico de la variable aleatoria depende del resultado del experimento. Puede ser discreta o continua, depende del tipo de valores numéricos que asuma.</p>
+<div id="variable-aleatoria-discreta" class="section level3">
+<h3>Variable aleatoria discreta</h3>
+<p>Es toda variable aleatoria cuyo valor pertenece a un conjunto finito de valores enteros, e incluso infinito de dichos valores. No puede asumir valores que contengan decimales. Un buen ejemplo sería el número de estudiantes en el salón de clases o la cantidad de coches aparcados en el estacionamiento. No tiene sentido hablar de medio coche o tres cuartas partes de estudiante.</p>
+</div>
+<div id="distribuciones-de-probabilidad-discreta" class="section level3">
+<h3>Distribuciones de probabilidad discreta</h3>
+<p>Describen cómo se distribuyen las probabilidades entre los valores de la variable aleatoria discreta <span class="math inline">\(x\)</span>, la distribución de probabilidad está definida por una función de probabilidad, denotada por <span class="math inline">\(f(x)\)</span>. La función de probabilidad da la probabilidad de cada valor de la variable aleatoria.</p>
+<p>Como ejemplo de una variable aleatoria discreta y de su distribución de probabilidad, considere las ventas de automóviles en una agencia automotriz. Durante los últimos 300 días de operación, los datos de ventas muestran que hubo 54 días en los que no se vendió ningún automóvil, 117 días en los que se vendió 1 automóvil, 72 días en los que se vendieron 2 automóviles, 42 días en los que se vendieron 3, 12 días en los que se vendieron 4 y 3 días en los que se vendieron 5. Suponga que considera el experimento de seleccionar un día de operación en DiCarlo Motors y se define la variable aleatoria de interés como <span class="math inline">\(x=\)</span> número de automóviles vendidos en un día. En cuanto a la notación de funciones de probabilidad, ésta se escribe como <span class="math inline">\(f(x)\)</span>. Así, siguiendo lo ya aprendido sobre frecuencias relativas, <span class="math inline">\(f(0)=54/300=0.18\)</span>. Esto último implica que la probabilidad de vender cero automóviles al día es del 0.18. Continuando con los demás valores, podemos obtener las demás probabilidades <span class="math inline">\(f(1)\)</span>, <span class="math inline">\(f(2)\)</span>, <span class="math inline">\(f(3)\)</span>, <span class="math inline">\(f(4)\)</span> y <span class="math inline">\(f(5)\)</span>.</p>
+<pre class="r"><code>ventas.coches &lt;- read.table(&quot;datasets/026-ventas_coches.txt&quot;, header = T)
+ventas.coches.df &lt;- as.data.frame(ventas.coches)
+ventas.coches.df</code></pre>
+<pre><code>##   x  f.x
+## 1 0 0.18
+## 2 1 0.39
+## 3 2 0.24
+## 4 3 0.14
+## 5 4 0.04
+## 6 5 0.01</code></pre>
+<p>Comprobemos que la sumatoria de las probabilidades es igual a 1:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(x\)</span></th>
+<th align="center"><span class="math inline">\(f(x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">0.18</td>
+</tr>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">0.39</td>
+</tr>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">0.24</td>
+</tr>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">0.14</td>
+</tr>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">0.04</td>
+</tr>
+<tr class="even">
+<td align="center">5</td>
+<td align="center">0.01</td>
+</tr>
+<tr class="odd">
+<td align="center">-</td>
+<td align="center"><em>Total</em>=1.00</td>
+</tr>
+</tbody>
+</table>
+<p>Contando con las probabilidades calculadas, es sencillo dar respuesta a ciertas preguntas que permitirían un mejor conocimiento del comportamiento de las ventas de coches. Por ejemplo, ¿cuántos coches es más probable vender por día? ¿qué tan probable es vender a lo mucho dos coches al día? ¿cuál es la probabilidad de vender tres autos o más por día? ¿y de vender al menos dos autos?</p>
+<p>Recordemos que al elaborar distribuciones de frecuencia, debe satisfacerse lo siguiente:</p>
+<p><span class="math display">\[
+f(x)\geq 0\\
+\sum f(x)=1
+\]</span></p>
+<p>Podemos representar la distribución por medio de una gráfica de barras, con algunos parámetros adicionales:</p>
+<pre class="r"><code>barplot(ventas.coches$f.x, names.arg = ventas.coches$x, 
+        xlab = &quot;Autos vendidos por día&quot;, ylab = &quot;Probabilidad&quot;, 
+        ylim = c(0,0.5))</code></pre>
+<p><img src="U3_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>El ejemplo más sencillo de una distribución de probabilidad discreta dada mediante una fórmula es la <strong>distribución de probabilidad uniforme discreta</strong>. Su función de probabilidad está definida por la ecuación:</p>
+<p><span class="math display">\[
+f(x)=\frac{1}{n}
+\]</span></p>
+<p>Donde: <span class="math inline">\(n=\)</span> número de valores que puede tomar la variable aleatoria. El caso típico es el lanzamiento de un dado.</p>
+</div>
+</div>
+<div id="valor-esperado-y-varianzas" class="section level2">
+<h2>Valor esperado y varianzas</h2>
+<div id="valor-esperado" class="section level3">
+<h3>Valor esperado</h3>
+<p>Es una medida de la localización central de la variable aleatoria. Se define como:</p>
+<p><span class="math display">\[
+E(x)=\mu=\sum xf(x)
+\]</span></p>
+<p>Para el caso de las ventas de coches, tomamos la columna <span class="math inline">\(x\)</span> y a multiplicamos por la columna <span class="math inline">\(f(x)\)</span>. Obtendremos la columna <span class="math inline">\(xf(x)\)</span>:</p>
+<pre class="r"><code>ventas.coches.ve &lt;- ventas.coches$x*ventas.coches$f.x
+ventas.coches.df$xf.x &lt;- ventas.coches.ve
+ventas.coches.df</code></pre>
+<pre><code>##   x  f.x xf.x
+## 1 0 0.18 0.00
+## 2 1 0.39 0.39
+## 3 2 0.24 0.48
+## 4 3 0.14 0.42
+## 5 4 0.04 0.16
+## 6 5 0.01 0.05</code></pre>
+<p>Calculamos la sumatoria de la tercera columna:</p>
+<pre class="r"><code>sum(ventas.coches.df$xfx)</code></pre>
+<pre><code>## [1] 0</code></pre>
+<p>De aquí se desprende que el <em>valor esperado</em> para este caso es <span class="math inline">\(E(x)=1.50\)</span>. Esto implica que cabría esperar la venta de 1.50 automóviles diarios. Esto permite realizar el pronóstico de ventas promedio por semana de <span class="math inline">\(5(1.50)=7.5\)</span> o promedio por mes de <span class="math inline">\(30(1.50)=45\)</span>.</p>
+</div>
+<div id="varianza" class="section level3">
+<h3>Varianza</h3>
+<p>Así como antes se utilizó la varianza como medida de dispersión, en cuanto a distribuciones de probabilidad es útil para expresar la variabilidad de los valores de la variable aleatoria. La fórmula para expresarla sería:</p>
+<p><span class="math display">\[
+Var(x)=\sigma ^2=\sum (x-\mu)^2f(x)
+\]</span></p>
+<p>A continuación mostramos la tabla de cálculos de la varianza:</p>
+<pre class="r"><code>ventas.coches$R &lt;- ventas.coches$x-1.50
+ventas.coches$R2 &lt;- ventas.coches$R^2
+ventas.coches$R2f.x &lt;- ventas.coches$R2*ventas.coches$f.x
+ventas.coches</code></pre>
+<pre><code>##   x  f.x    R    R2  R2f.x
+## 1 0 0.18 -1.5  2.25 0.4050
+## 2 1 0.39 -0.5  0.25 0.0975
+## 3 2 0.24  0.5  0.25 0.0600
+## 4 3 0.14  1.5  2.25 0.3150
+## 5 4 0.04  2.5  6.25 0.2500
+## 6 5 0.01  3.5 12.25 0.1225</code></pre>
+<p>Ahora calculamos la varianza obteniendo la sumatoria de la última columna:</p>
+<pre class="r"><code>sum(ventas.coches$R2f.x)</code></pre>
+<pre><code>## [1] 1.25</code></pre>
+<p>Y para terminar, calculamos la desviación estándar a partir de la varianza:</p>
+<pre class="r"><code>sqrt(1.25)</code></pre>
+<pre><code>## [1] 1.118034</code></pre>
+</div>
+</div>
+<div id="distribucion-de-probabilidad-binomial" class="section level2">
+<h2>Distribución de probabilidad binomial</h2>
+<p>La distribución de probabilidad binomial es una distribución de probabilidad que tiene muchas aplicaciones. Está relacionada con un experimento de pasos múltiples al que se le llama experimento binomial.</p>
+<div id="experimento-binomial" class="section level3">
+<h3>Experimento binomial</h3>
+<p>Tiene las siguientes propiedades:</p>
+<ol style="list-style-type: decimal">
+<li><p>El experimento consiste en una serie de n ensayos idénticos.</p></li>
+<li><p>En cada ensayo hay dos resultados posibles. A uno de estos resultados se le llama éxito y al otro se le llama fracaso.</p></li>
+<li><p>La probabilidad de éxito, que se denota p, no cambia de un ensayo a otro. Por ende, la probabilidad de fracaso, que se denota 1  p, tampoco cambia de un ensayo a otro.</p></li>
+<li><p>Los ensayos son independientes.</p></li>
+</ol>
+<p>Considere el ejemplo siguiente. De acuerdo con la experiencia, el gerente de una tienda de ropa estima que la probabilidad de que un cliente realice una compra es 0.30. ¿Cuál es la probabilidad de que dos de los próximos tres clientes realicen una compra?</p>
+<p>La función de la probabilidad binomial es:</p>
+<p><span class="math display">\[
+f(x)=\left(\begin{array}{c}n\\ x \end{array} \right)p^x(1-p)^{n-x}
+\]</span> Donde: <span class="math inline">\(f(x)=\)</span> probabilidad de <span class="math inline">\(x\)</span> éxitos en <span class="math inline">\(n\)</span> ensayos <span class="math inline">\(n=\)</span> número de ensayos <span class="math inline">\(p=\)</span> probabilidad de un éxito en cualquiera de los ensayos <span class="math inline">\(1-p=\)</span> probabilidad de un fracaso en cualquiera de los ensayos</p>
+<p>Recordemos además que:</p>
+<p><span class="math display">\[
+\left(\begin{array}{c}n\\ x \end{array} \right)=\frac{n!}{x!(n-x)!}
+\]</span></p>
+<p>Para nuestro caso, la probabilidad de que ningún cliente compre se calcula mediante:</p>
+<p><span class="math display">\[
+f(0)=\frac{3!}{0!(3-0)!}(0.30)^0(1-0.30)^{3-0}\\
+f(0)=\frac{6}{1(6)}(1)(0.70)^3\\
+f(0)=(1)(0.343)=0.3430
+\]</span></p>
+<p>Podemos calcular los posibles resultados en <em>R</em> con el siguiente comando. Primero se escribe los éxitos esperados, luego el tamaño del experimento (intentos) y al final la probabilidad de éxito:</p>
+<pre class="r"><code>db0 &lt;- dbinom(0, 3, 0.30)
+db1 &lt;- dbinom(1, 3, 0.30)
+db2 &lt;- dbinom(2, 3, 0.30)
+db3 &lt;- dbinom(3, 3, 0.30)
+db0</code></pre>
+<pre><code>## [1] 0.343</code></pre>
+<pre class="r"><code>db1</code></pre>
+<pre><code>## [1] 0.441</code></pre>
+<pre class="r"><code>db2</code></pre>
+<pre><code>## [1] 0.189</code></pre>
+<pre class="r"><code>db3</code></pre>
+<pre><code>## [1] 0.027</code></pre>
+<p>Comprobemos que la suma de todas estas probabilidades es igual a 1:</p>
+<pre class="r"><code>db0+db1+db2+db3</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p>Lo anterior también pudimos hacerlo con:</p>
+<pre class="r"><code>sum(dbinom(c(0,1,2,3), 3, 0.30))</code></pre>
+<pre><code>## [1] 1</code></pre>
+<p>E incluso existe un tercer método:</p>
+<pre class="r"><code>pbinom(3, 3, 0.30)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>k &lt;- seq(0,3,by=1)
+plot(k, dbinom(c(0,1,2,3),3,0.30), type = &quot;b&quot;, main = &quot;Distribución binomial&quot;, sub = &quot;Ventas&quot;, xlab = &quot;éxito&quot;, ylab = &quot;Probabilidad&quot;, ylim = c(0,0.5))</code></pre>
+<p><img src="U3_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+</div>
+<div id="distribucion-de-probabilidad-de-poisson" class="section level2">
+<h2>Distribución de probabilidad de Poisson</h2>
+<p>Los experimentos de Poisson deben cumplir con:</p>
+<ol style="list-style-type: decimal">
+<li>La probabilidad de ocurrencia es la misma para cualesquiera dos intervalos de la misma magnitud.</li>
+<li>La ocurrencia o no-ocurrencia en cualquier intervalo es independiente de la ocurrencia o no-ocurrencia en cualquier otro intervalo.</li>
+</ol>
+<p>La función de probabilidad de Poisson se define por:</p>
+<p><span class="math display">\[
+f(x)=\frac{\mu^xe^{-\mu}}{x!}
+\]</span></p>
+<p>Donde: <span class="math inline">\(f(x)=\)</span> probabilidad de <span class="math inline">\(x\)</span> ocurrencias en un intervalo <span class="math inline">\(\mu=\)</span> valor esperado o número medio de ocurrencias en un intervalo <span class="math inline">\(e=2.71828\)</span></p>
+<p>Antes de considerar un ejemplo para ver cómo se usa la distribución de Poisson, observemos que el número de ocurrencias <span class="math inline">\(x\)</span>, no tiene límite superior. Ésta es una variable aleatoria discreta que toma los valores de una sucesión infinita de números <span class="math inline">\((x= 0, 1, 2, . . . )\)</span>.</p>
+<p>Supongamos que deseamos saber el número de llegadas, en un lapso de 15 minutos, a la rampa del cajero automático de un banco. Si se puede suponer que la probabilidad de llegada de los automóviles es la misma en cualesquiera dos lapsos de la misma duración y si la llegada o no–llegada de un automóvil en cualquier lapso es independiente de la llegada o no–llegada de un automóvil en cualquier otro lapso, se puede aplicar la función de probabilidad de Poisson. Dichas condiciones se satisfacen y en un análisis de datos pasados encuentra que el número promedio de automóviles que llegan en un lapso de 15 minutos es 10.</p>
+<p>Aquí la variable aleatoria es <span class="math inline">\(x =\)</span> número de automóviles que llegan en un lapso de 15 minutos. Si la administración desea saber la probabilidad de que lleguen exactamente cinco automóviles en 15 minutos, <span class="math inline">\(x= 5\)</span>, y se obtiene:</p>
+<p><span class="math display">\[
+f(5)=\frac{10^5e^{-10}}{5!}= 0.0378
+\]</span></p>
+<p>Lo calculamos en <em>R</em> así:</p>
+<pre class="r"><code>dpois(5, 10)</code></pre>
+<pre><code>## [1] 0.03783327</code></pre>
+</div>
 
 
 
