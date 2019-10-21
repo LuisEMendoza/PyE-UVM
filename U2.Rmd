@@ -1,5 +1,5 @@
 ---
-title: "Probabilidad"
+title: "Introducción a la Probabilidad"
 output:
   html_document:
     toc: true
@@ -159,7 +159,7 @@ Permite conocer el número de resultados experimentales cuando el propio experim
 
 > El número de combinaciones de $N$ objetos tomados de $n$ en $n$ es:
 $$
-C_N^n= \left( \begin{array}{c}N\\ n \end{array}  \right) = \frac{N!}{n!(N-n)!}\\
+C_n^n= \left( \begin{array}{c}N\\ n \end{array}  \right) = \frac{N!}{n!(N-n)!}\\
 \ \\
 Donde: N!=N(N-1)(N-2)...(2)(1)\\
 n!=n(n-1)(n-2)...(2)(1)\\
@@ -180,7 +180,7 @@ Para ilustrar la regla de conteo para combinaciones, veamos el caso de un proces
 Hagamos $N=6$, por ser el conjunto mayor y $n=2$ por ser la submuestra, se tiene que:
 
 $$
-C_2^5=\left(\begin{array}{c}6\\ 2 \end{array} \right)=\frac{6!}{2!(6-2)!}=\frac{720}{48}=15
+C_2^6=\left(\begin{array}{c}6\\ 2 \end{array} \right)=\frac{6!}{2!(6-2)!}=\frac{720}{48}=15
 $$
 
 En _R_ lo calculamos así:
@@ -206,8 +206,8 @@ C_6^{53}=\left(\begin{array}{c}53\\6 \end{array} \right)=\frac{53!}{6!(53-6)!}=2
 $$
 
 ```{r}
-d <- combn(53,6) #asignemos el resultado a una variable 'c'
-ncol(d) #solo queremos que nos cuente las columnas y nos lo diga
+c <- combn(53,6) #asignemos el resultado a una variable 'c'
+ncol(c) #solo queremos que nos cuente las columnas y nos lo diga
 ```
 
 Existen casi 23 millones de boletos. Significa que una persona que compra un solo boleto tiene una posibilidad en casi 23 millones de ganar.
@@ -223,7 +223,7 @@ $$
 Retomando el ejemplo del inspector y las seis piezas, veamos cuántas posibles permutaciones (o combinaciones con orden relavante) pueden salir:
 
 $$
-P_2^5=\frac{6!}{(6-2)!}=\frac{6!}{3!}=\frac{720}{6}=120
+P_2^6=\frac{6!}{(6-2)!}=\frac{6!}{4!}=\frac{720}{24}=30
 $$
 
 ### Asignación de probabilidades  
@@ -325,7 +325,7 @@ Ya que no existe una intersección como tal, por ende no es necesario eliminarla
 ## Probabilidad condicional  
 En ocasiones sucede que en la probabilidad de un evento cualquiera $A$ influye el hecho de que otro evento $B$, relacionados ambos, ya ha ocurrido. Esto implica que el cálculo de la probabilidad de $A$ $P(A)$ se mira afectado y ésta es diferente. A esta condición se le conoce como __probabilidad condicional__ y se denota por $P(A|B)$. Se está considerando la probabilidad de $A$ dada la condición de que $B$ ya ha ocurrido. Se lee _probabilidad de $A$ dado $B$_.
 
-Como ejemplo de la probabilidad condicional, considere el caso de las promociones de los agentes de policía de una determinada ciudad. La fuerza policiaca consta de 1200 agentes, 960 hombres y 240 mujeres. De éstos, en los últimos dos años, fueron promovidos 340. En la tabla se muestra cómo quedaron repartidas estas promociones entre los hombres y mujeres. 
+Como ejemplo de la probabilidad condicional, considere el caso de las promociones de los agentes de policía de una determinada ciudad. La fuerza policiaca consta de 1200 agentes, 960 hombres y 240 mujeres. De éstos, en los últimos dos años, fueron promovidos 324. En la tabla se muestra cómo quedaron repartidas estas promociones entre los hombres y mujeres. 
 
 -|Hombre|Mujer|Total
 _Promovido_|288|36|324
@@ -370,7 +370,7 @@ $$
 P(A|M)=\frac{P(A\cap M)}{P(M)}=\frac{0.03}{0.20}=0.15
 $$
 
-Podemos darnos cuenta que la probabilidad de ser ascendido dado que se es mujer es la mitad de la probabilidad para el hombre. Esto no prueba cabalmente que exista discriminación, pero sí confirma las sospechas y el argumento de las mujeres. Dentro del punto de vista probabilístico, no existe justicia en los ascensos.
+Podemos darnos cuenta que la probabilidad de ser ascendido dado que se es mujer es la mitad de la probabilidad para el hombre. Esto no prueba cabalmente que exista discriminación, pero sí confirma las sospechas y el argumento de las mujeres. Dentro de lo que cabe, no existe justicia en los ascensos.
 
 ### Eventos independientes  
 En el caso estudiado anteriormente se concluyó que a la probabilidad de ser promovido le afecta si el sujeto en cuestión es hombre o mujer. Más en términos probabilísticos, como $P(A|M) \neq P(A) $, los eventos $A$ y $M$ son eventos dependientes.
@@ -682,8 +682,9 @@ Podemos realizar los cálculos necesarios para obtener las probabilidades poster
 
 Para el ejemplo anterior quedaría así:
 
-Eventos $A_i$|Probabilidades previas $P(A_i)$|Probabilidades condicionales $P(B|A_i)$|Probabilidades conjuntas $P(A_i\cap B)$|Probabilidades posteriores $P(A_i|B) $
+Eventos $A_i$|Probabilidades previas $P(A_i)$|Probabilidades condicionales $P(B|A_i)$|Probabilidades conjuntas $P(A_i\cap B)$|Probabilidades posteriores $P(A_i|B)$
 :---:|:---:|:---:|:---:|:---:
 $A_1$|$0.65$|$0.02$|$0.0130$|$0.0130/0.0305=0.4262$
-$A_2$|$0.35$|$0.05$|$0.1750$|$0.01750/0.0305=0.5738$
+$A_2$|$0.35$|$0.05$|$0.0175$|$0.01750/0.0305=0.5738$
 -|$Total = 1$|-|$P(B)=0.0305$|$Total=1$
+
