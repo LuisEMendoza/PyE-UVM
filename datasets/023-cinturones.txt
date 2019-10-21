@@ -1,0 +1,5 @@
+Región  	Sí  	No 
+Norte  	148 	 52 
+Oeste  	162 	 54 
+Sur  	296 	 74 
+Este  	252 	 48 

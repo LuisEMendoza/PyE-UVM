@@ -12,7 +12,7 @@
 
 
 
-<title>Probabilidad</title>
+<title>Introducción a la Probabilidad</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -374,6 +374,9 @@ div.tocify {
     <li>
       <a href="U2.html">Unidad 2</a>
     </li>
+    <li>
+      <a href="U3.html">Unidad 3</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -386,6 +389,9 @@ div.tocify {
     <li class="dropdown-header">Problemarios</li>
     <li>
       <a href="U1-P.html">Primer Parcial</a>
+    </li>
+    <li>
+      <a href="U2-P.html">Segundo Parcial</a>
     </li>
   </ul>
 </li>
@@ -401,7 +407,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Probabilidad</h1>
+<h1 class="title toc-ignore">Introducción a la Probabilidad</h1>
 
 </div>
 
@@ -437,13 +443,13 @@ S_{monedas}=\{(A,A),(A,B),(B,A),(B,B) \}
 </blockquote>
 <p>Si retomamos el caso anterior, lanzar la primera moneda implica <span class="math inline">\((n_1=2)\)</span> y la segunda <span class="math inline">\((n_2=2)\)</span>, siguiendo la regla de conteo <span class="math inline">\((2)(2)=4\)</span>, así que tenemos cuatro posibles resultados. Ahora bien, si por ejemplo lanzamos tres monedas, tendremos <span class="math inline">\((2)(2)(2)=8\)</span> resultados experimentales.</p>
 <p>Un diagrama que puede apoyar en la elaboración de reglas de conteo es el <strong>diagrama de árbol</strong>, el cual se muestra a continuación para el problema del lanzamiento de dos monedas.</p>
-<div id="htmlwidget-9217e747ade97beba61b" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9217e747ade97beba61b">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"M\"]\na\n\nnode [fillcolor = white,\n      label = \"A\"]\nb d f\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c95ecdcb9d2b9cedc81c" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c95ecdcb9d2b9cedc81c">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"M\"]\na\n\nnode [fillcolor = white,\n      label = \"A\"]\nb d f\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>La secuencia va de izquierda a derecha, donde el primer paso representa los posibles resultados del primer lanzamiento y el segundo al de la segunda moneda. En cada paso los dos posibles resultados son <span class="math inline">\((A,B)\)</span>, y podemos notar que a cada resultado del primer paso le corresponden otros dos posibles resultados: los del segundo lanzamiento. Cada uno de los extremos de la derecha se corresponde con un resultado experimental. Cada ruta, saliendo desde el inicio hasta cada una de las ramificaciones se corresponde con una secuencia única de resultados experimentales.</p>
 <p>Veamos ahora otro ejemplo donde podemos aplicar la regla de conteo con experimentos de pasos múltiples. Una empresa ha comenzado un proyecto que busca incrementar la capacidad de generación de una de sus plantas. El proyecto ha sido dividido en dos etapas: diseño y construcción. A los administrativos no les resultó posible definir el tiempo exacto requerido en cada una de las tareas que conforman las dos etapas, debido a que es la primera vez que se enfrentan a ese tipo de proyectos. Por analogía con otros proyectos, han estimado que la duración de la etapa de diseño podría durar dos, tres o cuatro meses; mientras que la construcción tardaría seis, siete u ocho meses. Los directivos han establecido como meta la terminación del proyecto en diez meses.</p>
 <p>Apliquemos la regla de conteo: existen tres posibles resultados en el diseño y otros tres posibles resultados en la construcción: <span class="math inline">\((3)(3)=9\)</span>. Describiremos los posibles resutados con una notación de dos números, el primero para la etapa 1 y el segundo para la 2. Así, <span class="math inline">\((2,6)\)</span> implica que el diseño tardó dos meses y la construcción, seis; dando una duración de ocho meses. Mostremos todo el espacio muestral con el diagrama de árbol pertinente:</p>
-<div id="htmlwidget-c5fab0e46c6d7f7b5d08" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c5fab0e46c6d7f7b5d08">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = UD]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"D\"]\na\n\nnode [fillcolor = white,\n      label = \"2\"]\nb\n\nnode [fillcolor = white,\n      label = \"3\"]\nc\n\nnode [fillcolor = white,\n      label = \"4\"]\nd\n\nnode [fillcolor = white,\n      label = \"6\"]\ne h k\n\nnode [fillcolor = white,\n      label = \"7\"]\nf i l\n\nnode [fillcolor = white,\n      label = \"8\"]\ng j m\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c d}\nb -> {e f g}\nc -> {h i j}\nd -> {k l m}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-bc2587b4619c369e93ef" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bc2587b4619c369e93ef">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = UD]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"D\"]\na\n\nnode [fillcolor = white,\n      label = \"2\"]\nb\n\nnode [fillcolor = white,\n      label = \"3\"]\nc\n\nnode [fillcolor = white,\n      label = \"4\"]\nd\n\nnode [fillcolor = white,\n      label = \"6\"]\ne h k\n\nnode [fillcolor = white,\n      label = \"7\"]\nf i l\n\nnode [fillcolor = white,\n      label = \"8\"]\ng j m\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c d}\nb -> {e f g}\nc -> {h i j}\nd -> {k l m}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>Como podemos observar, hay nueve combinaciones o duraciones para este proyecto. Tabulémoslas:</p>
 <table>
 <thead>
@@ -498,7 +504,7 @@ S_{monedas}=\{(A,A),(A,B),(B,A),(B,B) \}
 <p>Permite conocer el número de resultados experimentales cuando el propio experimento consiste en seleccionar <span class="math inline">\(n\)</span> objetos de un conjunto usualmente mayor de <span class="math inline">\(N\)</span> objetos.</p>
 <blockquote>
 <p>El número de combinaciones de <span class="math inline">\(N\)</span> objetos tomados de <span class="math inline">\(n\)</span> en <span class="math inline">\(n\)</span> es: <span class="math display">\[
-C_N^n= \left( \begin{array}{c}N\\ n \end{array}  \right) = \frac{N!}{n!(N-n)!}\\
+C_n^n= \left( \begin{array}{c}N\\ n \end{array}  \right) = \frac{N!}{n!(N-n)!}\\
 \ \\
 Donde: N!=N(N-1)(N-2)...(2)(1)\\
 n!=n(n-1)(n-2)...(2)(1)\\
@@ -513,7 +519,7 @@ n!=n(n-1)(n-2)...(2)(1)\\
 <p>Para ilustrar la regla de conteo para combinaciones, veamos el caso de un proceso en el que se quiere inspeccionar la calidad. Se toma una muestra de seis piezas, de las cuales se revisarán dos para comprobar que no tengan defectos. A partir de esas seis piezas, ¿cuántas combinaciones de dos partes pueden existir?</p>
 <p>Hagamos <span class="math inline">\(N=6\)</span>, por ser el conjunto mayor y <span class="math inline">\(n=2\)</span> por ser la submuestra, se tiene que:</p>
 <p><span class="math display">\[
-C_2^5=\left(\begin{array}{c}6\\ 2 \end{array} \right)=\frac{6!}{2!(6-2)!}=\frac{720}{48}=15
+C_2^6=\left(\begin{array}{c}6\\ 2 \end{array} \right)=\frac{6!}{2!(6-2)!}=\frac{720}{48}=15
 \]</span></p>
 <p>En <em>R</em> lo calculamos así:</p>
 <pre class="r"><code>combn(6,2) #ponemos &#39;N&#39; primero y enseguida &#39;n&#39;</code></pre>
@@ -532,8 +538,8 @@ ncol(c) #solo queremos que nos cuente las columnas y nos lo diga</code></pre>
 <p><span class="math display">\[
 C_6^{53}=\left(\begin{array}{c}53\\6 \end{array} \right)=\frac{53!}{6!(53-6)!}=22&#39;957,480
 \]</span></p>
-<pre class="r"><code>d &lt;- combn(53,6) #asignemos el resultado a una variable &#39;c&#39;
-ncol(d) #solo queremos que nos cuente las columnas y nos lo diga</code></pre>
+<pre class="r"><code>c &lt;- combn(53,6) #asignemos el resultado a una variable &#39;c&#39;
+ncol(c) #solo queremos que nos cuente las columnas y nos lo diga</code></pre>
 <pre><code>## [1] 22957480</code></pre>
 <p>Existen casi 23 millones de boletos. Significa que una persona que compra un solo boleto tiene una posibilidad en casi 23 millones de ganar. Dicha regla permite calcular el número de resultados cuando se seleccionan <span class="math inline">\(n\)</span> objetos</p>
 </div>
@@ -546,7 +552,7 @@ P_n^N=n!\left(\begin{array}{c}N\\ n \end{array} \right)=\frac{N!}{(N-n)!}
 </blockquote>
 <p>Retomando el ejemplo del inspector y las seis piezas, veamos cuántas posibles permutaciones (o combinaciones con orden relavante) pueden salir:</p>
 <p><span class="math display">\[
-P_2^5=\frac{6!}{(6-2)!}=\frac{6!}{3!}=\frac{720}{6}=120
+P_2^6=\frac{6!}{(6-2)!}=\frac{6!}{4!}=\frac{720}{24}=30
 \]</span></p>
 </div>
 </div>
@@ -662,7 +668,7 @@ P(S\cup T)=P(S)+P(T)
 <div id="probabilidad-condicional" class="section level2">
 <h2>Probabilidad condicional</h2>
 <p>En ocasiones sucede que en la probabilidad de un evento cualquiera <span class="math inline">\(A\)</span> influye el hecho de que otro evento <span class="math inline">\(B\)</span>, relacionados ambos, ya ha ocurrido. Esto implica que el cálculo de la probabilidad de <span class="math inline">\(A\)</span> <span class="math inline">\(P(A)\)</span> se mira afectado y ésta es diferente. A esta condición se le conoce como <strong>probabilidad condicional</strong> y se denota por <span class="math inline">\(P(A|B)\)</span>. Se está considerando la probabilidad de <span class="math inline">\(A\)</span> dada la condición de que <span class="math inline">\(B\)</span> ya ha ocurrido. Se lee <em>probabilidad de <span class="math inline">\(A\)</span> dado <span class="math inline">\(B\)</span></em>.</p>
-<p>Como ejemplo de la probabilidad condicional, considere el caso de las promociones de los agentes de policía de una determinada ciudad. La fuerza policiaca consta de 1200 agentes, 960 hombres y 240 mujeres. De éstos, en los últimos dos años, fueron promovidos 340. En la tabla se muestra cómo quedaron repartidas estas promociones entre los hombres y mujeres.</p>
+<p>Como ejemplo de la probabilidad condicional, considere el caso de las promociones de los agentes de policía de una determinada ciudad. La fuerza policiaca consta de 1200 agentes, 960 hombres y 240 mujeres. De éstos, en los últimos dos años, fueron promovidos 324. En la tabla se muestra cómo quedaron repartidas estas promociones entre los hombres y mujeres.</p>
 <p>-|Hombre|Mujer|Total <em>Promovido</em>|288|36|324 <em>No promovido</em>|672|204|876 <em>Total</em>|960|240|1200</p>
 <p>Después de analizar el registro de las promociones, un comité femenil protestó, ya que habían sido promovidos 288 agentes hombres, frente a sólo 36 mujeres. Los directivos de la fuerza policiaca argumentaron que el número de mujeres promovidas no se debía a una discriminación, sino a que el número de mujeres que son agentes de policía es una cantidad pequeña. Ahora veamos cómo emplear la probabilidad condicional para analizar esta acusación de discriminación.</p>
 <div id="solucion" class="section level4">
@@ -690,7 +696,7 @@ P(A|H)=\frac{P(A\cap H)}{P(H)}=\frac{0.24}{0.80}=0.30
 <p><span class="math display">\[
 P(A|M)=\frac{P(A\cap M)}{P(M)}=\frac{0.03}{0.20}=0.15
 \]</span></p>
-<p>Podemos darnos cuenta que la probabilidad de ser ascendido dado que se es mujer es la mitad de la probabilidad para el hombre. Esto no prueba cabalmente que exista discriminación, pero sí confirma las sospechas y el argumento de las mujeres. Dentro del punto de vista probabilístico, no existe justicia en los ascensos.</p>
+<p>Podemos darnos cuenta que la probabilidad de ser ascendido dado que se es mujer es la mitad de la probabilidad para el hombre. Esto no prueba cabalmente que exista discriminación, pero sí confirma las sospechas y el argumento de las mujeres. Dentro de lo que cabe, no existe justicia en los ascensos.</p>
 </div>
 <div id="eventos-independientes" class="section level3">
 <h3>Eventos independientes</h3>
@@ -724,8 +730,8 @@ P(A\cap B)=P(A)\cdot P(B)=(0.60)(0.60)=0.36
 <div id="teorema-de-bayes" class="section level2">
 <h2>Teorema de Bayes</h2>
 <p>En la vida real se repite muy seguido el hecho de que las probabilidades involucran eventos relacionados entre sí. Y en muchas ocasiones, mientras se va recolectando información, es necesario modificar las <strong>probabilidades previas</strong>, obteniendo <strong>probabilidades posteriores</strong>. El <strong>Teorema de Bayes</strong> nos permite obtener dichas probabilidades modificadas, después de haber utilizado información proveniente de otras fuentes. El flujo de trabajo quedaría entonces así:</p>
-<div id="htmlwidget-8eebe6746649a1c98252" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8eebe6746649a1c98252">{"x":{"diagram":"\ngraph LR\nA[Probabilidades <br/> previas]-->B[Nueva<br/> información]\nB-->C[Teorema <br/>de Bayes]\nC-->D[Probabilidades <br/>posteriores]\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-baebbeb6f513d0c8dd42" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-baebbeb6f513d0c8dd42">{"x":{"diagram":"\ngraph LR\nA[Probabilidades <br/> previas]-->B[Nueva<br/> información]\nB-->C[Teorema <br/>de Bayes]\nC-->D[Probabilidades <br/>posteriores]\n"},"evals":[],"jsHooks":[]}</script>
 <p>Consideremos una fábrica que compra piezas de dos proveedores. Sea <span class="math inline">\(A_1\)</span> el evento en el que la pieza proviene del proveedor 1 y <span class="math inline">\(A_2\)</span> el evento en el que la pieza proviene del proveedor 2. De las piezas que compra la fábrica, 65% proviene del proveedor 1 y 35% restante proviene del proveedor 2. Por tanto, si toma una pieza aleatoriamente, le asignará las probabilidades previas <span class="math inline">\(P(A_1) = 0.65\)</span> y <span class="math inline">\(P(A_2) = 0.35\)</span>.</p>
 <p><span class="math display">\[
 Probabilidades\ previas\\
@@ -744,8 +750,8 @@ P(C|A_1)=0.02\\
 P(C|A_2)=0.05
 \]</span></p>
 <p>Representemos los posibles resultados, comenzamos con un árbol de probabilidades:</p>
-<div id="htmlwidget-3e3b2282d1bca567c914" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3e3b2282d1bca567c914">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"X\"]\na\n\nnode [fillcolor = white,\n      label = \"P1\"]\nb \n\nnode [fillcolor = white,\n      label = \"P2\"]\nc\n\nnode [fillcolor = white\n      label = \"S\"]\nd f\n\nnode [fillcolor = white\n      label = \"C\"]\ne g\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-32179be15cea4e2965ee" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-32179be15cea4e2965ee">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"X\"]\na\n\nnode [fillcolor = white,\n      label = \"P1\"]\nb \n\nnode [fillcolor = white,\n      label = \"P2\"]\nc\n\nnode [fillcolor = white\n      label = \"S\"]\nd f\n\nnode [fillcolor = white\n      label = \"C\"]\ne g\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>Como podemos observar, tenemos cuatro posibles resultados. Pero la cuestión ahora es, ya que la pieza es defectuosa, ¿cuál es la probabilidad de que viene del primer proveedor? O bien, ¿del segundo?</p>
 <p>Para ello, debemos recordar la ley de la multiplicación. La probabilidad condicional de recibir una pieza defectuosa del primer proveedor es del 2%. Por lo tanto, la probabilidad de tener una pieza con defecto y que sea del primer proveedor es del:</p>
 <p><span class="math display">\[
@@ -756,6 +762,19 @@ P(C\cap A_1)=P(A_1)\cdot P(C|A_1)=(0.65)(0.02)=0.0130
 P(C\cap A_2)=P(A_2)\cdot P(C|A_2)=(0.35)(0.05)=0.0175
 \]</span></p>
 <p>Puede realizarse lo mismo con diagrama de árbol más complejo, en el que se colocan las probabilidades y se calculan en el mismo. El cálculo queda mejor comprendido de esa manera:</p>
+<pre><code>## Warning: Prefixing `UQ()` with the rlang namespace is deprecated as of rlang 0.3.0.
+## Please use the non-prefixed form or `!!` instead.
+## 
+##   # Bad:
+##   rlang::expr(mean(rlang::UQ(var) * 100))
+## 
+##   # Ok:
+##   rlang::expr(mean(UQ(var) * 100))
+## 
+##   # Good:
+##   rlang::expr(mean(!!var * 100))
+## 
+## This warning is displayed once per session.</code></pre>
 <p><img src="images/021-bayes.png" /></p>
 <p>En este árbol podemos distinguir las <strong>probabilidades conjuntas</strong> como los valores que tienen las ramas.</p>
 <p><span class="math display">\[
@@ -828,7 +847,7 @@ P(A_i|B)=\frac{P(A_i)\cdot P(B|A_i)}{P(A_1)\cdot P(B|A_1)+P(A_2)\cdot P(B|A_2)+.
 <th align="center">Probabilidades previas <span class="math inline">\(P(A_i)\)</span></th>
 <th align="center">Probabilidades condicionales <span class="math inline">\(P(B|A_i)\)</span></th>
 <th align="center">Probabilidades conjuntas <span class="math inline">\(P(A_i\cap B)\)</span></th>
-<th align="center">Probabilidades posteriores $P(A_i</th>
+<th align="center">Probabilidades posteriores <span class="math inline">\(P(A_i|B)\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -843,7 +862,7 @@ P(A_i|B)=\frac{P(A_i)\cdot P(B|A_i)}{P(A_1)\cdot P(B|A_1)+P(A_2)\cdot P(B|A_2)+.
 <td align="center"><span class="math inline">\(A_2\)</span></td>
 <td align="center"><span class="math inline">\(0.35\)</span></td>
 <td align="center"><span class="math inline">\(0.05\)</span></td>
-<td align="center"><span class="math inline">\(0.1750\)</span></td>
+<td align="center"><span class="math inline">\(0.0175\)</span></td>
 <td align="center"><span class="math inline">\(0.01750/0.0305=0.5738\)</span></td>
 </tr>
 <tr class="odd">

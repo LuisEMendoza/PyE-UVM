@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Problemario EP1-U2</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Inicio</a>
+</li>
+<li>
+  <a href="Ayuda.html">¿Cómo utilizar estos apuntes?</a>
+</li>
+<li>
+  <a href="GitHub_en_RStudio.html">Git y GitHub en RStudio</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Contenido
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Unidades</li>
+    <li>
+      <a href="U1.html">Unidad 1</a>
+    </li>
+    <li>
+      <a href="U2.html">Unidad 2</a>
+    </li>
+    <li>
+      <a href="U3.html">Unidad 3</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Problemarios y tareas
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Problemarios</li>
+    <li>
+      <a href="U1-P.html">Primer Parcial</a>
+    </li>
+    <li>
+      <a href="U2-P.html">Segundo Parcial</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Problemario EP1-U2</h1>
+
+</div>
+
+
+<div id="experimentos-reglas-de-conteo-y-asignacion-de-probabilidades" class="section level2">
+<h2>Experimentos, reglas de conteo y asignación de probabilidades</h2>
+<ol style="list-style-type: decimal">
+<li><p>Un experimento consta de cuatro pasos; para el primer paso hay dos resultados posibles, para el segundo hay cuatro resultados posibles, para el tercer paso hay cuatro posibles y para el cuarto paso hay tres resultados. ¿Cuántos resultados distintos hay para el experimento completo?</p></li>
+<li><p>¿De cuántas maneras es posible seleccionar tres objetos de un conjunto de siete? Use las letras A, B, C, D, E, F y G para identificar a los objetos y enumere todas las combinaciones diferentes de tres objetos.</p></li>
+<li><p>¿Cuántas permutaciones de tres objetos se pueden seleccionar de un grupo de siete objetos? Use las letras A, B, C, D, E, F y G para identificar a los objetos y enumere cada una de las permutaciones factibles para los objetos B, D y F.</p></li>
+<li><p>Un experimento que tiene tres resultados es repetido 60 veces y se ve que <span class="math inline">\(E_1\)</span> aparece 25 veces, <span class="math inline">\(E_2\)</span> 23 veces y <span class="math inline">\(E_3\)</span> 12 veces. Asigne probabilidades a los resultados. ¿Qué método empleó?</p></li>
+<li><p>Una persona que toma las decisiones asigna las probabilidades siguientes a los cuatro resultados de un experimento: <span class="math inline">\(P(E_1)= 0.10\)</span>, <span class="math inline">\(P(E_2)= 0.15\)</span>, <span class="math inline">\(P(E3) = 0.45\)</span> y <span class="math inline">\(P(E4)= 0.25\)</span>. ¿Son válidas estas asignaciones de probabilidades? Argumente.</p></li>
+<li><p>El muestreo aleatorio simple usa una muestra de tamaño <span class="math inline">\(n\)</span> tomada de una población de tamaño <span class="math inline">\(N\)</span> para obtener datos para hacer inferencias acerca de las características de la población. Suponga que, de una población de 65 cuentas bancarias, desea tomar una muestra de seis cuentas con objeto de tener información acerca de la población. ¿Cuantas muestras diferentes de seis cuentas pueden obtener?</p></li>
+<li><p>El capital de riesgo es una fuerte ayuda para los fondos disponibles de las empresas. De acuerdo con <em>Venture Economics</em>, de 2,437 desembolsos en capital de riesgo, 1,343 son de empresas en CDMX, 430 de empresas en Guadalajara, 257 de empresas en Guanajuato y 98 de empresas en Querétaro. Veintisiete por ciento de las empresas que reciben fondos se encuentran en las etapas iniciales de desarrollo y 48% en la etapa de expansión. Suponga que desea tomar en forma aleatoria una de estas empresas para saber cómo son usados los fondos de capital de riesgo.</p></li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>¿Cuál es la probabilidad de que la empresa que seleccione sea de CDMX?</li>
+<li>¿De que la empresa no sea de ninguno de los lugares citados?</li>
+<li>¿De que la empresa elegida no se encuentre en las etapas iniciales de desarrollo?</li>
+<li>Si admite que las empresas en las etapas iniciales de desarrollo tuvieran una distribución homogénea en todo el país, ¿cuántas empresas de Guadalajara que reciben fondos de capital de riesgo se encuentran en las etapas iniciales de desarrollo?</li>
+<li>La cantidad total de fondos invertidos es $32.4 mil millones. Estime la cantidad destinada a Querétaro.</li>
+</ol>
+<ol start="8" style="list-style-type: decimal">
+<li>Se realizó una investigación para saber si los conductores de la zona están usando sus cinturones de seguridad. Los datos muestrales fueron los siguientes.</li>
+</ol>
+<pre><code>##   Región  Sí No
+## 1  Norte 148 52
+## 2  Oeste 162 54
+## 3    Sur 296 74
+## 4   Este 252 48</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>¿Cuál es la probabilidad de que un conductor lleve puesto el cinturón?</li>
+<li>¿Cuál es la probabilidad de que se use el cinturón en las distintas regiones del país? ¿En qué región se usa más el cinturón?</li>
+<li>En la muestra, ¿qué proporción de los conductores provenía de cada región del país? ¿En qué región se seleccionaron más conductores? ¿Qué región viene en segundo lugar?</li>
+</ol>
+<ol start="9" style="list-style-type: decimal">
+<li>Una asociación deportiva realiza un sondeo entre las personas mayores a 6 años respecto de su participación en actividades deportivas. A continuación se presenta el número de participantes en los cinco deportes principales.</li>
+</ol>
+<pre><code>##   Actividad Hombres Mujeres
+## 1  Ciclismo    22.2    21.0
+## 2   Acampar    25.6    24.3
+## 3   Caminar    28.7    57.7
+## 4  Gimnasio    20.4    24.4
+## 5     Nadar    26.4    34.4</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li>Estime la probabilidad de que una mujer, elegida al azar, participe en cada una de estas actividades deportivas.</li>
+<li>Estime la probabilidad de que un hombre, elegido en forma aleatoria, participe en cada una de estas actividades deportivas.</li>
+<li>Estime la probabilidad de que una persona, elegida en forma aleatoria, haga ejercicio caminando.</li>
+<li>Suponga que acaba de ver una persona que pasa caminando para hacer ejercicio. ¿Cuál es la probabilidad de que sea mujer?, ¿de que sea hombre?</li>
+</ol>
+</div>
+<div id="relaciones-de-probabilidad" class="section level2">
+<h2>Relaciones de probabilidad</h2>
+<ol start="10" style="list-style-type: decimal">
+<li>Suponga que se tiene el espacio muestral <span class="math inline">\(S= \{E_1, E_2, E_3, E_4, E_5, E_6, E_7\}\)</span>, donde <span class="math inline">\(E_1, E_2, ..., E_7\)</span> denotan puntos muestrales. La asignación de probabilidades es la siguiente: <span class="math inline">\(P(E_1) =0.05, P(E_2)=0.20, P(E_3) = 0.20, P(E_4) = 0.25, P(E_5)= 0.15, P(E_6) = 0.10\)</span> y <span class="math inline">\(P(E_7) = 0.05\)</span>. Sea</li>
+</ol>
+<p><span class="math display">\[
+A = \{E_1 , E_4, E_6\}\\
+B =\{E_2 , E_4, E_7\}\\
+C = \{E_2, E_3, E_5, E_7\}
+\]</span></p>
+<ol style="list-style-type: lower-alpha">
+<li>Halle <span class="math inline">\(P(A)\)</span>, <span class="math inline">\(P(B)\)</span> y <span class="math inline">\(P(C)\)</span>.</li>
+<li>Encuentre <span class="math inline">\(A \cup B\)</span> y <span class="math inline">\(P(A \cup B)\)</span>.</li>
+<li>Halle <span class="math inline">\(A \cap B\)</span> y <span class="math inline">\(P(A \cap B)\)</span>.</li>
+<li>¿Los eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son mutuamente excluyentes?</li>
+<li>Halle <span class="math inline">\(B^c\)</span> y <span class="math inline">\(P(B^c)\)</span></li>
+</ol>
+<ol start="11" style="list-style-type: decimal">
+<li>En una encuesta en la pretemporada de futbol mexicano se preguntó: ¿Este año habrá un equipo del norte o de los «cuatro grandes» en la final de la liguilla? De los 14,278 interrogados, 2,961 dijeron que habría uno del norte, 4,494 señalaron que habría uno de los «cuatro grandes» y 6,823 expresaron que ni de uno ni otro grupo tendría un equipo en la final.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>¿Cuál es la probabilidad de que el interrogado responda que ni el primero ni el segundo grupo tendrán un equipo en la final?</p></li>
+<li><p>¿De que afirme que el norte o «los cuatro grandes» tendrán un equipo en el partido?</p></li>
+<li><p>Halle la probabilidad de que la respuesta sea que tanto el norte como los «cuatro grandes» tendrán un equipo en el partido final.</p></li>
+</ol>
+<ol start="12" style="list-style-type: decimal">
+<li>Cada año hay más estudiantes con buenas calificaciones que desean inscribirse a las mejores universidades del país. Como el número de lugares permanece relativamente estable, algunas universidades rechazan solicitudes de admisión anticipadas. Cierta famosa universidad recibió 2,866 solicitudes para admisión anticipada. De éstas admitió a 1,038 estudiantes, rechazó definitivamente a 859 estudiantes y dejó a 969 para el plazo de admisión normal. Esta universidad admitió a cerca de 18% de los solicitantes en el plazo normal para hacer un total (número de admisiones anticipadas más número de admisiones normales) de 2,375 estudiantes. Sean los eventos: <span class="math inline">\(E\)</span>, un estudiante que solicita admisión anticipada es admitido; <span class="math inline">\(R\)</span> rechazado definitivamente y <span class="math inline">\(D\)</span> dejado para el plazo normal de admisión, sea <span class="math inline">\(A\)</span> el evento de que un estudiante es admitido en el plazo normal.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>Use los datos para estimar <span class="math inline">\(P(E)\)</span>, <span class="math inline">\(P(R)\)</span> y <span class="math inline">\(P(D)\)</span>.</p></li>
+<li><p>¿Son mutuamente excluyentes los eventos <span class="math inline">\(E\)</span> y <span class="math inline">\(D\)</span>? Halle <span class="math inline">\(P(E \cup D)\)</span>.</p></li>
+<li><p>De los 2,375 estudiantes admitidos en esta universidad, ¿cuál es la probabilidad de que un estudiante tomado en forma aleatoria haya tenido una admisión anticipada?</p></li>
+<li><p>Suponga que un estudiante solicita admisión anticipada en esta universidad. ¿Cuál es la probabilidad de que el estudiante tenga una admisión anticipada o en el periodo normal de admisión?</p></li>
+</ol>
+</div>
+<div id="probabilidad-condicional" class="section level2">
+<h2>Probabilidad condicional</h2>
+<ol start="13" style="list-style-type: decimal">
+<li>Suponga dos eventos, <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, y que <span class="math inline">\(P(A)= 0.50\)</span>, <span class="math inline">\(P(B) = 0.60\)</span> y <span class="math inline">\(P(A \cap B) = 0.40\)</span>.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li>Halle <span class="math inline">\(P(A | B)\)</span>.</li>
+<li>Halle <span class="math inline">\(P(B | A)\)</span>.</li>
+<li>¿A y B son independientes? ¿Por qué sí o por qué no?</li>
+</ol>
+<ol start="14" style="list-style-type: decimal">
+<li>La tabla siguiente muestra las probabilidades de los distintos tipos sanguíneo en la población.</li>
+</ol>
+<pre><code>##    X.    A    B   AB    O
+## 1 Rh+ 0.34 0.09 0.04 0.38
+## 2 Rh- 0.06 0.02 0.01 0.06</code></pre>
+<ol style="list-style-type: lower-alpha">
+<li><p>¿Cuál es la probabilidad de que una persona tenga sangre tipo <span class="math inline">\(A\)</span>?</p></li>
+<li><p>¿De que tenga sangre <span class="math inline">\(Rh+\)</span>?</p></li>
+<li><p>¿Cuál es la probabilidad de que una persona sea <span class="math inline">\(Rh-\)</span> dado que la persona tiene sangre tipo <span class="math inline">\(O\)</span>?</p></li>
+<li><p>¿Cuál es la probabilidad de que una persona tenga sangre tipo <span class="math inline">\(B\)</span> dado que es <span class="math inline">\(Rh-\)</span>?</p></li>
+<li><p>¿Cuál es la probabilidad de que en un matrimonio, los dos sean <span class="math inline">\(Rh-\)</span>?</p></li>
+<li><p>¿Cuál es la probabilidad de que en un matrimonio, los dos tengan sangre <span class="math inline">\(AB\)</span>?</p></li>
+</ol>
+</div>
+<div id="teorema-de-bayes" class="section level2">
+<h2>Teorema de Bayes</h2>
+<ol start="15" style="list-style-type: decimal">
+<li>Una empresa de consultoría presenta una oferta para un gran proyecto de investigación. El director de la firma piensa inicialmente que tiene 50% de posibilidades de obtener el proyecto. Sin embargo, mas tarde, el organismo al que se le hizo la oferta pide más información sobre la oferta. Por experiencia se sabe que en 75% de las ofertas aceptadas y en 40% de las ofertas no aceptadas, este organismo solicita más información.</li>
+</ol>
+<ol style="list-style-type: lower-alpha">
+<li><p>¿Cuál es la probabilidad previa de que la oferta sea aceptada (es decir, antes de la solicitud dé más información)?</p></li>
+<li><p>¿Cuál es la probabilidad condicional de que se solicite más información dado que la oferta será finalmente aceptada?</p></li>
+<li><p>Calcule la probabilidad posterior de que la oferta sea aceptada dado que se solicitó más información.</p></li>
+</ol>
+<ol start="16" style="list-style-type: decimal">
+<li>En los automóviles pequeños el rendimiento de la gasolina es mayor, pero no son tan seguros como los coches grandes. Los automóviles pequeños constituyen 18% de los vehículos en circulación, pero en accidentes con automóviles pequeños se registraron 11,898 victimas mortales en uno de los últimos años. Suponga que la probabilidad de que un automóvil pequeño tenga un accidente es 0.18. La probabilidad de que en un accidente con un automóvil pequeño haya una víctima mortal es 0.128 y la probabilidad de que haya una víctima mortal si el automóvil no es pequeño es 0.05. Usted se entera de un accidente en el que hubo una víctima mortal. ¿Cuál es la probabilidad de que el accidente lo haya tenido un automóvil pequeño?</li>
+</ol>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

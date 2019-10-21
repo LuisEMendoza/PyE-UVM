@@ -15,11 +15,15 @@
           href: U1.html
         - text: "Unidad 2"
           href: U2.html
+        - text: "Unidad 3"
+          href: U3.html
     - text: "Problemarios y tareas" 
       menu:
         - text: "Problemarios"
         - text: "Primer Parcial"
           href: U1-P.html
+        - text: "Segundo Parcial"
+          href: U2-P.html
   output:
     html_document:
         theme: cosmo
