@@ -407,11 +407,11 @@ Es muy importante definir los objetos que se constituyen en una <strong>poblaci�
 Sin embargo, es muy complicado poder realizar censos, ya sea por escasez de tiempo o de dinero. Por ello, se prefiere seleccionar un grupo pequeño de elementos de la población de manera aleatoria, para tener lo que se conoce como una <strong>muestra</strong>.<br />
 Cabe mencionar que en ocasiones, no nos interesan todas las características de los objetos de una población. Por ejemplo, puede que hayamos reunido a 50 personas para analizar su estado de salud. Probablemente debamos preguntarles su edad, su peso, su estatura y tomarles medidas de su temperatura o presión arterial; sin embargo, no tiene sentido preguntarles qué equipo de futbol es su favorito o a qué hora pasan su noticiero predilecto. Lo que necesitamos son sus características.<br />
 A las características podemos dividirlas en dos: <strong>categóricas</strong> y <strong>numéricas</strong>. Las primeras son etiquetas, como los nombres o la marca de un coche. Las segundas pueden expresarse con números. Definamos una <strong>variable</strong> como cualquier característica cuyo valor puede cambiar de un sujeto a otro.</p>
-<div id="ramas-de-la-estadistica" class="section level2">
+<div id="ramas-de-la-estadística" class="section level2">
 <h2>Ramas de la Estadística</h2>
 <p>Dividiremos la Estadística en dos ramas por el momento. En primera instancia, es necesario recopilar, organizar, resumir y presentar los datos; de esto se encarga la <strong>Estadística Descriptiva</strong>. Por otro lado, se desea extender las propiedades de la muestra hacia la población, mediante inferencias que permitan comprender mejor su comportamiento e incluso pronosticarlo; esa es la función de la <strong>Estadística Inferencial</strong>.</p>
 </div>
-<div id="estadistica-descriptiva-en-accion" class="section level2">
+<div id="estadística-descriptiva-en-acción" class="section level2">
 <h2>Estadística Descriptiva en acción</h2>
 <p>La tragedia que sufrió el transbordador espacial Challenger y sus astronautas en 1986 condujo a varios estudios para investigar las razones de la falla de la misión. La atención se enfocó de inmediato en el comportamiento de los sellos anulares del motor del cohete. He aquí datos derivados de observaciones en x = temperatura del sello anular (°F) en cada encendido de prueba o lanzamiento del motor del cohete del transbordador (Presidential Commission on the Space Shuttle Challenger Accident, Vol. 1, 1986: 129-131). Los datos se presentan en una sola columna para dejar en claro que se refieren a datos univariables. Cabe mencionar que los datos se encuentran en la carpeta <em>datasets</em> del repositorio de la asignatura en <a href="https://github.com/LuisEMendoza/PyE-UVM/tree/master/datasets">GitHub</a>.</p>
 <pre><code>##  [1] 84 49 61 40 83 67 45 66 70 69 80 58 68 60 67 72 73 70 57 63 70 78 52
@@ -433,7 +433,7 @@ A las características podemos dividirlas en dos: <strong>categóricas</strong> 
 <p><img src="U1_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Lo anterior, así como la tabla donde se muestran los datos, fue realizado con un <em>software</em> estadístico: <strong>R</strong>.</p>
 </div>
-<div id="representaciones-graficas-y-tabulares" class="section level2">
+<div id="representaciones-gráficas-y-tabulares" class="section level2">
 <h2>Representaciones gráficas y tabulares</h2>
 <p>Es importante mencionar que existe una notación que debemos considerar: el número de observaciones presentes en un conjunto de datos dado, se denotará por la letra <em>n</em>. También, cada observación se denotará por la letra <em>x</em> acompañada de un subíndice que no tiene ninguna función más que identificar los datos. Es decir, representar una observación como <span class="math inline">\(x_1\)</span> no implica que esta sea la más pequeña. Con esto en mente, pasamos a revisar las representaciones gráficas de los datos.</p>
 <div id="diagrama-de-tallo-y-hojas" class="section level3">
@@ -925,7 +925,7 @@ mediana2</code></pre>
 </div>
 </div>
 </div>
-<div id="medidas-de-dispersion" class="section level2">
+<div id="medidas-de-dispersión" class="section level2">
 <h2>Medidas de dispersión</h2>
 <p>En ocasiones queremos saber qué tan dispersos se encuentran los valores de una muestra entre sí o con respecto a la media. Para ello utilizamos las medidas de dispersión. Usualmente son tres: el <strong>rango</strong>, la <strong>varianza</strong> y la <strong>desviación estándar</strong>.</p>
 <div id="el-rango" class="section level3">
@@ -947,7 +947,7 @@ s^2=\frac{\sum_{i=1}^n (x_i-\bar x)^2}{n-1}
 <pre class="r"><code>var(u)</code></pre>
 <pre><code>## [1] 497.2727</code></pre>
 </div>
-<div id="la-desviacion-estandar" class="section level3">
+<div id="la-desviación-estándar" class="section level3">
 <h3>La desviación estándar</h3>
 <p>No es más que la raíz cuadrada de la varianza. Se obtiene directamente con:</p>
 <pre class="r"><code>sd(u)</code></pre>
@@ -1001,7 +1001,7 @@ datos2</code></pre>
 </div>
 <div id="medidas-de-forma" class="section level2">
 <h2>Medidas de forma</h2>
-<div id="graficas-de-caja" class="section level3">
+<div id="gráficas-de-caja" class="section level3">
 <h3>Gráficas de caja</h3>
 <p>Un gráfico que ha demostrado ser muy útil en la representación efectiva de los datos es precisamente el diagrama de caja. Este se construye a partir de medidas que son <em>resistentes</em> a los datos extremos, es decir, la mediana y los cuartiles. Las características que nos muestra el gráfico son el centro, la dispersión, la asimetría y la presencia -o ausencia- de observaciones extremas. Para ello es necesario encontrar los siguientes números: - Observaciones más pequeñas - Primer cuartil - Mediana - Tercer cuartil - Observaciones más grandes</p>
 <p>La distancia existente entre cuartiles es lo que se conoce como <strong>rango intercuartílico</strong>, y es representado por la altura de la caja dibujada si el es vertical (por lo tanto, se corresponde a la anchura si el eje fuera horizontal).</p>
@@ -1036,7 +1036,7 @@ us</code></pre>
 <p><img src="U1_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 </div>
 </div>
-<div id="graficas-de-caja-con-datos-atipicos" class="section level3">
+<div id="gráficas-de-caja-con-datos-atípicos" class="section level3">
 <h3>Gráficas de caja con datos atípicos</h3>
 <p>La presencia de datos extremos puede ser contraproducente. Por lo tanto no es deseable tomarlos en cuenta si se quiere asumir que la distribución de los datos es <em>normal</em>. Por ello, debemos indicar explícitamente la presencia de datos atípicos, de los cuales podemos distinguir entre moderados y extremos. Para esto, debemos calcular el rango intercuartílico (<span class="math inline">\(f_s\)</span>) y multiplicarlo por <span class="math inline">\(1.5\)</span>. Cualquier dato que se encuentre a más de <span class="math inline">\(1.5f_s\)</span> del extremo de la caja se considera atípico o apartado. De entre estos valores apartados, asumiremos que todos son moderados con excepción de los que se encuentren a más de <span class="math inline">\(3f_s\)</span> del cuartil más cercano.</p>
 <div id="ejercicio-con-datos-apartados" class="section level4">
@@ -1087,9 +1087,9 @@ limix</code></pre>
 </div>
 </div>
 </div>
-<div id="analisis-de-dispersion" class="section level2">
+<div id="análisis-de-dispersión" class="section level2">
 <h2>Análisis de dispersión</h2>
-<div id="introduccion" class="section level3">
+<div id="introducción" class="section level3">
 <h3>Introducción</h3>
 <p>En el mundo de las matemáticas estamos muy acostumbrados a relacionar un par de variables de manera <em>determinística</em>, es decir, sabemos que cuando modificamos una variable, esta hará que otra cambie. Un buen ejemplo de esto es cuando llenamos el tanque de gasolina, sabemos que si compramos 20 litros, nos costará veinte veces el precio de un litro. Puesto que el litro se encuentra, supongamos a <span class="math inline">\(\$20.00\)</span>, entonces pagaremos veinte veces ese precio: <span class="math inline">\(\$400.00\)</span> en total. Sin embargo, no siempre las relaciones entre variables son así de sencillas. Habrá pares de variables cuyo comportamiento sea solo en parte explicado por su contraparte. Volviendo al caso de la gasolina, con esos veinte litros que cargamos podremos recorrer una cantidad de kilómetros. ¿Podemos saber exactamente cuántos? No es fácil, ya que el rendimiento de la gasolina depende no solamente de la distancia, si no de otros factores, como por ejemplo el tipo de conducción, el terreno recorrido, las condiciones atmosféricas, etc. Es este segundo tipo de relación entre variables el que nos interesa: <em>una relación no determinística</em>. Para estudiar estas relaciones contamos con el análisis de regresión, que es parte de la Estadística.</p>
 <p>Sabemos que existe una relación determinística entre dos variables que se puede representar mediante la expresión:</p>
@@ -1148,7 +1148,7 @@ Y=\beta_0+\beta_1x+\epsilon
 <p>Aquí se observa precisamente lo que se mencionaba nateriormente, la distancia que existe entre cada punto y la línea que representa la relación lineal entre ambas variables:</p>
 </div>
 </div>
-<div id="metodo-de-minimos-cuadrados" class="section level3">
+<div id="método-de-mínimos-cuadrados" class="section level3">
 <h3>Método de mínimos cuadrados</h3>
 <p>Se remite a los tiempos del matemático alemán <strong>Gauss</strong>, y consiste de las siguientes fórmulas para la obtención de la ecuación de regresión:</p>
 <p><span class="math display">\[
@@ -1277,7 +1277,7 @@ rl</code></pre>
 <p>Lo anterior implica que para un peso de 109, la porosidad esperada sería de 20.2976. Podemos sustituir tantos valores de <span class="math inline">\(x\)</span> como queramos, pero no se recomienda que sean muy diferentes a los que se encuentran originalmente en la tabla de datos.</p>
 </div>
 </div>
-<div id="coeficiente-de-determinacion" class="section level3">
+<div id="coeficiente-de-determinación" class="section level3">
 <h3>Coeficiente de determinación</h3>
 <p>Mientras el valor de <span class="math inline">\(b_1\)</span> nos indica si la relación entre las dos variables es positiva, no tenemos de momento una medida que nos cuantifique qué tan fuerte es dicha relación. Para ello contamos con el coeficiente de determinación, el cual podemos obtenr a partir del coeficiente de correlación, fácil de calcular en <em>R</em>:</p>
 <pre class="r"><code>coef.cor &lt;- cor(peso, porosidad)

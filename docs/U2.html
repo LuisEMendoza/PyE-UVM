@@ -26,7 +26,7 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <script src="site_libs/viz-0.3/viz.js"></script>
 <link href="site_libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="site_libs/grViz-binding-1.0.1/grViz.js"></script>
@@ -413,7 +413,7 @@ div.tocify {
 
 
 <p>La probabilidad es una medida numérica de la posibilidad de que ocurra un evento. Por tanto, las probabilidades son una medida del grado de incertidumbre asociado con cada uno de los eventos previamente enunciados. Si cuenta con las probabilidades, tiene la capacidad de determinar la posibilidad de ocurrencia que tiene cada evento. La probabilidad sempre se expresa en término decimales o porcentajes, siendo 0 el valor de probabilidad de algo improbable y 1 (o 100%) el de algo seguro.</p>
-<div id="experimentos-reglas-de-conteo-y-asignacion-de-probabilidades" class="section level2">
+<div id="experimentos-reglas-de-conteo-y-asignación-de-probabilidades" class="section level2">
 <h2>Experimentos, reglas de conteo y asignación de probabilidades</h2>
 <p>Un <strong>experimento</strong> es un proceso que arroja resultados definidos y en cada una de las ocasiones que se lleve a cabo generará solo uno de todos los posibles resultados. Podemos definir como experimentos:</p>
 <p><strong>Arrojar una moneda</strong>, cuyos posibles resultados son <em>águila</em> o <em>sello</em>. <strong>Inspeccionar una pieza</strong>, con defecto o sin defecto. <strong>Realizar una llamada de ventas</strong>, se consigue la compra o no. <strong>Jugar un partido de futbol</strong>, se gana, se empata o se pierde.</p>
@@ -432,7 +432,7 @@ S_{dado}=\{1,2,3,4,5,6\}
 <div id="reglas-de-conteo" class="section level3">
 <h3>Reglas de conteo</h3>
 <p>Veamos cómo se identifican y cuentan los resultados experimentales. Existen tres reglas de conteo que son muy utilizadas.</p>
-<div id="experimentos-de-pasos-multiples" class="section level4">
+<div id="experimentos-de-pasos-múltiples" class="section level4">
 <h4>Experimentos de pasos múltiples</h4>
 <p>Considere un experimento que consiste en lanzar dos monedas. ¿Cuántos posibles resultados tiene este experimento? Tomemos en cuenta que primero se lanza una moneda y enseguida la otra. Si denotamos <em>águila</em> con <span class="math inline">\(A\)</span> y <em>sello</em> con <span class="math inline">\(B\)</span>, entonces los posibles resultados son:</p>
 <p><span class="math display">\[
@@ -443,13 +443,13 @@ S_{monedas}=\{(A,A),(A,B),(B,A),(B,B) \}
 </blockquote>
 <p>Si retomamos el caso anterior, lanzar la primera moneda implica <span class="math inline">\((n_1=2)\)</span> y la segunda <span class="math inline">\((n_2=2)\)</span>, siguiendo la regla de conteo <span class="math inline">\((2)(2)=4\)</span>, así que tenemos cuatro posibles resultados. Ahora bien, si por ejemplo lanzamos tres monedas, tendremos <span class="math inline">\((2)(2)(2)=8\)</span> resultados experimentales.</p>
 <p>Un diagrama que puede apoyar en la elaboración de reglas de conteo es el <strong>diagrama de árbol</strong>, el cual se muestra a continuación para el problema del lanzamiento de dos monedas.</p>
-<div id="htmlwidget-520dabfcfa989e09abc2" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-520dabfcfa989e09abc2">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"M\"]\na\n\nnode [fillcolor = white,\n      label = \"A\"]\nb d f\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-29585f6683ec071d7bcd" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-29585f6683ec071d7bcd">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"M\"]\na\n\nnode [fillcolor = white,\n      label = \"A\"]\nb d f\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>La secuencia va de izquierda a derecha, donde el primer paso representa los posibles resultados del primer lanzamiento y el segundo al de la segunda moneda. En cada paso los dos posibles resultados son <span class="math inline">\((A,B)\)</span>, y podemos notar que a cada resultado del primer paso le corresponden otros dos posibles resultados: los del segundo lanzamiento. Cada uno de los extremos de la derecha se corresponde con un resultado experimental. Cada ruta, saliendo desde el inicio hasta cada una de las ramificaciones se corresponde con una secuencia única de resultados experimentales.</p>
 <p>Veamos ahora otro ejemplo donde podemos aplicar la regla de conteo con experimentos de pasos múltiples. Una empresa ha comenzado un proyecto que busca incrementar la capacidad de generación de una de sus plantas. El proyecto ha sido dividido en dos etapas: diseño y construcción. A los administrativos no les resultó posible definir el tiempo exacto requerido en cada una de las tareas que conforman las dos etapas, debido a que es la primera vez que se enfrentan a ese tipo de proyectos. Por analogía con otros proyectos, han estimado que la duración de la etapa de diseño podría durar dos, tres o cuatro meses; mientras que la construcción tardaría seis, siete u ocho meses. Los directivos han establecido como meta la terminación del proyecto en diez meses.</p>
 <p>Apliquemos la regla de conteo: existen tres posibles resultados en el diseño y otros tres posibles resultados en la construcción: <span class="math inline">\((3)(3)=9\)</span>. Describiremos los posibles resutados con una notación de dos números, el primero para la etapa 1 y el segundo para la 2. Así, <span class="math inline">\((2,6)\)</span> implica que el diseño tardó dos meses y la construcción, seis; dando una duración de ocho meses. Mostremos todo el espacio muestral con el diagrama de árbol pertinente:</p>
-<div id="htmlwidget-5bc122d0979de634d9ae" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5bc122d0979de634d9ae">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = UD]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"D\"]\na\n\nnode [fillcolor = white,\n      label = \"2\"]\nb\n\nnode [fillcolor = white,\n      label = \"3\"]\nc\n\nnode [fillcolor = white,\n      label = \"4\"]\nd\n\nnode [fillcolor = white,\n      label = \"6\"]\ne h k\n\nnode [fillcolor = white,\n      label = \"7\"]\nf i l\n\nnode [fillcolor = white,\n      label = \"8\"]\ng j m\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c d}\nb -> {e f g}\nc -> {h i j}\nd -> {k l m}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4b17195b4134a5112ddd" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4b17195b4134a5112ddd">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = UD]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"D\"]\na\n\nnode [fillcolor = white,\n      label = \"2\"]\nb\n\nnode [fillcolor = white,\n      label = \"3\"]\nc\n\nnode [fillcolor = white,\n      label = \"4\"]\nd\n\nnode [fillcolor = white,\n      label = \"6\"]\ne h k\n\nnode [fillcolor = white,\n      label = \"7\"]\nf i l\n\nnode [fillcolor = white,\n      label = \"8\"]\ng j m\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c d}\nb -> {e f g}\nc -> {h i j}\nd -> {k l m}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>Como podemos observar, hay nueve combinaciones o duraciones para este proyecto. Tabulémoslas:</p>
 <table>
 <thead>
@@ -543,7 +543,7 @@ ncol(c) #solo queremos que nos cuente las columnas y nos lo diga</code></pre>
 <pre><code>## [1] 22957480</code></pre>
 <p>Existen casi 23 millones de boletos. Significa que una persona que compra un solo boleto tiene una posibilidad en casi 23 millones de ganar. Dicha regla permite calcular el número de resultados cuando se seleccionan <span class="math inline">\(n\)</span> objetos</p>
 </div>
-<div id="permutaciones-de-un-conjunto-de-n-objetos-y-el-orden-de-seleccion-es-relevante." class="section level4">
+<div id="permutaciones-de-un-conjunto-de-n-objetos-y-el-orden-de-selección-es-relevante." class="section level4">
 <h4>Permutaciones de un conjunto de <span class="math inline">\(N\)</span> objetos y el orden de selección es <em>relevante</em>.</h4>
 <blockquote>
 <p>El número de permutaciones de <span class="math inline">\(N\)</span> objetos tomados de <span class="math inline">\(n\)</span> en <span class="math inline">\(n\)</span> está dado por: <span class="math display">\[
@@ -556,7 +556,7 @@ P_2^6=\frac{6!}{(6-2)!}=\frac{6!}{4!}=\frac{720}{24}=30
 \]</span></p>
 </div>
 </div>
-<div id="asignacion-de-probabilidades" class="section level3">
+<div id="asignación-de-probabilidades" class="section level3">
 <h3>Asignación de probabilidades</h3>
 <p>Antes de asignar probabilidades es importante recordar dos puntos:</p>
 <ol style="list-style-type: decimal">
@@ -564,11 +564,11 @@ P_2^6=\frac{6!}{(6-2)!}=\frac{6!}{4!}=\frac{720}{24}=30
 <li>La suma de las probabilidades de todos los resultados debe ser igual a 1.</li>
 </ol>
 <p>Existen tres maneras de asignar probabilidades a los resultados experimentales, los cuales son el <em>método clásico</em>, el de <em>frecuencia relativa</em> y el <em>subjetivo</em>.</p>
-<div id="metodo-clasico" class="section level4">
+<div id="método-clásico" class="section level4">
 <h4>Método clásico</h4>
 <p>Se aplica cuando todos los resultados tienen la misma posibilidad. Es decir, si se tienen <span class="math inline">\(n\)</span> posibles resultados, la probabilidad asignada a cada uno es <span class="math inline">\(1/n\)</span>. Como ejemplos clásicos tenemos el lanzamiento de una moneda (cada resultado tiene <span class="math inline">\(1/2\)</span> de probabilidad de ocurrir), de un dado (<span class="math inline">\(1/6\)</span>) o la probabilidad de sacar un as de un mazo de cartas españolas (<span class="math inline">\(1/52\)</span>).</p>
 </div>
-<div id="metodo-de-frecuencia-relativa" class="section level4">
+<div id="método-de-frecuencia-relativa" class="section level4">
 <h4>Método de frecuencia relativa</h4>
 <p>Es el más conveniente cuando existen datos para estimar la proporción de veces que se presentarán los resultados si el experimento se repite muchas veces. Por ejemplo, un estudio sobre los tiempos de espera en el departamento de rayos <span class="math inline">\(x\)</span> de un hospital pequeño. Durante 20 días sucesivos un empleado registra el número de personas que están esperando el servicio a las 9:00am; los resultados son los siguientes.</p>
 <table>
@@ -607,13 +607,13 @@ P_2^6=\frac{6!}{(6-2)!}=\frac{6!}{4!}=\frac{720}{24}=30
 </table>
 <p>Podemos notar que de los 20 días, en dos había nadie esperando; en cinco días había un paciente; en seis había dos pacientes y así sucesivamente. Para saber la probabilidad de que un día dado haya nadie esperando, simplemente sacamos la frecuencia relativa de dicha situación: <span class="math inline">\(P(0)=2/20=0.10\)</span>. La probabilidad de que un día haya cuatro personas esperando su turno a las 9:00am es <span class="math inline">\(3/20\)</span>, es decir, <span class="math inline">\(P(4)=3/20=0.15\)</span>.</p>
 </div>
-<div id="metodo-subjetivo" class="section level4">
+<div id="método-subjetivo" class="section level4">
 <h4>Método subjetivo</h4>
 <p>Es el más indicado cuando no es factible suponer que todos los resultados de un experimento sean igualmente posibles y, además, cuenta con pocos datos relevantes. Usa toda la información disponible, por ejemplo, la propia experiencia o la intuición. Después de considerar dicha información se asigna un valor de probabilidad que expresa el grado de confianza (en una escala de 0 a 1) que tiene acerca de que un resultado experimental ocurra. Como la probabilidad subjetiva expresa el grado de confianza que tiene un individuo, es personal. Cuando se usa el método de probabilidad subjetiva, es de esperarse que personas distintas asignen probabilidades diferentes a los mismos resultados de un experimento.</p>
 </div>
 </div>
 </div>
-<div id="relaciones-basicas-de-probabilidad" class="section level2">
+<div id="relaciones-básicas-de-probabilidad" class="section level2">
 <h2>Relaciones básicas de probabilidad</h2>
 <div id="complemento-de-un-evento" class="section level3">
 <h3>Complemento de un evento</h3>
@@ -627,7 +627,7 @@ P(A)=1-P(A^C)
 \]</span></p>
 </blockquote>
 </div>
-<div id="ley-de-la-adicion" class="section level3">
+<div id="ley-de-la-adición" class="section level3">
 <h3>Ley de la adición</h3>
 <p>Sirve para determinar la probabilidad de que ocurra por lo menos uno de dos eventos. Por ejemplo, si tenemos dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>, nos interesa saber la probabilidad de que ocurra <span class="math inline">\(A\)</span> o <span class="math inline">\(B\)</span> o ambos. Pero antes debemos entender dos conceptos relacionados y fundamentales: la <em>unión</em> y la <em>intersección</em> de dos eventos.</p>
 <blockquote>
@@ -671,7 +671,7 @@ P(S\cup T)=P(S)+P(T)
 <p>Como ejemplo de la probabilidad condicional, considere el caso de las promociones de los agentes de policía de una determinada ciudad. La fuerza policiaca consta de 1200 agentes, 960 hombres y 240 mujeres. De éstos, en los últimos dos años, fueron promovidos 324. En la tabla se muestra cómo quedaron repartidas estas promociones entre los hombres y mujeres.</p>
 <p>-|Hombre|Mujer|Total <em>Promovido</em>|288|36|324 <em>No promovido</em>|672|204|876 <em>Total</em>|960|240|1200</p>
 <p>Después de analizar el registro de las promociones, un comité femenil protestó, ya que habían sido promovidos 288 agentes hombres, frente a sólo 36 mujeres. Los directivos de la fuerza policiaca argumentaron que el número de mujeres promovidas no se debía a una discriminación, sino a que el número de mujeres que son agentes de policía es una cantidad pequeña. Ahora veamos cómo emplear la probabilidad condicional para analizar esta acusación de discriminación.</p>
-<div id="solucion" class="section level4">
+<div id="solución" class="section level4">
 <h4>Solución</h4>
 <p>Sea <span class="math inline">\(H=\)</span> el evento de que el agente sea hombre; <span class="math inline">\(M=\)</span> el evento de que sea mujer; <span class="math inline">\(A=\)</span> el evento de ser promovido y <span class="math inline">\(A^c=\)</span> el evento de no ser promovido. Calculemos las <strong>probabilidades conjuntas</strong>, esto es, la probabilidad de la intersección de dos eventos:</p>
 <p><span class="math display">\[
@@ -709,7 +709,7 @@ P(B|A)=P(B)
 \]</span></p>
 </blockquote>
 </div>
-<div id="ley-de-la-multiplicacion" class="section level3">
+<div id="ley-de-la-multiplicación" class="section level3">
 <h3>Ley de la multiplicación</h3>
 <p>Mientras la ley de la adición permite conocer la probabilidad de la unión de dos eventos, la ley de la multiplicación permite calcular la probabilidad de la intersección de dichos eventos. Se fundamenta en la <em>probabilidad condicional</em>, por lo cual puede obtenerse despejando la expresión de ésta:</p>
 <p><span class="math display">\[
@@ -730,8 +730,8 @@ P(A\cap B)=P(A)\cdot P(B)=(0.60)(0.60)=0.36
 <div id="teorema-de-bayes" class="section level2">
 <h2>Teorema de Bayes</h2>
 <p>En la vida real se repite muy seguido el hecho de que las probabilidades involucran eventos relacionados entre sí. Y en muchas ocasiones, mientras se va recolectando información, es necesario modificar las <strong>probabilidades previas</strong>, obteniendo <strong>probabilidades posteriores</strong>. El <strong>Teorema de Bayes</strong> nos permite obtener dichas probabilidades modificadas, después de haber utilizado información proveniente de otras fuentes. El flujo de trabajo quedaría entonces así:</p>
-<div id="htmlwidget-491e6c68341b39133a49" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-491e6c68341b39133a49">{"x":{"diagram":"\ngraph LR\nA[Probabilidades <br/> previas]-->B[Nueva<br/> información]\nB-->C[Teorema <br/>de Bayes]\nC-->D[Probabilidades <br/>posteriores]\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d852698a44032f0edc32" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d852698a44032f0edc32">{"x":{"diagram":"\ngraph LR\nA[Probabilidades <br/> previas]-->B[Nueva<br/> información]\nB-->C[Teorema <br/>de Bayes]\nC-->D[Probabilidades <br/>posteriores]\n"},"evals":[],"jsHooks":[]}</script>
 <p>Consideremos una fábrica que compra piezas de dos proveedores. Sea <span class="math inline">\(A_1\)</span> el evento en el que la pieza proviene del proveedor 1 y <span class="math inline">\(A_2\)</span> el evento en el que la pieza proviene del proveedor 2. De las piezas que compra la fábrica, 65% proviene del proveedor 1 y 35% restante proviene del proveedor 2. Por tanto, si toma una pieza aleatoriamente, le asignará las probabilidades previas <span class="math inline">\(P(A_1) = 0.65\)</span> y <span class="math inline">\(P(A_2) = 0.35\)</span>.</p>
 <p><span class="math display">\[
 Probabilidades\ previas\\
@@ -750,8 +750,8 @@ P(C|A_1)=0.02\\
 P(C|A_2)=0.05
 \]</span></p>
 <p>Representemos los posibles resultados, comenzamos con un árbol de probabilidades:</p>
-<div id="htmlwidget-dc144629e332182ec562" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dc144629e332182ec562">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"X\"]\na\n\nnode [fillcolor = white,\n      label = \"P1\"]\nb \n\nnode [fillcolor = white,\n      label = \"P2\"]\nc\n\nnode [fillcolor = white\n      label = \"S\"]\nd f\n\nnode [fillcolor = white\n      label = \"C\"]\ne g\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f932e4dddd1c1aa3ff44" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f932e4dddd1c1aa3ff44">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"X\"]\na\n\nnode [fillcolor = white,\n      label = \"P1\"]\nb \n\nnode [fillcolor = white,\n      label = \"P2\"]\nc\n\nnode [fillcolor = white\n      label = \"S\"]\nd f\n\nnode [fillcolor = white\n      label = \"C\"]\ne g\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>Como podemos observar, tenemos cuatro posibles resultados. Pero la cuestión ahora es, ya que la pieza es defectuosa, ¿cuál es la probabilidad de que viene del primer proveedor? O bien, ¿del segundo?</p>
 <p>Para ello, debemos recordar la ley de la multiplicación. La probabilidad condicional de recibir una pieza defectuosa del primer proveedor es del 2%. Por lo tanto, la probabilidad de tener una pieza con defecto y que sea del primer proveedor es del:</p>
 <p><span class="math display">\[
@@ -762,6 +762,19 @@ P(C\cap A_1)=P(A_1)\cdot P(C|A_1)=(0.65)(0.02)=0.0130
 P(C\cap A_2)=P(A_2)\cdot P(C|A_2)=(0.35)(0.05)=0.0175
 \]</span></p>
 <p>Puede realizarse lo mismo con diagrama de árbol más complejo, en el que se colocan las probabilidades y se calculan en el mismo. El cálculo queda mejor comprendido de esa manera:</p>
+<pre><code>## Warning: Prefixing `UQ()` with the rlang namespace is deprecated as of rlang 0.3.0.
+## Please use the non-prefixed form or `!!` instead.
+## 
+##   # Bad:
+##   rlang::expr(mean(rlang::UQ(var) * 100))
+## 
+##   # Ok:
+##   rlang::expr(mean(UQ(var) * 100))
+## 
+##   # Good:
+##   rlang::expr(mean(!!var * 100))
+## 
+## This warning is displayed once per session.</code></pre>
 <p><img src="images/021-bayes.png" /></p>
 <p>En este árbol podemos distinguir las <strong>probabilidades conjuntas</strong> como los valores que tienen las ramas.</p>
 <p><span class="math display">\[
@@ -803,7 +816,7 @@ P(A_2|C)=0.5738
 <p><span class="math display">\[
 P(A_i|B)=\frac{P(A_i)\cdot P(B|A_i)}{P(A_1)\cdot P(B|A_1)+P(A_2)\cdot P(B|A_2)+...+P(A_n)\cdot P(B|A_n)}
 \]</span></p>
-<div id="metodo-tabular-para-el-teorema-de-bayes" class="section level3">
+<div id="método-tabular-para-el-teorema-de-bayes" class="section level3">
 <h3>Método tabular para el teorema de Bayes</h3>
 <p>Podemos realizar los cálculos necesarios para obtener las probabilidades posteriores mediante una tabla. Los pasos a seguir son como sigue:</p>
 <ol style="list-style-type: decimal">
