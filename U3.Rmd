@@ -144,10 +144,15 @@ La función de la probabilidad binomial es:
 $$
 f(x)=\left(\begin{array}{c}n\\ x \end{array} \right)p^x(1-p)^{n-x}
 $$
+
 Donde: 
+
 $f(x)=$ probabilidad de $x$ éxitos en $n$ ensayos
+
 $n=$ número de ensayos
+
 $p=$ probabilidad de un éxito en cualquiera de los ensayos
+
 $1-p=$ probabilidad de un fracaso en cualquiera de los ensayos
 
 Recordemos además que:
@@ -221,8 +226,11 @@ f(x)=\frac{\mu^xe^{-\mu}}{x!}
 $$
 
 Donde: 
+
 $f(x)=$ probabilidad de $x$ ocurrencias en un intervalo
+
 $\mu=$ valor esperado o número medio de ocurrencias en un intervalo
+
 $e=2.71828$ 
 
 Antes de considerar un ejemplo para ver cómo se usa la distribución de Poisson, observemos que el número de ocurrencias $x$, no tiene límite superior. Ésta es una variable aleatoria discreta que toma los valores de una sucesión infinita de números $(x= 0, 1, 2, . . . )$.
@@ -247,7 +255,7 @@ dpois(5, 10)
 
 Nos interesa la ocurrencia de una avería importante en una autopista un mes después de que ha sido repavimentada. Supongamos que la probabilidad de que haya una avería es la misma en cualesquiera dos tramos, de una misma longitud, de la autopista y que la ocurrencia o no–ocurrencia de una avería en un tramo es independiente de la ocurrencia o no-ocurrencia de una avería en cualquier otro tramo.
 
-También sabemos que el promedio de averías importantes, un mes después de la repavimentación, son dos averías por kilómetro. Desea determinar la probabilidad de que no haya ninguna avería en un determinado tramo de tres kilómetros de autopista. Como lo que interesa es un intervalo cuya longitud es de tres kilómetros, $μ=$ (2 averías / milla)(3 kilómetros)=6 representa el número esperado de averías importantes en un tramo de tres kilómetros de autopista. 
+También sabemos que el promedio de averías importantes, un mes después de la repavimentación, son dos averías por kilómetro. Desea determinar la probabilidad de que no haya ninguna avería en un determinado tramo de tres kilómetros de autopista. Como lo que interesa es un intervalo cuya longitud es de tres kilómetros, $μ=$ (2 averías / milla)(3 kilómetros) = 6 representa el número esperado de averías importantes en un tramo de tres kilómetros de autopista. 
 
 La probabilidad de que no haya ninguna avería importante es $f(0)=6^0e^{-6}/0!=0.0025$. Por tanto, es poco probable que no haya ninguna avería importante en este tramo de tres kilómetros. En efecto, este ejemplo indica que hay una probabilidad de $1-0.0025=0.9975$ de que haya por lo menos una avería importante en este tramo de tres kilómetros de autopista.
 
@@ -262,6 +270,7 @@ f(x)=\frac{\left(\begin{array}{c}r\\ x \end{array} \right)\left(\begin{array}{c}
 $$
 
 donde:
+
 $f(x) =$ probabilidad de $x$ éxitos en $n$ ensayos
 
 $n=$ número de ensayos

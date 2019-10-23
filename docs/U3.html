@@ -547,7 +547,12 @@ ventas.coches</code></pre>
 <p>La función de la probabilidad binomial es:</p>
 <p><span class="math display">\[
 f(x)=\left(\begin{array}{c}n\\ x \end{array} \right)p^x(1-p)^{n-x}
-\]</span> Donde: <span class="math inline">\(f(x)=\)</span> probabilidad de <span class="math inline">\(x\)</span> éxitos en <span class="math inline">\(n\)</span> ensayos <span class="math inline">\(n=\)</span> número de ensayos <span class="math inline">\(p=\)</span> probabilidad de un éxito en cualquiera de los ensayos <span class="math inline">\(1-p=\)</span> probabilidad de un fracaso en cualquiera de los ensayos</p>
+\]</span></p>
+<p>Donde:</p>
+<p><span class="math inline">\(f(x)=\)</span> probabilidad de <span class="math inline">\(x\)</span> éxitos en <span class="math inline">\(n\)</span> ensayos</p>
+<p><span class="math inline">\(n=\)</span> número de ensayos</p>
+<p><span class="math inline">\(p=\)</span> probabilidad de un éxito en cualquiera de los ensayos</p>
+<p><span class="math inline">\(1-p=\)</span> probabilidad de un fracaso en cualquiera de los ensayos</p>
 <p>Recordemos además que:</p>
 <p><span class="math display">\[
 \left(\begin{array}{c}n\\ x \end{array} \right)=\frac{n!}{x!(n-x)!}
@@ -603,7 +608,10 @@ Var(x)=\sigma^2=np(1-p)
 <p><span class="math display">\[
 f(x)=\frac{\mu^xe^{-\mu}}{x!}
 \]</span></p>
-<p>Donde: <span class="math inline">\(f(x)=\)</span> probabilidad de <span class="math inline">\(x\)</span> ocurrencias en un intervalo <span class="math inline">\(\mu=\)</span> valor esperado o número medio de ocurrencias en un intervalo <span class="math inline">\(e=2.71828\)</span></p>
+<p>Donde:</p>
+<p><span class="math inline">\(f(x)=\)</span> probabilidad de <span class="math inline">\(x\)</span> ocurrencias en un intervalo</p>
+<p><span class="math inline">\(\mu=\)</span> valor esperado o número medio de ocurrencias en un intervalo</p>
+<p><span class="math inline">\(e=2.71828\)</span></p>
 <p>Antes de considerar un ejemplo para ver cómo se usa la distribución de Poisson, observemos que el número de ocurrencias <span class="math inline">\(x\)</span>, no tiene límite superior. Ésta es una variable aleatoria discreta que toma los valores de una sucesión infinita de números <span class="math inline">\((x= 0, 1, 2, . . . )\)</span>.</p>
 <div id="intervalos-de-tiempo" class="section level3">
 <h3>Intervalos de tiempo</h3>
@@ -619,7 +627,7 @@ f(5)=\frac{10^5e^{-10}}{5!}= 0.0378
 <div id="intervalos-de-espacio-o-longitud" class="section level3">
 <h3>Intervalos de espacio o longitud</h3>
 <p>Nos interesa la ocurrencia de una avería importante en una autopista un mes después de que ha sido repavimentada. Supongamos que la probabilidad de que haya una avería es la misma en cualesquiera dos tramos, de una misma longitud, de la autopista y que la ocurrencia o no–ocurrencia de una avería en un tramo es independiente de la ocurrencia o no-ocurrencia de una avería en cualquier otro tramo.</p>
-<p>También sabemos que el promedio de averías importantes, un mes después de la repavimentación, son dos averías por kilómetro. Desea determinar la probabilidad de que no haya ninguna avería en un determinado tramo de tres kilómetros de autopista. Como lo que interesa es un intervalo cuya longitud es de tres kilómetros, <span class="math inline">\(μ=\)</span> (2 averías / milla)(3 kilómetros)=6 representa el número esperado de averías importantes en un tramo de tres kilómetros de autopista.</p>
+<p>También sabemos que el promedio de averías importantes, un mes después de la repavimentación, son dos averías por kilómetro. Desea determinar la probabilidad de que no haya ninguna avería en un determinado tramo de tres kilómetros de autopista. Como lo que interesa es un intervalo cuya longitud es de tres kilómetros, <span class="math inline">\(μ=\)</span> (2 averías / milla)(3 kilómetros) = 6 representa el número esperado de averías importantes en un tramo de tres kilómetros de autopista.</p>
 <p>La probabilidad de que no haya ninguna avería importante es <span class="math inline">\(f(0)=6^0e^{-6}/0!=0.0025\)</span>. Por tanto, es poco probable que no haya ninguna avería importante en este tramo de tres kilómetros. En efecto, este ejemplo indica que hay una probabilidad de <span class="math inline">\(1-0.0025=0.9975\)</span> de que haya por lo menos una avería importante en este tramo de tres kilómetros de autopista.</p>
 </div>
 </div>
@@ -630,7 +638,8 @@ f(5)=\frac{10^5e^{-10}}{5!}= 0.0378
 <p><span class="math display">\[
 f(x)=\frac{\left(\begin{array}{c}r\\ x \end{array} \right)\left(\begin{array}{c}N-r\\ n-x \end{array} \right)}{\left(\begin{array}{c}N\\ n \end{array} \right)} \ para\ 0\leq x \leq r
 \]</span></p>
-<p>donde: <span class="math inline">\(f(x) =\)</span> probabilidad de <span class="math inline">\(x\)</span> éxitos en <span class="math inline">\(n\)</span> ensayos</p>
+<p>donde:</p>
+<p><span class="math inline">\(f(x) =\)</span> probabilidad de <span class="math inline">\(x\)</span> éxitos en <span class="math inline">\(n\)</span> ensayos</p>
 <p><span class="math inline">\(n=\)</span> número de ensayos</p>
 <p><span class="math inline">\(N=\)</span>número de elementos en la población</p>
 <p><span class="math inline">\(r=\)</span> número de elementos en la población considerados como éxitos</p>

@@ -443,23 +443,13 @@ S_{monedas}=\{(A,A),(A,B),(B,A),(B,B) \}
 </blockquote>
 <p>Si retomamos el caso anterior, lanzar la primera moneda implica <span class="math inline">\((n_1=2)\)</span> y la segunda <span class="math inline">\((n_2=2)\)</span>, siguiendo la regla de conteo <span class="math inline">\((2)(2)=4\)</span>, así que tenemos cuatro posibles resultados. Ahora bien, si por ejemplo lanzamos tres monedas, tendremos <span class="math inline">\((2)(2)(2)=8\)</span> resultados experimentales.</p>
 <p>Un diagrama que puede apoyar en la elaboración de reglas de conteo es el <strong>diagrama de árbol</strong>, el cual se muestra a continuación para el problema del lanzamiento de dos monedas.</p>
-<<<<<<< HEAD
-<div id="htmlwidget-7bcd4b17195b4134a511" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7bcd4b17195b4134a511">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"M\"]\na\n\nnode [fillcolor = white,\n      label = \"A\"]\nb d f\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4e28d26141ab7f8d9c9b" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4e28d26141ab7f8d9c9b">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"M\"]\na\n\nnode [fillcolor = white,\n      label = \"A\"]\nb d f\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>La secuencia va de izquierda a derecha, donde el primer paso representa los posibles resultados del primer lanzamiento y el segundo al de la segunda moneda. En cada paso los dos posibles resultados son <span class="math inline">\((A,B)\)</span>, y podemos notar que a cada resultado del primer paso le corresponden otros dos posibles resultados: los del segundo lanzamiento. Cada uno de los extremos de la derecha se corresponde con un resultado experimental. Cada ruta, saliendo desde el inicio hasta cada una de las ramificaciones se corresponde con una secuencia única de resultados experimentales.</p>
 <p>Veamos ahora otro ejemplo donde podemos aplicar la regla de conteo con experimentos de pasos múltiples. Una empresa ha comenzado un proyecto que busca incrementar la capacidad de generación de una de sus plantas. El proyecto ha sido dividido en dos etapas: diseño y construcción. A los administrativos no les resultó posible definir el tiempo exacto requerido en cada una de las tareas que conforman las dos etapas, debido a que es la primera vez que se enfrentan a ese tipo de proyectos. Por analogía con otros proyectos, han estimado que la duración de la etapa de diseño podría durar dos, tres o cuatro meses; mientras que la construcción tardaría seis, siete u ocho meses. Los directivos han establecido como meta la terminación del proyecto en diez meses.</p>
 <p>Apliquemos la regla de conteo: existen tres posibles resultados en el diseño y otros tres posibles resultados en la construcción: <span class="math inline">\((3)(3)=9\)</span>. Describiremos los posibles resutados con una notación de dos números, el primero para la etapa 1 y el segundo para la 2. Así, <span class="math inline">\((2,6)\)</span> implica que el diseño tardó dos meses y la construcción, seis; dando una duración de ocho meses. Mostremos todo el espacio muestral con el diagrama de árbol pertinente:</p>
-<div id="htmlwidget-2dddd852698a44032f0e" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2dddd852698a44032f0e">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = UD]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"D\"]\na\n\nnode [fillcolor = white,\n      label = \"2\"]\nb\n\nnode [fillcolor = white,\n      label = \"3\"]\nc\n\nnode [fillcolor = white,\n      label = \"4\"]\nd\n\nnode [fillcolor = white,\n      label = \"6\"]\ne h k\n\nnode [fillcolor = white,\n      label = \"7\"]\nf i l\n\nnode [fillcolor = white,\n      label = \"8\"]\ng j m\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c d}\nb -> {e f g}\nc -> {h i j}\nd -> {k l m}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-=======
-<div id="htmlwidget-29585f6683ec071d7bcd" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-29585f6683ec071d7bcd">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"M\"]\na\n\nnode [fillcolor = white,\n      label = \"A\"]\nb d f\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-<p>La secuencia va de izquierda a derecha, donde el primer paso representa los posibles resultados del primer lanzamiento y el segundo al de la segunda moneda. En cada paso los dos posibles resultados son <span class="math inline">\((A,B)\)</span>, y podemos notar que a cada resultado del primer paso le corresponden otros dos posibles resultados: los del segundo lanzamiento. Cada uno de los extremos de la derecha se corresponde con un resultado experimental. Cada ruta, saliendo desde el inicio hasta cada una de las ramificaciones se corresponde con una secuencia única de resultados experimentales.</p>
-<p>Veamos ahora otro ejemplo donde podemos aplicar la regla de conteo con experimentos de pasos múltiples. Una empresa ha comenzado un proyecto que busca incrementar la capacidad de generación de una de sus plantas. El proyecto ha sido dividido en dos etapas: diseño y construcción. A los administrativos no les resultó posible definir el tiempo exacto requerido en cada una de las tareas que conforman las dos etapas, debido a que es la primera vez que se enfrentan a ese tipo de proyectos. Por analogía con otros proyectos, han estimado que la duración de la etapa de diseño podría durar dos, tres o cuatro meses; mientras que la construcción tardaría seis, siete u ocho meses. Los directivos han establecido como meta la terminación del proyecto en diez meses.</p>
-<p>Apliquemos la regla de conteo: existen tres posibles resultados en el diseño y otros tres posibles resultados en la construcción: <span class="math inline">\((3)(3)=9\)</span>. Describiremos los posibles resutados con una notación de dos números, el primero para la etapa 1 y el segundo para la 2. Así, <span class="math inline">\((2,6)\)</span> implica que el diseño tardó dos meses y la construcción, seis; dando una duración de ocho meses. Mostremos todo el espacio muestral con el diagrama de árbol pertinente:</p>
-<div id="htmlwidget-4b17195b4134a5112ddd" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4b17195b4134a5112ddd">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = UD]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"D\"]\na\n\nnode [fillcolor = white,\n      label = \"2\"]\nb\n\nnode [fillcolor = white,\n      label = \"3\"]\nc\n\nnode [fillcolor = white,\n      label = \"4\"]\nd\n\nnode [fillcolor = white,\n      label = \"6\"]\ne h k\n\nnode [fillcolor = white,\n      label = \"7\"]\nf i l\n\nnode [fillcolor = white,\n      label = \"8\"]\ng j m\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c d}\nb -> {e f g}\nc -> {h i j}\nd -> {k l m}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
->>>>>>> bb1e700b7f676ae64c12a0d2ff14365a1f791bb4
+<div id="htmlwidget-5953351e023601a7520d" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5953351e023601a7520d">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = UD]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"D\"]\na\n\nnode [fillcolor = white,\n      label = \"2\"]\nb\n\nnode [fillcolor = white,\n      label = \"3\"]\nc\n\nnode [fillcolor = white,\n      label = \"4\"]\nd\n\nnode [fillcolor = white,\n      label = \"6\"]\ne h k\n\nnode [fillcolor = white,\n      label = \"7\"]\nf i l\n\nnode [fillcolor = white,\n      label = \"8\"]\ng j m\n\nnode [fillcolor = white\n      label = \"B\"]\n\nedge [color = black]\na -> {b c d}\nb -> {e f g}\nc -> {h i j}\nd -> {k l m}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>Como podemos observar, hay nueve combinaciones o duraciones para este proyecto. Tabulémoslas:</p>
 <table>
 <thead>
@@ -740,13 +730,8 @@ P(A\cap B)=P(A)\cdot P(B)=(0.60)(0.60)=0.36
 <div id="teorema-de-bayes" class="section level2">
 <h2>Teorema de Bayes</h2>
 <p>En la vida real se repite muy seguido el hecho de que las probabilidades involucran eventos relacionados entre sí. Y en muchas ocasiones, mientras se va recolectando información, es necesario modificar las <strong>probabilidades previas</strong>, obteniendo <strong>probabilidades posteriores</strong>. El <strong>Teorema de Bayes</strong> nos permite obtener dichas probabilidades modificadas, después de haber utilizado información proveniente de otras fuentes. El flujo de trabajo quedaría entonces así:</p>
-<<<<<<< HEAD
-<div id="htmlwidget-dc32f932e4dddd1c1aa3" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dc32f932e4dddd1c1aa3">{"x":{"diagram":"\ngraph LR\nA[Probabilidades <br/> previas]-->B[Nueva<br/> información]\nB-->C[Teorema <br/>de Bayes]\nC-->D[Probabilidades <br/>posteriores]\n"},"evals":[],"jsHooks":[]}</script>
-=======
-<div id="htmlwidget-d852698a44032f0edc32" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d852698a44032f0edc32">{"x":{"diagram":"\ngraph LR\nA[Probabilidades <br/> previas]-->B[Nueva<br/> información]\nB-->C[Teorema <br/>de Bayes]\nC-->D[Probabilidades <br/>posteriores]\n"},"evals":[],"jsHooks":[]}</script>
->>>>>>> bb1e700b7f676ae64c12a0d2ff14365a1f791bb4
+<div id="htmlwidget-abfcfa989e09abc25bc1" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-abfcfa989e09abc25bc1">{"x":{"diagram":"\ngraph LR\nA[Probabilidades <br/> previas]-->B[Nueva<br/> información]\nB-->C[Teorema <br/>de Bayes]\nC-->D[Probabilidades <br/>posteriores]\n"},"evals":[],"jsHooks":[]}</script>
 <p>Consideremos una fábrica que compra piezas de dos proveedores. Sea <span class="math inline">\(A_1\)</span> el evento en el que la pieza proviene del proveedor 1 y <span class="math inline">\(A_2\)</span> el evento en el que la pieza proviene del proveedor 2. De las piezas que compra la fábrica, 65% proviene del proveedor 1 y 35% restante proviene del proveedor 2. Por tanto, si toma una pieza aleatoriamente, le asignará las probabilidades previas <span class="math inline">\(P(A_1) = 0.65\)</span> y <span class="math inline">\(P(A_2) = 0.35\)</span>.</p>
 <p><span class="math display">\[
 Probabilidades\ previas\\
@@ -765,13 +750,8 @@ P(C|A_1)=0.02\\
 P(C|A_2)=0.05
 \]</span></p>
 <p>Representemos los posibles resultados, comenzamos con un árbol de probabilidades:</p>
-<<<<<<< HEAD
-<div id="htmlwidget-ff44b3a4b92a994b742a" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ff44b3a4b92a994b742a">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"X\"]\na\n\nnode [fillcolor = white,\n      label = \"P1\"]\nb \n\nnode [fillcolor = white,\n      label = \"P2\"]\nc\n\nnode [fillcolor = white\n      label = \"S\"]\nd f\n\nnode [fillcolor = white\n      label = \"C\"]\ne g\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-=======
-<div id="htmlwidget-f932e4dddd1c1aa3ff44" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f932e4dddd1c1aa3ff44">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"X\"]\na\n\nnode [fillcolor = white,\n      label = \"P1\"]\nb \n\nnode [fillcolor = white,\n      label = \"P2\"]\nc\n\nnode [fillcolor = white\n      label = \"S\"]\nd f\n\nnode [fillcolor = white\n      label = \"C\"]\ne g\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
->>>>>>> bb1e700b7f676ae64c12a0d2ff14365a1f791bb4
+<div id="htmlwidget-22d0979de634d9ae491e" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-22d0979de634d9ae491e">{"x":{"diagram":"\ndigraph dot {\n\ngraph [layout = dot, rankdir = LR]\n\nnode [shape = circle,\n      style = filled,\n      label = \"\"]\n\nnode [fillcolor = white,\n      label = \"X\"]\na\n\nnode [fillcolor = white,\n      label = \"P1\"]\nb \n\nnode [fillcolor = white,\n      label = \"P2\"]\nc\n\nnode [fillcolor = white\n      label = \"S\"]\nd f\n\nnode [fillcolor = white\n      label = \"C\"]\ne g\n\nedge [color = black]\na -> {b c}\nb -> {d e}\nc -> {f g}\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p>Como podemos observar, tenemos cuatro posibles resultados. Pero la cuestión ahora es, ya que la pieza es defectuosa, ¿cuál es la probabilidad de que viene del primer proveedor? O bien, ¿del segundo?</p>
 <p>Para ello, debemos recordar la ley de la multiplicación. La probabilidad condicional de recibir una pieza defectuosa del primer proveedor es del 2%. Por lo tanto, la probabilidad de tener una pieza con defecto y que sea del primer proveedor es del:</p>
 <p><span class="math display">\[
@@ -782,19 +762,6 @@ P(C\cap A_1)=P(A_1)\cdot P(C|A_1)=(0.65)(0.02)=0.0130
 P(C\cap A_2)=P(A_2)\cdot P(C|A_2)=(0.35)(0.05)=0.0175
 \]</span></p>
 <p>Puede realizarse lo mismo con diagrama de árbol más complejo, en el que se colocan las probabilidades y se calculan en el mismo. El cálculo queda mejor comprendido de esa manera:</p>
-<pre><code>## Warning: Prefixing `UQ()` with the rlang namespace is deprecated as of rlang 0.3.0.
-## Please use the non-prefixed form or `!!` instead.
-## 
-##   # Bad:
-##   rlang::expr(mean(rlang::UQ(var) * 100))
-## 
-##   # Ok:
-##   rlang::expr(mean(UQ(var) * 100))
-## 
-##   # Good:
-##   rlang::expr(mean(!!var * 100))
-## 
-## This warning is displayed once per session.</code></pre>
 <p><img src="images/021-bayes.png" /></p>
 <p>En este árbol podemos distinguir las <strong>probabilidades conjuntas</strong> como los valores que tienen las ramas.</p>
 <p><span class="math display">\[
