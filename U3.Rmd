@@ -133,7 +133,7 @@ Tiene las siguientes propiedades:
 
 2. En cada ensayo hay dos resultados posibles. A uno de estos resultados se le llama éxito y al otro se le llama fracaso.
 
-3. La probabilidad de éxito, que se denota $p$, no cambia de un ensayo a otro. Por ende, la probabilidad de fracaso, que se denota $1 - p$, tampoco cambia de un ensayo a otro.
+3. La probabilidad de éxito, que se denota $p$, no cambia de un ensayo a otro. Por ende, la probabilidad de fracaso, que se denota $1-p$, tampoco cambia de un ensayo a otro.
 
 4. Los ensayos son independientes.
 
@@ -247,7 +247,7 @@ dpois(5, 10)
 
 Nos interesa la ocurrencia de una avería importante en una autopista un mes después de que ha sido repavimentada. Supongamos que la probabilidad de que haya una avería es la misma en cualesquiera dos tramos, de una misma longitud, de la autopista y que la ocurrencia o no–ocurrencia de una avería en un tramo es independiente de la ocurrencia o no-ocurrencia de una avería en cualquier otro tramo.
 
-También sabemos que el promedio de averías importantes, un mes después de la repavimentación, son dos averías por kilómetro. Desea determinar la probabilidad de que no haya ninguna avería en un determinado tramo de tres kilómetros de autopista. Como lo que interesa es un intervalo cuya longitud es de tres kilómetros, $μ=(2 averías/milla)(3 kilómetros)=6$ representa el número esperado de averías importantes en un tramo de tres kilómetros de autopista. 
+También sabemos que el promedio de averías importantes, un mes después de la repavimentación, son dos averías por kilómetro. Desea determinar la probabilidad de que no haya ninguna avería en un determinado tramo de tres kilómetros de autopista. Como lo que interesa es un intervalo cuya longitud es de tres kilómetros, $μ=$ (2 averías / milla)(3 kilómetros)=6 representa el número esperado de averías importantes en un tramo de tres kilómetros de autopista. 
 
 La probabilidad de que no haya ninguna avería importante es $f(0)=6^0e^{-6}/0!=0.0025$. Por tanto, es poco probable que no haya ninguna avería importante en este tramo de tres kilómetros. En efecto, este ejemplo indica que hay una probabilidad de $1-0.0025=0.9975$ de que haya por lo menos una avería importante en este tramo de tres kilómetros de autopista.
 
@@ -263,8 +263,11 @@ $$
 
 donde:
 $f(x) =$ probabilidad de $x$ éxitos en $n$ ensayos
+
 $n=$ número de ensayos
+
 $N=$número de elementos en la población
+
 $r=$ número de elementos en la población considerados como éxitos
 
 Para ilustrar los cálculos que se emplean al usar esta expresión, consideremos la siguiente aplicación al control de calidad. Una empresa fabrica fusibles que empaca en cajas de 12 unidades cada una. Asumiremos que un inspector selecciona al azar tres de los 12 fusibles de una caja para inspeccionarlos. Si la caja contiene exactamente cinco fusibles defectuosos, ¿cuál es la probabilidad de que el inspector encuentre que uno de los tres fusibles está defectuoso? En esta aplicación $n=3$ y $N=12$. Si $r=5$ fusibles defectuosos en la caja, la probabilidad de hallar $x=1$ defectuoso es
