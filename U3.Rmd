@@ -121,6 +121,34 @@ Y para terminar, calculamos la desviación estándar a partir de la varianza:
 sqrt(1.25)
 ```
 
+### Cálculo abreviado de la varianza
+
+Sea $X=$ el número de cilindros del motor del siguiente carro que va a ser afinado en cierto
+taller. El costo de una afinación está relacionado con $X$ mediante $h(X)=20+3X+0.5X^2$.
+Como $X$ es una variable aleatoria, también lo es $h(X)$; denotemos esta última variable aleatoria por $Y$. Determinemos el valor esperado de cilindros y el costo si las funciones de masa de probabilidad de $X$ y $Y$ son las siguientes:
+
+$X$|4|6|8
+:---:|:---:|:---:|:---:
+$p(x)$|0.5|0.3|0.2
+
+$Y$|40|56|76
+:---:|:---:|:---:|:---:
+$p(y)$|0.5|0.3|0.2
+
+El valor esperado de cilindros es $5.4$, mientras que el costo esperado será de $\$52.00$. Confirmémoslo. La varianza será de $2.44$. En ocasiones es deseable contar con una fórmula más breve para ciertos cálculos. En cuanto a la varianza, podemos obtenerla mediante:
+
+$$
+V(X)=\sigma^2= \left[\sum_D x^2 \cdot p(x) \right]-\mu^2=E(X^2)- \left[E(X) \right]^2
+$$
+
+Como podemos recordar, $\mu=5.4$, por lo tanto la varianza puede calcularse así:
+
+$$
+E(X^2)=4^2(0.5)+6^2(0.3)+8^2(0.2)=31.6
+$$
+
+Por lo tanto, $\sigma^2=31.6-(5.4)^2=2.44$
+
 ## Distribución de probabilidad binomial
 
 La distribución de probabilidad binomial es una distribución de probabilidad que tiene muchas aplicaciones. Está relacionada con un experimento de pasos múltiples al que se le llama experimento binomial.

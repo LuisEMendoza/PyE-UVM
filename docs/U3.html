@@ -530,6 +530,55 @@ ventas.coches</code></pre>
 <pre class="r"><code>sqrt(1.25)</code></pre>
 <pre><code>## [1] 1.118034</code></pre>
 </div>
+<div id="cálculo-abreviado-de-la-varianza" class="section level3">
+<h3>Cálculo abreviado de la varianza</h3>
+<p>Sea <span class="math inline">\(X=\)</span> el número de cilindros del motor del siguiente carro que va a ser afinado en cierto taller. El costo de una afinación está relacionado con <span class="math inline">\(X\)</span> mediante <span class="math inline">\(h(X)=20+3X+0.5X^2\)</span>. Como <span class="math inline">\(X\)</span> es una variable aleatoria, también lo es <span class="math inline">\(h(X)\)</span>; denotemos esta última variable aleatoria por <span class="math inline">\(Y\)</span>. Determinemos el valor esperado de cilindros y el costo si las funciones de masa de probabilidad de <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span> son las siguientes:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(X\)</span></th>
+<th align="center">4</th>
+<th align="center">6</th>
+<th align="center">8</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(p(x)\)</span></td>
+<td align="center">0.5</td>
+<td align="center">0.3</td>
+<td align="center">0.2</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(Y\)</span></th>
+<th align="center">40</th>
+<th align="center">56</th>
+<th align="center">76</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(p(y)\)</span></td>
+<td align="center">0.5</td>
+<td align="center">0.3</td>
+<td align="center">0.2</td>
+</tr>
+</tbody>
+</table>
+<p>El valor esperado de cilindros es <span class="math inline">\(5.4\)</span>, mientras que el costo esperado será de <span class="math inline">\(\$52.00\)</span>. Confirmémoslo. La varianza será de <span class="math inline">\(2.44\)</span>. En ocasiones es deseable contar con una fórmula más breve para ciertos cálculos. En cuanto a la varianza, podemos obtenerla mediante:</p>
+<p><span class="math display">\[
+V(X)=\sigma^2= \left[\sum_D x^2 \cdot p(x) \right]-\mu^2=E(X^2)- \left[E(X) \right]^2
+\]</span></p>
+<p>Como podemos recordar, <span class="math inline">\(\mu=5.4\)</span>, por lo tanto la varianza puede calcularse así:</p>
+<p><span class="math display">\[
+E(X^2)=4^2(0.5)+6^2(0.3)+8^2(0.2)=31.6
+\]</span></p>
+<p>Por lo tanto, <span class="math inline">\(\sigma^2=31.6-(5.4)^2=2.44\)</span></p>
+</div>
 </div>
 <div id="distribución-de-probabilidad-binomial" class="section level2">
 <h2>Distribución de probabilidad binomial</h2>

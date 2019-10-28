@@ -55,33 +55,7 @@ Un diagrama que puede apoyar en la elaboración de reglas de conteo es el __diag
 library(DiagrammeR)
 ```
 
-```{r echo=FALSE}
-grViz("
-digraph dot {
-
-graph [layout = dot, rankdir = LR]
-
-node [shape = circle,
-      style = filled,
-      label = '']
-
-node [fillcolor = white,
-      label = 'M']
-a
-
-node [fillcolor = white,
-      label = 'A']
-b d f
-
-node [fillcolor = white
-      label = 'B']
-
-edge [color = black]
-a -> {b c}
-b -> {d e}
-c -> {f g}
-}")
-```
+![](images/005-prob.png)
 
 La secuencia va de izquierda a derecha, donde el primer paso representa los posibles resultados del primer lanzamiento y el segundo al de la segunda moneda. En cada paso los dos posibles resultados son $(A,B)$, y podemos notar que a cada resultado del primer paso le corresponden otros dos posibles resultados: los del segundo lanzamiento. Cada uno de los extremos de la derecha se corresponde con un resultado experimental. Cada ruta, saliendo desde el inicio hasta cada una de las ramificaciones se corresponde con una secuencia única de resultados experimentales.
 
@@ -89,54 +63,7 @@ Veamos ahora otro ejemplo donde podemos aplicar la regla de conteo con experimen
 
 Apliquemos la regla de conteo: existen tres posibles resultados en el diseño y otros tres posibles resultados en la construcción: $(3)(3)=9$. Describiremos los posibles resutados con una notación de dos números, el primero para la etapa 1 y el segundo para la 2. Así, $(2,6)$ implica que el diseño tardó dos meses y la construcción, seis; dando una duración de ocho meses. Mostremos todo el espacio muestral con el diagrama de árbol pertinente:
 
-```{r echo=FALSE}
-grViz("
-digraph dot {
-
-graph [layout = dot, rankdir = UD]
-
-node [shape = circle,
-      style = filled,
-      label = '']
-
-node [fillcolor = white,
-      label = 'D']
-a
-
-node [fillcolor = white,
-      label = '2']
-b
-
-node [fillcolor = white,
-      label = '3']
-c
-
-node [fillcolor = white,
-      label = '4']
-d
-
-node [fillcolor = white,
-      label = '6']
-e h k
-
-node [fillcolor = white,
-      label = '7']
-f i l
-
-node [fillcolor = white,
-      label = '8']
-g j m
-
-node [fillcolor = white
-      label = 'B']
-
-edge [color = black]
-a -> {b c d}
-b -> {e f g}
-c -> {h i j}
-d -> {k l m}
-}")
-```
+![](images/006-prob.png)
 
 Como podemos observar, hay nueve combinaciones o duraciones para este proyecto. Tabulémoslas:
 
@@ -497,120 +424,6 @@ $$
 
 Puede realizarse lo mismo con diagrama de árbol más complejo, en el que se colocan las probabilidades y se calculan en el mismo. El cálculo queda mejor comprendido de esa manera:
 
-
-```{r echo=FALSE}
-bayes_probability_tree <- function(prior, true_positive, true_negative) {
-  
-  if (!all(c(prior, true_positive, true_negative) > 0) && !all(c(prior, true_positive, true_negative) < 1)) {
-    stop("probabilities must be greater than 0 and less than 1.",
-         call. = FALSE)
-  }
-  c_prior <- 1 - prior
-  c_tp <- 1 - true_positive
-  c_tn <- 1 - true_negative
-  
-  round4 <- purrr::partial(round, digits = 4)
-  
-  b1 <- round4(prior * true_positive)
-  b2 <- round4(prior * c_tp)
-  b3 <- round4(c_prior * c_tn)
-  b4 <- round4(c_prior * true_negative)
-  
-  bp <-  round4(b1/(b1 + b3))
-  
-  labs <- c("X", prior, c_prior, true_positive, c_tp, true_negative, c_tn, b1, b2, b4, b3)
-  
-  tree <-
-    create_graph() %>%
-    add_n_nodes(
-      n = 11,
-      type = "path",
-      label = labs,
-      node_aes = node_aes(
-        shape = "circle",
-        height = 1,
-        width = 1,
-        x = c(0, 3, 3, 6, 6, 6, 6, 8, 8, 8, 8),
-        y = c(0, 2, -2, 3, 1, -3, -1, 3, 1, -3, -1))) %>% 
-    add_edge(
-      from = 1,
-      to = 2,
-      edge_aes = edge_aes(
-        label = "Proveedor 1"
-      )
-    ) %>% 
-    add_edge(
-      from = 1, 
-      to = 3,
-      edge_aes = edge_aes(
-        label = "Proveedor 2"
-      )
-    ) %>% 
-    add_edge(
-      from = 2,
-      to = 4,
-      edge_aes = edge_aes(
-        label = "Sin defecto"
-      )
-    ) %>% 
-    add_edge(
-      from = 2,
-      to = 5,
-      edge_aes = edge_aes(
-        label = "Con defecto"
-      )
-    ) %>% 
-    add_edge(
-      from = 3,
-      to = 7,
-      edge_aes = edge_aes(
-        label = "Sin defecto"
-      )
-    ) %>% 
-    add_edge(
-      from = 3,
-      to = 6,
-      edge_aes = edge_aes(
-        label = "Con defecto"
-      )
-    ) %>% 
-    add_edge(
-      from = 4,
-      to = 8,
-      edge_aes = edge_aes(
-        label = "="
-      )
-    ) %>% 
-    add_edge(
-      from = 5,
-      to = 9,
-      edge_aes = edge_aes(
-        label = "="
-      )
-    ) %>% 
-    add_edge(
-      from = 7,
-      to = 11,
-      edge_aes = edge_aes(
-        label = "="
-      )
-    ) %>% 
-    add_edge(
-      from = 6,
-      to = 10,
-      edge_aes = edge_aes(
-        label = "="
-      )
-    ) 
-  
-  print(render_graph(tree))
-  invisible(tree)
-}
-```
-
-```{r echo=FALSE}
-bayes_probability_tree(prior = 0.65, true_positive = 0.98, true_negative = 0.05)
-```
 
 ![](images/021-bayes.png)
 
