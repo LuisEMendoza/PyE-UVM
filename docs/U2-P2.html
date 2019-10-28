@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Segundo Problemario de Unidad 2</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Inicio</a>
+</li>
+<li>
+  <a href="Ayuda.html">¿Cómo utilizar estos apuntes?</a>
+</li>
+<li>
+  <a href="GitHub_en_RStudio.html">Git y GitHub en RStudio</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Contenido
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Unidades</li>
+    <li>
+      <a href="U1.html">Unidad 1</a>
+    </li>
+    <li>
+      <a href="U2.html">Unidad 2</a>
+    </li>
+    <li>
+      <a href="U3.html">Unidad 3</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Problemarios y tareas
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Problemarios</li>
+    <li>
+      <a href="U1-P.html">Primer Parcial</a>
+    </li>
+    <li>
+      <a href="U2-P.html">Segundo Parcial</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Segundo Problemario de Unidad 2</h1>
+
+</div>
+
+
+<div id="distribución-de-probabilidad-discreta" class="section level2">
+<h2>Distribución de probabilidad discreta</h2>
+<ol style="list-style-type: decimal">
+<li>Un distribuidor de enseres para el hogar vende tres modelos de congeladores verticales de 13.0, 15.5 y 19.5 pies cúbicos de espacio de almacenamiento, respectivamente. Sea <span class="math inline">\(X=\)</span> la cantidad de espacio de almacenamiento adquirido por el siguiente cliente que compre un congelador. Suponga que <span class="math inline">\(X\)</span> tiene la función masa de probabilidad de 0.2, 0.5 y 0.3, respectivamente.</li>
+</ol>
+<ul>
+<li><p>Calcule <span class="math inline">\(E(X)\)</span>, <span class="math inline">\(E(X^2)\)</span> y <span class="math inline">\(V(X)\)</span>.</p></li>
+<li><p>Si el precio de un congelador de <span class="math inline">\(X\)</span> pies cúbicos de capacidad es <span class="math inline">\(25X-8.5\)</span>, ¿cuál es el precio esperado pagado por el siguiente cliente que compre un congelador?</p></li>
+<li><p>¿Cuál es la varianza del precio <span class="math inline">\(25X-8.5\)</span> pagado por el siguiente cliente?</p></li>
+<li><p>Suponga que aunque la capacidad nominal de un congelador <span class="math inline">\(X\)</span>, la real es <span class="math inline">\(h(X)=X-0.01X^2\)</span>. ¿Cuál es la capacidad real esperada del congelador adquirido por el siguiente cliente?</p></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>En un taller de servicio automotriz especializado en afinaciones se sabe que 50% de todas las afinaciones se realizan en automóviles de cuatro cilindros, 40% en automóviles de seis cilindros y 10% en automóviles de ocho cilindros. Sea <span class="math inline">\(X=\)</span> el número de cilindros en el siguiente carro que va a ser afinado.</li>
+</ol>
+<ul>
+<li><p>¿Cuál es la función masa de probabilidad de <span class="math inline">\(X\)</span>?</p></li>
+<li><p>¿Cuál es la probabilidad de que el siguiente carro afinado sea de por lo menos seis cilindros?<br />
+</p></li>
+<li><p>¿Más de seis cilindros?</p></li>
+</ul>
+</div>
+<div id="distribución-binomial" class="section level2">
+<h2>Distribución binomial</h2>
+<ol start="3" style="list-style-type: decimal">
+<li>Una compañía que produce cristales finos sabe por experiencia que 15% de sus copas de mesa tienen imperfecciones cosméticas y deben ser clasificadas como “de segunda”.</li>
+</ol>
+<ul>
+<li><p>Entre seis copas seleccionadas al azar, ¿qué tan probable es que sólo una sea de segunda?</p></li>
+<li><p>Entre seis copas seleccionadas al azar, ¿qué tan probable es que por lo menos dos sean de segunda?</p></li>
+<li><p>Si las copas se examinan una por una, ¿cuál es la probabilidad de cuando mucho cinco deban ser seleccionadas para encontrar cuatro que no sean de segunda?</p></li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Un tipo particular de raqueta de tenis viene en tamaño mediano y en tamaño extragrande. El 65% de todos los clientes en una tienda desean la versión extragrande.</li>
+</ol>
+<ul>
+<li><p>Entre diez clientes seleccionados al azar que desean este tipo de raqueta, ¿cuál es la probabilidad de que por lo menos seis deseen la versión extragrande?</p></li>
+<li><p>Entre diez clientes seleccionados al azar, ¿cuál es la probabilidad de que a lo mucho tres se lleven la extragrande?</p></li>
+<li><p>¿Cuál es la probabilidad de que al menos dos pero a lo mucho cuatro deseen la extragrande?</p></li>
+</ul>
+</div>
+<div id="distribución-hipergeométrica" class="section level2">
+<h2>Distribución hipergeométrica</h2>
+<ol start="5" style="list-style-type: decimal">
+<li>Un tipo de cámara digital viene en una versión de 13 megapixeles o una versión de 14 megapixeles. Una tienda de cámaras recibió un envío de 14 de estas cámaras, de las cuales 7 tienen una resolución de 13 megapixeles. Suponga que se seleccionan al azar 5 de estas cámaras para guardarlas detrás del mostrador; las otras 9 se colocan en una bodega. Sea <span class="math inline">\(X=\)</span> el número de cámaras de 13 megapixeles entre las 5 seleccionadas para guardarlas detrás del mostrador.</li>
+</ol>
+<ul>
+<li><p>Calcule <span class="math inline">\(P(X=2)\)</span>, <span class="math inline">\(P(X\leq2)\)</span> y <span class="math inline">\(P(X\geq2)\)</span>.</p></li>
+<li><p>Calcule el valor medio y la desviación estándar de X.</p></li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>Un instructor que impartió dos secciones de estadística de ingeniería el semestre pasado, la primera con 20 estudiantes y la segunda con 30, decidió asignar un proyecto semestral. Una vez que todos los proyectos le fueron entregados, el instructor los ordenó al azar antes de calificarlos. Considere los primeros 15 proyectos calificados.</li>
+</ol>
+<ul>
+<li><p>¿Cuál es la probabilidad de que exactamente 10 de estos sean de la segunda sección?</p></li>
+<li><p>¿Cuál es la probabilidad de que por lo menos 10 de estos sean de la segunda sección?</p></li>
+<li><p>¿Cuáles son el valor medio y la desviación estándar del número entre estos 15 que son de la segunda sección?</p></li>
+</ul>
+<div id="distribución-de-poisson" class="section level3">
+<h3>Distribución de Poisson</h3>
+<ol start="7" style="list-style-type: decimal">
+<li>Suponga que el número X de tornados observados en una región particular durante un año tiene una distribución de Poisson con <span class="math inline">\(\lambda =8\)</span>.</li>
+</ol>
+<ul>
+<li><p>Calcule <span class="math inline">\(P(X \leq 5)\)</span>.</p></li>
+<li><p>Calcule <span class="math inline">\(P(6\leq X \leq 9)\)</span>.</p></li>
+<li><p>Calcule <span class="math inline">\(P(10 \leq X)\)</span>.</p></li>
+</ul>
+<ol start="8" style="list-style-type: decimal">
+<li>Suponga que el número de conductores que viajan entre un origen y destino particulares durante un periodo designado tiene una distribución de Poisson con parámetro <span class="math inline">\(\lambda=20\)</span>. ¿Cuál es la probabilidad de que el número de conductores:</li>
+</ol>
+<ul>
+<li><p>sea cuando mucho de 10?</p></li>
+<li><p>sea de más de 20?</p></li>
+<li><p>sea de entre 10 y 20, inclusive?</p></li>
+</ul>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

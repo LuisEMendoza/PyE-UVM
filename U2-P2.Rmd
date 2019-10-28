@@ -1,0 +1,82 @@
+---
+title: "Segundo Problemario de Unidad 2"
+---
+
+## Distribución de probabilidad discreta
+
+1. Un distribuidor de enseres para el hogar vende tres modelos de congeladores verticales de 13.0, 15.5 y 19.5 pies cúbicos de espacio de almacenamiento, respectivamente. Sea $X=$ la cantidad de espacio de almacenamiento adquirido por el siguiente cliente que compre un congelador. Suponga que $X$ tiene la función masa de probabilidad de 0.2, 0.5 y 0.3, respectivamente.
+
+ - Calcule $E(X)$, $E(X^2)$ y $V(X)$.
+
+ - Si el precio de un congelador de $X$ pies cúbicos de capacidad es $25X-8.5$, ¿cuál es el precio esperado pagado por el siguiente cliente que compre un congelador?
+
+ - ¿Cuál es la varianza del precio $25X-8.5$ pagado por el siguiente cliente?
+
+ - Suponga que aunque la capacidad nominal de un congelador $X$, la real es $h(X)=X-0.01X^2$. ¿Cuál es la capacidad real esperada del congelador adquirido por el siguiente cliente?
+
+2. En un taller de servicio automotriz especializado en afinaciones se sabe que 50% de todas las afinaciones se realizan en automóviles de cuatro cilindros, 40% en automóviles de seis cilindros y 10% en automóviles de ocho cilindros. Sea $X=$ el número de cilindros en el siguiente carro que va a ser afinado.
+
+ - ¿Cuál es la función masa de probabilidad de $X$?
+
+ - ¿Cuál es la probabilidad de que el siguiente carro afinado sea de por lo menos seis cilindros?  
+ - ¿Más de seis cilindros?
+ 
+## Distribución binomial
+
+3. Una compañía que produce cristales finos sabe por experiencia que 15% de sus copas de mesa tienen imperfecciones cosméticas y deben ser clasificadas como “de segunda”.
+
+  - Entre seis copas seleccionadas al azar, ¿qué tan probable es que sólo una sea de segunda?
+  
+  - Entre seis copas seleccionadas al azar, ¿qué tan probable es que por lo menos dos sean de segunda?
+  
+  - Si las copas se examinan una por una, ¿cuál es la probabilidad de cuando mucho cinco deban ser seleccionadas para encontrar cuatro que no sean de segunda?
+  
+4.  Un tipo particular de raqueta de tenis viene en tamaño mediano y en tamaño extragrande. El 65% de todos los clientes en una tienda desean la versión extragrande. 
+
+  - Entre diez clientes seleccionados al azar que desean este tipo de raqueta, ¿cuál es la probabilidad de que por lo menos seis deseen la versión extragrande?
+  
+  - Entre diez clientes seleccionados al azar, ¿cuál es la probabilidad de que a lo mucho tres se lleven la extragrande?
+  
+  - ¿Cuál es la probabilidad de que al menos dos pero a lo mucho cuatro deseen la extragrande?
+  
+## Distribución hipergeométrica
+
+5. Un tipo de cámara digital viene en una versión de 13 megapixeles o una versión de 14 megapixeles. Una tienda de cámaras recibió un envío de 14 de estas cámaras, de las cuales 7 tienen una resolución de 13 megapixeles. Suponga que se seleccionan al azar 5 de estas cámaras para guardarlas detrás del mostrador; las otras 9 se colocan en una bodega. Sea $X=$ el número de cámaras de 13 megapixeles entre las 5 seleccionadas para guardarlas detrás del mostrador.
+
+  - Calcule $P(X=2)$, $P(X\leq2)$ y $P(X\geq2)$.
+  
+  - Calcule el valor medio y la desviación estándar de X.
+  
+6. Un instructor que impartió dos secciones de estadística de ingeniería el semestre pasado, la primera con 20 estudiantes y la segunda con 30, decidió asignar un proyecto semestral. Una vez que todos los proyectos le fueron entregados, el instructor los ordenó al azar antes de calificarlos. Considere los primeros 15 proyectos calificados.
+
+  - ¿Cuál es la probabilidad de que exactamente 10 de estos sean de la segunda sección?
+  
+  - ¿Cuál es la probabilidad de que por lo menos 10 de estos sean de la segunda sección?
+  
+  - ¿Cuáles son el valor medio y la desviación estándar del número entre estos 15 que son de la segunda sección?
+  
+### Distribución de Poisson
+
+7. Suponga que el número X de tornados observados en una región particular durante un año tiene una distribución de Poisson con $\lambda =8$.
+
+  - Calcule $P(X \leq 5)$.
+  
+  - Calcule $P(6\leq X \leq 9)$.
+  
+  - Calcule $P(10 \leq X)$.
+  
+8.  Suponga que el número de conductores que viajan entre un origen y destino particulares durante un periodo designado tiene una distribución de Poisson con parámetro $\lambda=20$. ¿Cuál es la
+probabilidad de que el número de conductores:
+
+  - sea cuando mucho de 10?
+  
+  - sea de más de 20?
+  
+  - sea de entre 10 y 20, inclusive?
+
+
+
+
+
+
+

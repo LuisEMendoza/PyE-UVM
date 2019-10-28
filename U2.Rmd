@@ -371,42 +371,7 @@ $$
 
 Representemos los posibles resultados, comenzamos con un árbol de probabilidades:
 
-```{r echo=FALSE}
-grViz("
-digraph dot {
-
-graph [layout = dot, rankdir = LR]
-
-node [shape = circle,
-      style = filled,
-      label = '']
-
-node [fillcolor = white,
-      label = 'X']
-a
-
-node [fillcolor = white,
-      label = 'P1']
-b 
-
-node [fillcolor = white,
-      label = 'P2']
-c
-
-node [fillcolor = white
-      label = 'S']
-d f
-
-node [fillcolor = white
-      label = 'C']
-e g
-
-edge [color = black]
-a -> {b c}
-b -> {d e}
-c -> {f g}
-}")
-```
+![](images/007-prob.png)
 
 Como podemos observar, tenemos cuatro posibles resultados. Pero la cuestión ahora es, ya que la pieza es defectuosa, ¿cuál es la probabilidad de que viene del primer proveedor? O bien, ¿del segundo?
 
