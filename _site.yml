@@ -22,8 +22,10 @@
         - text: "Problemarios"
         - text: "Primer Parcial"
           href: U1-P.html
-        - text: "Segundo Parcial"
-          href: U2-P.html
+        - text: "Primero del Segundo Parcial"
+          href: U2-P1.html
+        - text: "Segundo del Segundo Parcial"
+          href: U2-P2.html
   output:
     html_document:
         theme: cosmo
