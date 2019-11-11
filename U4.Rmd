@@ -1,0 +1,26 @@
+---
+title: "Distribuciones de probabilidad continuas"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+Una diferencia fundamental entre las variables aleatorias discretas y las variables aleatorias continuas es cómo se calculan las probabilidades. En las variables aleatorias discretas la función de probabilidad $f(x)$ da la probabilidad de que la variable aleatoria tome un valor determinado. En las variables aleatorias continuas, la contraparte de la función de probabilidad es la __función de densidad de probabilidad__, que también se denota $f(x)$. La diferencia está en que la función de densidad de probabilidad no da probabilidades directamente. Si no que el área bajo la curva de $f(x)$ que corresponde a un intervalo determinado proporciona la probabilidad de que la variable aleatoria tome uno de los valores de ese intervalo. De manera que cuando se calculan probabilidades de variables aleatorias continuas se calcula la probabilidad de que la variable aleatoria tome alguno de los valores dentro de un intervalo.
+
+Gran parte del contenido de la Unidad se enfoca en la distribución normal, la cual tiene un amplio uso en la Estadística Inferencial y en otras aplicaciones. También se aborda la distribución de probabilidad uniforme y la exponencial.
+
+## Distribución de probabilidad uniforme
+Considere una variable aleatoria $x$ que represente el tiempo de vuelo de un avión que parte de Monterrey con destino a Cancún. El tiempo de vuelo puede oscilar entre 120 y 140 minutos. La variable puede tomar cualquier valor dentro de ese intervalo, por lo que podemos considerarla continua. Asumiremos que la probabilidad de que el avión llegue a destino en cualquier minuto dentro del intervalo indicado es la misma, así que definiremos nuestra función de densidad de probabilidad como:
+
+$$
+f(x)=\left \lbrace \begin{matrix} \frac{1}{20} & \mbox{para }120\leq x\leq 140 \\ 0 & \mbox{en cualquier otro caso} \end{matrix} \right.
+$$
+
+De lo anterior podemos desprender la función de densidad de probabilidad uniforme mediante la siguiente fórmula:
+
+$$
+f(x)=\left \lbrace \begin{matrix} \frac{1}{b-a} & \mbox{para }a\leq x\leq b \\ 0 & \mbox{en cualquier otro caso} \end{matrix} \right.
+$$
+
+  

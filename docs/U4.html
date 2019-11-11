@@ -12,7 +12,7 @@
 
 
 
-<title>Acerca de estos apuntes</title>
+<title>Distribuciones de probabilidad continuas</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,6 +20,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -248,6 +251,63 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -255,6 +315,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -333,35 +403,29 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Acerca de estos apuntes</h1>
+<h1 class="title toc-ignore">Distribuciones de probabilidad continuas</h1>
 
 </div>
 
 
-<p>Esta página ha sido realizada en principio para soportar el contenido que se aborda en clase y abarca todas las asignaturas del docente. Sin embargo, puede utilizarse como material de referencia y de consulta, tanto en contenidos de la materia como en los comandos utilizados por el programa informático, donde aplica.</p>
-<p>El <em>software</em> utilizado en clases, RStudio, brinda la suficiente flexibilidad para poder crear este tipo de documentos a la vez que permite resolver los ejercicios de muchas de las materias. De hecho, esta página fue generada desde el propio RStudio. La sección <a href="GitHub-en-RStudio.html">Git y GitHub en RStudio</a> muestra cómo es el proceso para tener una página idéntica a esta en funcionalidad. Si se desea, incluso se puede acceder al código fuente, a través de GitHub en el siguiente <a href="https://github.com/LuisEMendoza/PyE-UVM">repositorio</a>.</p>
-<p>La página se divide en varias secciones que siguen en fase de construcción, pero que ya son utilizables en ciertos aspectos. La primera sección “Inicio”, es donde se encuentran algunos datos relevantes del docente (se encuentra incompleta, por tiempo indefinido, ya que será la última sección en ser completada). La segunda sección es esta, donde se aclara el objetivo de la página y se dan algunas recomendaciones sobre su uso. La tercera sección, como ya se mencionó arriba, muestra cómo construir un sitio como este utilizando el propio RStudio. La última sección (por el momento), es la más importante, pues en ella está el contenido de la asignatura. Es importante mencionar que mucho de ese contenido se extrajo de algunos libros de texto y otra parte es original. También cabe mencionar que puede abordarse con software estadístico o matemático, por lo que en muchas ocasiones se muestra la teoría, las fórmulas y también el código utilizado.</p>
-<div id="nota-sobre-el-código-usado." class="section level3">
-<h3>Nota sobre el código usado.</h3>
-<p>Para poder distinguir qué parte del documento es código y qué parte son resultados del mismo, la diferencia de apariencia es bastante notoria. El código tal como se captura en RStudio, se muestra así:</p>
-<pre class="r"><code>a &lt;- read.table(&quot;datasets/001-challenger.txt&quot;)</code></pre>
-<p>Mientras que la salida del programa siempre tendrá un par de almohadillas (#) al inicio de línea:</p>
-<pre><code>##   V1
-## 1 84
-## 2 49
-## 3 61
-## 4 40
-## 5 83
-## 6 67</code></pre>
-<p>Para finalizar esta sección, debo decir que la retroalimentación de estudiantes, profesores y usuarios en general, es agradecida e incluso deseada. El canal de comunicación es la plataforma de Google Classroom habilitada, o por medio del correo especificado en la página <a href="index.html">inicial</a>. El ideal es ir mejorando la página con todas las aportaciones posibles.</p>
-<p><em>I was working with our copy editor on Appendix A of Practical Data Science with R, 2nd Edition; Zumel, Mount; Manning 2019, and ran into this little point (unfortunately) buried in the back of the book:</em></p>
-<p><strong>In our opinion the R ecosystem is the fastest path to substantial data science, statistical, and machine learning accomplishment. This is why we use and teach R (in addition to using and teaching Python).</strong></p>
-<p><em>Estaba trabajando con nuestro editor de copias en el Apéndice A de Practical Data Science con R, segunda edición; Zumel, monte; Manning 2019, y se topó con este pequeño punto (desafortunadamente) enterrado en la parte posterior del libro.</em></p>
-<p><strong>En nuestra opinión, el ecosistema R es el camino más rápido hacia el logro sustancial de la ciencia de datos, estadística y aprendizaje automático. Es por eso que usamos y enseñamos R (además de usar y enseñar Python).</strong></p>
+<p>Una diferencia fundamental entre las variables aleatorias discretas y las variables aleatorias continuas es cómo se calculan las probabilidades. En las variables aleatorias discretas la función de probabilidad <span class="math inline">\(f(x)\)</span> da la probabilidad de que la variable aleatoria tome un valor determinado. En las variables aleatorias continuas, la contraparte de la función de probabilidad es la <strong>función de densidad de probabilidad</strong>, que también se denota <span class="math inline">\(f(x)\)</span>. La diferencia está en que la función de densidad de probabilidad no da probabilidades directamente. Si no que el área bajo la curva de <span class="math inline">\(f(x)\)</span> que corresponde a un intervalo determinado proporciona la probabilidad de que la variable aleatoria tome uno de los valores de ese intervalo. De manera que cuando se calculan probabilidades de variables aleatorias continuas se calcula la probabilidad de que la variable aleatoria tome alguno de los valores dentro de un intervalo.</p>
+<p>Gran parte del contenido de la Unidad se enfoca en la distribución normal, la cual tiene un amplio uso en la Estadística Inferencial y en otras aplicaciones. También se aborda la distribución de probabilidad uniforme y la exponencial.</p>
+<div id="distribución-de-probabilidad-uniforme" class="section level2">
+<h2>Distribución de probabilidad uniforme</h2>
+<p>Considere una variable aleatoria <span class="math inline">\(x\)</span> que represente el tiempo de vuelo de un avión que parte de Monterrey con destino a Cancún. El tiempo de vuelo puede oscilar entre 120 y 140 minutos. La variable puede tomar cualquier valor dentro de ese intervalo, por lo que podemos considerarla continua. Asumiremos que la probabilidad de que el avión llegue a destino en cualquier minuto dentro del intervalo indicado es la misma, así que definiremos nuestra función de densidad de probabilidad como:</p>
+<p><span class="math display">\[
+f(x)=\left \lbrace \begin{matrix} \frac{1}{20} &amp; \mbox{para }120\leq x\leq 140 \\ 0 &amp; \mbox{en cualquier otro caso} \end{matrix} \right.
+\]</span></p>
+<p>De lo anterior podemos desprender la función de densidad de probabilidad uniforme mediante la siguiente fórmula:</p>
+<p><span class="math display">\[
+f(x)=\left \lbrace \begin{matrix} \frac{1}{b-a} &amp; \mbox{para }a\leq x\leq b \\ 0 &amp; \mbox{en cualquier otro caso} \end{matrix} \right.
+\]</span></p>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -394,6 +458,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
