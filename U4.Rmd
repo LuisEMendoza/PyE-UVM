@@ -23,4 +23,70 @@ $$
 f(x)=\left \lbrace \begin{matrix} \frac{1}{b-a} & \mbox{para }a\leq x\leq b \\ 0 & \mbox{en cualquier otro caso} \end{matrix} \right.
 $$
 
-  
+## Distribución normal
+
+La distribución de probabilidad más usada para describir variables aleatorias continuas es la __distribución de probabilidad normal__. La distribución normal tiene gran cantidad de aplicaciones prácticas, en las cuales la variable aleatoria puede ser el peso o la estatura de las personas, puntuaciones de exámenes, resultados de mediciones científicas, precipitación pluvial u otras cantidades similares. La distribución normal también tiene una importante aplicación en inferencia
+estadística. En estas aplicaciones, la distribución normal describe qué tan probables son los resultados obtenidos de un muestreo.
+
+### Curva normal
+
+La función de densidad de probabilidad normal se muestra a continuación:
+
+$$
+f(x)=\frac{1}{\sigma\sqrt{2\pi}} e^{-(x-\mu)^2/2\sigma^2}
+$$
+Donde:
+$\mu=$media
+$\sigma=$ desviación estándar
+
+Las siguientes son observaciones importantes acerca de las características de las distribuciones normales.
+
+1. Toda la familia de distribuciones normales se diferencia por medio de dos parámetros: la media $\mu$ y la desviación estándar $\sigma$.
+
+2. El punto más alto de una curva normal se encuentra sobre la media, la cual coincide con la mediana y la moda.
+
+3. La media de una distribución normal puede tener cualquier valor: negativo, positivo o cero.
+
+4. La distribución normal es simétrica, siendo la forma de la curva normal al lado izquierdo de la media, la imagen especular de la forma al lado derecho de la media. Las colas de la curva normal se extienden al infinito en ambas direcciones y en teoría jamás tocan el eje horizontal. Dado que es simétrica, la distribución normal no es sesgada; su sesgo es cero.
+
+5. La desviación estándar determina qué tan plana y ancha es la curva normal. Desviaciones estándar grandes corresponden a curvas más planas y más anchas, lo cual indica mayor variabilidad en los datos.
+
+6. Las probabilidades correspondientes a la variable aleatoria normal se dan mediante áreas bajo la curva normal. Toda el área bajo la curva de una distribución normal es 1. Como esta distribución es simétrica, el área bajo la curva y a la izquierda de la media es 0.50 y el área bajo la curva y a la derecha de la media es 0.50.
+
+7. Los porcentajes de los valores que se encuentran en algunos intervalos comúnmente usados son:
+  a. 68.3% de los valores de una variable aleatoria normal se encuentran más o menos una desviación estándar de la media.
+  b. 95.4% de los valores de una variable aleatoria normal se encuentran más o menos dos desviaciones estándar de la media.
+  c. 99.7% de los valores de una variable aleatoria normal se encuentran más o menos tres desviaciones estándar de la media.
+
+### Distribución de probabilidad normal estándar
+
+Una variable aleatoria que tiene una distribución normal con una media cero y desviación estándar de uno tiene una distribución normal estándar. Para designar esta variable aleatoria normal se suele usar la letra $z$. Esta distribución tiene el mismo aspecto general que cualquier otra distribución normal, pero tiene las propiedades especiales, $\mu=0$ y $\sigma=1$.
+
+Dado que $\mu=0$ y $\sigma=1$, la fórmula de la función de densidad de probabilidad normal estándar es una versión más simple de la ecuación anterior.
+
+$$
+f(z)=\frac{1}{\sqrt{2\pi}}e^{-z^2/2}
+$$
+
+Como ocurre con otras variables aleatorias continuas, los cálculos de la probabilidad en cualquier distribución normal se hacen calculando el área bajo la gráfica de la función de densidad de probabilidad. Por tanto, para hallar la probabilidad de que una variable aleatoria normal esté dentro de un determinado intervalo, se tiene que calcular el área que se encuentra bajo la curva normal y sobre ese intervalo.
+
+La tabla de distribución a usarse en el curso se puede descargar [aquí](docs/tabla_normal.pdf)
+
+### Cálculo de probabilidades
+
+Las probabilidades en cualquier distribución normal pueden ser calculadas mediante la conversión de la misma a una distribución normal estándar. Para ello, se utiliza la siguiente fórmula:
+
+$$
+z=\frac{x-\mu}{\sigma}
+$$
+
+Para una aplicación de la distribución de probabilidad normal, supongamos una compañía que ha fabricado un nuevo neumático que será vendido por una cadena nacional de tiendas de descuento. Como este neumático es un producto nuevo, los directivos piensan que la garantía de duración será un factor importante en la aceptación del neumático. Antes de finalizar la póliza de garantía, los directivos necesitan información probabilística acerca de $x=$ duración del neumático en número de kilómetros.
+
+De acuerdo con las pruebas realizadas al neumático, los ingenieros estiman que la duración media en kilómetros es $\mu=$ 36,500 kilómetros y que la desviación estándar es $\sigma=$ 5,000. Además, los datos recogidos indican que es razonable suponer una distribución normal. ¿Qué porcentaje de los neumáticos se espera que duren más de 40,000 kilómetros? En otras palabras, ¿cuál es la probabilidad de que la duración de los neumáticos sea superior a 40,000?
+
+Ahora supongamos que se está considerando una garantía que dé un descuento en la sustitución del neumático original si éste no dura lo que asegura la garantía. ¿Cuál deberá ser la duración en kilómetros especificada en la garantía si se desea que no más de 10% de los neumáticos alcancen la garantía?
+
+
+
+
+
