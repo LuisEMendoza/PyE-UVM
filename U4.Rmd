@@ -70,7 +70,7 @@ $$
 
 Como ocurre con otras variables aleatorias continuas, los cálculos de la probabilidad en cualquier distribución normal se hacen calculando el área bajo la gráfica de la función de densidad de probabilidad. Por tanto, para hallar la probabilidad de que una variable aleatoria normal esté dentro de un determinado intervalo, se tiene que calcular el área que se encuentra bajo la curva normal y sobre ese intervalo.
 
-La tabla de distribución a usarse en el curso se puede descargar [aquí](docs/tabla_normal.pdf)
+La tabla de distribución a usarse en el curso se puede descargar [aquí](tabla_normal.pdf)
 
 ### Cálculo de probabilidades
 
